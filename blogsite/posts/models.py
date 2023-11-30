@@ -1,6 +1,21 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
-class User(models.Model):
-    username = models.CharField(max_length=40, unique=True)
-    password = models.CharField(max_length=200)
+class Post(models.Model):
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    text = models.TextField(max_length=5000)
+    pub_date = models.DateField()
+
+    def __str__(self) -> str:
+        return self.title
+
+class Comment(models.Model):
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.CharField(max_length=700)
+    pub_date = models.DateField()
+
+    def __str__(self):
+        return self.username.username + ":" + self.text[:20] + "..."
+    
