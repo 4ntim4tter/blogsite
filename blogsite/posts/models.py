@@ -13,6 +13,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     text = models.CharField(max_length=700)
     pub_date = models.DateField()
 

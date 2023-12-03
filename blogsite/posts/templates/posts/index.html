@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block posts %}
+<center>
+    <h2>THIS IS A WEBSITE</h2>
+</center>
+<br>
+    <center style="margin-left: 20%; margin-right: 20%;">
+        {% for post in posts %}
+        <block>
+            <b>
+                <h1 style="font-size: x-large; text-align: left; width: 60%;">{{post.title}}</h1>
+            </b>
+            <br>
+                <p style="display:inline-block; font-size: medium; width: 60%; text-overflow:ellipsis; overflow: hidden; height: 70px; text-align: justify;">{{post.text}}
+                    
+                </p>
+                <p style="display: inline-block;">...</p>
+            <br>
+        </block>
+        {% endfor %}
+    </center>
+{% endblock posts %}
+    
