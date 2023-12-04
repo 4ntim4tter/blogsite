@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.views.generic import ListView
 
 from .models import Post
 
-# Create your views here.
-def index(request):
-    posts = Post.objects.order_by('-pub_date')[:2]
-    return render(request, "posts/index.html", {"posts":posts})
+class PostsIndexView(ListView):
+    template_name = "posts/index.html"
+    context_object_name = "latest_posts_list"
+    paginate_by = 3
+
+    def get_queryset(self):
+        return Post.objects.order_by('-pub_date')
