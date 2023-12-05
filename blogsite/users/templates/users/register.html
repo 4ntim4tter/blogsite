@@ -2,12 +2,13 @@
 
 {% block content %}
 <center style="margin-top: 15%;">
+    <h1>Registration</h1>
     <form action="" method="post">
         <input type="text" placeholder=" Username..." style="border: 1px darkgray solid; margin: 10px;"><br>
         <input type="password" placeholder=" Password..." style="border: 1px darkgray solid; margin: 10px;"><br>
 
-        <button type="submit" style="border: 1px darkgray solid;">Register</button>
-        <a href="{% url 'login_user' %}" style="border: 1px darkgray solid;">Login</a>
+        <button type="submit" style="border: 1px darkgray solid;">Register</button><br>
+        <a href="{% url 'login_user' %}" style="font-size: smaller;">Already a member? Login here.</a>
     </form>
 </center>
 {% endblock content %}
