@@ -1,13 +1,15 @@
-{% for post in latest_posts_list %}
-{% if forloop.last %}
-<div hx-get="{% url 'index' %}?page={{page_obj.number|add:1}}" hx-trigger="revealed" hx-swap="afterend" hx-target="this">
-{% else %}
-<div>
-{% endif %}
-    <b><h1 style="font-size: x-large; text-align: left; width: 60%;">{{ post.title }}</h1></b>
-    <br />
-    <p style="display:inline-block; font-size: medium; width: 60%; text-overflow:ellipsis; overflow: hidden; height: 70px; text-align: justify;">{{ post.text }}</p>
-    <p style="display: inline-block;">...</p>
-    <br />
-  </div>
-{% endfor %}
+<fade-in class="opacity-0" _="on load transition my opacity to 1 over 0.8 seconds">
+  {% for post in latest_posts_list %}
+  {% if forloop.last %}
+  <div hx-get="{% url 'index' %}?page={{page_obj.number|add:1}}" hx-trigger="revealed" hx-swap="afterend" hx-target="this">
+  {% else %}
+  <div>
+  {% endif %}
+      <b><h1 style="font-size: x-large; text-align: left; width: 60%;">{{ post.title }}</h1></b>
+      <br />
+      <p style="display:inline-block; font-size: medium; width: 60%; text-overflow:ellipsis; overflow: hidden; height: 70px; text-align: justify;">{{ post.text }}</p>
+      <p style="display: inline-block;">...</p>
+      <br />
+    </div>
+  {% endfor %}
+</fade-in>
