@@ -9,7 +9,14 @@
         <input type="password" name="password" placeholder=" Password..." style="border: 1px darkgray solid; margin: 10px;"><br>
 
         <button type="submit" style="border: 1px darkgray solid;">Register</button><br>
-        <a href="{% url 'login_user' %}" style="font-size: smaller;">Already a member? Login here.</a>
+        <a href="{% url 'login_user' %}" style="font-size: smaller;">Already a member? Login here.</a><br>
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     </form>
 </center>
 {% endblock content %}
