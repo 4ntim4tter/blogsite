@@ -6,6 +6,7 @@ from django.contrib import messages
 
 # Create your views here.
 def login_user(request):
+    
     return render(request, 'users/login.html', {})
 
 def register_user(request):
@@ -15,4 +16,5 @@ def create_user(request):
     user = User.objects.create_user(username=request.POST['username'],
                                     password=request.POST['password'])
     user.save()
-    return HttpResponse(request.POST['username'])
+    logged_in = authenticate(username=request.POST['username'], password=request.POST['password'])
+    return HttpResponse(logged_in)
