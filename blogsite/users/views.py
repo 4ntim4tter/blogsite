@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 
 # Create your views here.
-def login_user(request): 
+def login_user(request):
     return render(request, 'users/login.html', {})
 
 def register_user(request):
@@ -27,4 +27,9 @@ def auth_user(request):
     user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
     login(request, user)
     messages.success(request, "Login Successful.")
+    return redirect('index')
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, "Logged out.")
     return redirect('index')

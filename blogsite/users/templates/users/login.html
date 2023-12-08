@@ -10,13 +10,6 @@
 
         <button type="submit" style="border: 1px darkgray solid;">Login</button><br>
         <a href="{% url 'register_user' %}" style="font-size: smaller;">Not a member? Register here.</a><br>
-        {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li>{{message}}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
     </form>
 </center>
 {% endblock content %}

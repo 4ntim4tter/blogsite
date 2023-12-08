@@ -2,6 +2,13 @@
 {% block content %}
   <br />
   <center style="margin-left: 20%; margin-right: 20%; margin-top: 2%;">
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     {% include 'snippets/load_on_scroll.html' %}
   </center>
 {% endblock %}
