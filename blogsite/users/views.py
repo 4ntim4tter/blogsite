@@ -25,8 +25,9 @@ def create_user(request):
     
 def auth_user(request):
     user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
-    login(request, user)
-    messages.success(request, "Login Successful.")
+    if user is not None:
+        login(request, user)
+        messages.success(request, "Login Successful.")
     return redirect('index')
 
 def logout_user(request):
