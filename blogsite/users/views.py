@@ -1,3 +1,4 @@
+from email import message
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
@@ -28,7 +29,11 @@ def auth_user(request):
     if user is not None:
         login(request, user)
         messages.success(request, "Login Successful.")
-    return redirect('index')
+        return redirect('index')
+    else:
+        messages.error(request, "Incorrect Credentials")
+        return render(request, 'users/login.html')
+    
 
 def logout_user(request):
     logout(request)
