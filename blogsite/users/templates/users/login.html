@@ -1,22 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<center style="margin-top: 15%;">
+  <center style="margin-top: 15%;">
     <h1>Login</h1>
     <form action="{% url 'auth_user' %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder=" Username..." style="border: 1px darkgray solid; margin: 10px;"><br>
-        <input type="password" name="password" placeholder=" Password..." style="border: 1px darkgray solid; margin: 10px;"><br>
-        {% if messages %}
+      {% csrf_token %}
+      <input type="text" name="username" placeholder=" Username..." style="border: 1px darkgray solid; margin: 10px;" /><br />
+      <input type="password" name="password" placeholder=" Password..." style="border: 1px darkgray solid; margin: 10px;" /><br />
+      {% if messages %}
         <ul class="font-bold border-red-600 bg-red-400 mb-2 w-fit px-1">
-            {% for message in messages %}
-            <li>{{message}}</li>
-            {% endfor %}
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
         </ul>
-        {% endif %}
-        <button type="submit" style="border: 1px darkgray solid;">Login</button><br>
-        <a href="{% url 'register_user' %}" style="font-size: smaller;">Not a member? Register here.</a><br>
+      {% endif %}
+      <button type="submit" style="border: 1px darkgray solid;">Login</button><br />
+      <a href="{% url 'register_user' %}" style="font-size: smaller;">Not a member? Register here.</a><br />
     </form>
-</center>
-{% endblock content %}
-    
+  </center>
+{% endblock %}

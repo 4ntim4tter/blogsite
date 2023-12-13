@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<center style="margin-top: 15%;">
+  <center style="margin-top: 15%;">
     <h1>Registration</h1>
     <form action="{% url 'create_user' %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder=" Username..." style="border: 1px darkgray solid; margin: 10px;"><br>
-        <input type="password" name="password" placeholder=" Password..." style="border: 1px darkgray solid; margin: 10px;"><br>
+      {% csrf_token %}
+      <input type="text" name="username" placeholder=" Username..." style="border: 1px darkgray solid; margin: 10px;" /><br />
+      <input type="password" name="password" placeholder=" Password..." style="border: 1px darkgray solid; margin: 10px;" /><br />
 
-        <button type="submit" style="border: 1px darkgray solid;">Register</button><br>
-        <a href="{% url 'login_user' %}" style="font-size: smaller;">Already a member? Login here.</a><br>
+      <button type="submit" style="border: 1px darkgray solid;">Register</button><br />
+      <a href="{% url 'login_user' %}" style="font-size: smaller;">Already a member? Login here.</a><br />
     </form>
-</center>
-{% endblock content %}
-    
+  </center>
+{% endblock %}

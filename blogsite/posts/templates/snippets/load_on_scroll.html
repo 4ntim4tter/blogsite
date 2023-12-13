@@ -1,4 +1,4 @@
-<fade-in class="opacity-0" _="on load transition my opacity to 1 over 0.8 seconds">
+<fadein class="opacity-0" _="on load transition my opacity to 1 over 0.8 seconds">
   {% for post in latest_posts_list %}
   {% if forloop.last %}
   <div hx-get="{% url 'index' %}?page={{page_obj.number|add:1}}" hx-trigger="revealed" hx-swap="afterend" hx-target="this">
@@ -12,4 +12,4 @@
       <br />
     </div>
   {% endfor %}
-</fade-in>
+</fadein>
