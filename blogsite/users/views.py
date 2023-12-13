@@ -11,6 +11,9 @@ def login_user(request):
 def register_user(request):
     return render(request, 'users/register.html', {})
 
+def dash_user(request):
+    return render(request, 'users/dash.html')
+
 def create_user(request):
     print(User.objects.filter(username=request.POST['username']))
     if User.objects.filter(username=request.POST['username']):
