@@ -1,8 +1,9 @@
-from email import message
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from posts.models import Post 
 
 # Create your views here.
 def login_user(request):
@@ -11,8 +12,14 @@ def login_user(request):
 def register_user(request):
     return render(request, 'users/register.html', {})
 
+@login_required
 def dash_user(request):
-    return render(request, 'users/dash.html')
+    user_id = request.user.id
+    posts = Post.objects.filter(username_id=f'{user_id}').order_by('-pub_date')
+    if request.htmx:
+        print('here')
+        return render(request, 'users/user_posts.html', {'posts':posts})
+    return render(request, 'users/dash.html', {'posts':posts})
 
 def create_user(request):
     print(User.objects.filter(username=request.POST['username']))
@@ -37,7 +44,7 @@ def auth_user(request):
         messages.error(request, "Incorrect Credentials")
         return render(request, 'users/login.html')
     
-
+@login_required
 def logout_user(request):
     logout(request)
     messages.success(request, "Logged out.")
