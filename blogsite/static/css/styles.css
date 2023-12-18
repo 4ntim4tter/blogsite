@@ -1,6 +1,16 @@
-.delete-button{
-    border: 2px black solid;
-    background-color: gray;
-    border-radius: 15px;
-    padding: 5px;
+.post-button{
+    padding: 4px;
+    width: 80px;
+    color: white;
+    background-color: rgb(128,128,128) !important;
+    -webkit-text-stroke: 1px white;
+    border-radius: 4px;
+}
+
+.red-background{
+    background-color: red !important;
+}
+
+.lightgreen-background{
+    background-color: lightseagreen !important;
 }
