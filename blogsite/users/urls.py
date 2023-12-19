@@ -8,6 +8,8 @@ urlpatterns = [
     path('create/', views.create_user, name="create_user"),
     path('authenticate/', views.auth_user, name="auth_user"),
     path('dash/', views.dash_user, name="dash_user"),
+    path('edit_post/<int:pk>/', views.edit_post, name="edit_post"),
+    path('delete_post/<int:pk>/', views.delete_post, name="delete_post"),
     path('logout/', views.logout_user, name="logout_user"),
     path('', home_views.PostsIndexView.as_view(), name="index")
 ]
