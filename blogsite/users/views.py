@@ -18,7 +18,7 @@ def dash_user(request):
     user_id = request.user.id
     posts = Post.objects.filter(username_id=f'{user_id}').order_by('-pub_date')
     if request.htmx:
-        return render(request, 'users/user_posts.html', {'posts':posts})
+        return render(request, 'snippets/user_posts.html', {'posts':posts})
     return render(request, 'users/dash.html', {'posts':posts})
 
 def create_user(request):
@@ -56,8 +56,8 @@ def edit_post(request, pk):
 @login_required
 @require_http_methods(['DELETE'])
 def delete_post(request, pk):
-    print(request.user)
-    # post.delete()
+    post = Post.objects.all().filter(pk=pk)
+    post.delete()
     messages.success(request, "Post deleted.")
     return redirect('dash_user')
 
