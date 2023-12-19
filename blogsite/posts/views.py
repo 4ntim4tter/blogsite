@@ -5,7 +5,8 @@ from .models import Post
 class PostsIndexView(ListView):
     template_name = "posts/index.html"
     context_object_name = "latest_posts_list"
-    paginate_by = 5
+    model = Post
+    paginate_by = 3
 
     def get_template_names(self):
         if self.request.htmx:

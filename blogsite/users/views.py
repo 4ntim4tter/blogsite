@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
+from django.core.paginator import Paginator
 from posts.models import Post 
 
 # Create your views here.
@@ -17,9 +18,11 @@ def register_user(request):
 def dash_user(request):
     user_id = request.user.id
     posts = Post.objects.filter(username_id=f'{user_id}').order_by('-pub_date')
+    paginated_posts = Paginator(posts, 2)
+    selected_page = paginated_posts.get_page(request.GET.get('page'))
     if request.htmx:
-        return render(request, 'snippets/user_posts.html', {'posts':posts})
-    return render(request, 'users/dash.html', {'posts':posts})
+        return render(request, 'snippets/user_posts.html', {'posts':selected_page.object_list})
+    return render(request, 'users/dash.html', {'posts':selected_page.object_list})
 
 def create_user(request):
     if User.objects.filter(username=request.POST['username']):
