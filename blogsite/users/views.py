@@ -18,11 +18,11 @@ def register_user(request):
 def dash_user(request):
     user_id = request.user.id
     posts = Post.objects.filter(username_id=f'{user_id}').order_by('-pub_date')
-    paginated_posts = Paginator(posts, 2)
+    paginated_posts = Paginator(posts, 3)
     selected_page = paginated_posts.get_page(request.GET.get('page'))
     if request.htmx:
-        return render(request, 'snippets/user_posts.html', {'posts':selected_page.object_list})
-    return render(request, 'users/dash.html', {'posts':selected_page.object_list})
+        return render(request, 'snippets/user_posts.html', {'posts':selected_page})
+    return render(request, 'users/dash.html', {'posts':selected_page})
 
 def create_user(request):
     if User.objects.filter(username=request.POST['username']):
@@ -54,7 +54,7 @@ def logout_user(request):
 
 @login_required
 def edit_post(request, pk):
-    return redirect('index')
+    return redirect('dash_user')
 
 @login_required
 @require_http_methods(['DELETE'])

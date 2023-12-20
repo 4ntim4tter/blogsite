@@ -1,8 +1,15 @@
-<div class="opacity-0" _="on load transition my opacity to 1 over 0.8 seconds">
+<div id="post-container" class="opacity-0" _="on load transition my opacity to 1 over 0.8 seconds">
+    {% if messages %}
+      <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1">
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
     {% for post in posts %}
         {% if forloop.last and posts.has_next %}
-            <div id="post{{post.id}}" hx-get="{% url 'dash_user' %}?page={{page_obj.number|add:1}}"
-            hx-trigger="revealed" hx-swap="afterend" hx-target="this">
+            <div id="post{{post.id}}" hx-get="{% url 'dash_user' %}?page={{posts.number|add:1}}"
+            hx-trigger="revealed" hx-swap="afterend">
         {% else %}
             <div id="post{{post.id}}">
         {% endif %}
@@ -11,14 +18,14 @@
                 <p style="display:inline-block; font-size: medium; width: 60%; text-overflow:ellipsis; overflow: hidden; height: 70px; text-align: justify;">{{ post.text }}</p>
                 <p style="display: inline-block;">...</p>
                 <br />
+                <a hx-delete="{% url 'delete_post' post.pk %}" type="button" class="post-button" style="cursor: pointer;"
+                    hx-confirm="Are you sure you want to delete this post?" hx-target="#post-container"
+                    _="on mouseenter add .red-background to me 
+                    on mouseleave remove .red-background from me">DELETE</a>
+                <button hx-post="{% url 'edit_post' post.pk %}" type="button" class="post-button" 
+                    hx-target="#post{{post.id}}" hx-swap="delete"
+                    _="on mouseenter add .lightgreen-background to me 
+                    on mouseleave remove .lightgreen-background from me">EDIT</button>
             </div>
-            <a hx-delete="{% url 'delete_post' post.pk %}" type="button" class="post-button" style="cursor: pointer;"
-                hx-confirm="Are you sure you want to delete this post?" hx-target="#post{{post.id}}"
-                _="on mouseenter add .red-background to me 
-                on mouseleave remove .red-background from me">DELETE</a>
-            <button hx-post="{% url 'edit_post' post.pk %}" type="button" class="post-button" 
-                hx-target="#post{{post.id}}"
-                _="on mouseenter add .lightgreen-background to me 
-                on mouseleave remove .lightgreen-background from me">EDIT</button>
     {% endfor %}
 </div>
