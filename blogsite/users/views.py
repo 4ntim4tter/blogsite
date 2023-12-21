@@ -53,14 +53,15 @@ def logout_user(request):
     return redirect('index')
 
 @login_required
-def edit_post(request, pk):
-    return redirect('dash_user')
-
-@login_required
 @require_http_methods(['DELETE'])
 def delete_post(request, pk):
     post = Post.objects.all().filter(pk=pk)
     post.delete()
     messages.success(request, "Post deleted.")
     return redirect('dash_user')
+
+@login_required
+def edit_post(request, pk):
+    post = Post.objects.get(pk=pk)
+    return render(request, 'snippets/edit_post.html', {'post':post})
 
