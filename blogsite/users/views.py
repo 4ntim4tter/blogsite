@@ -70,3 +70,11 @@ def cancel_edit(request, pk):
     post = Post.objects.get(pk=pk)
     messages.error(request, "Edit canceled.")
     return render(request, 'snippets/post_form.html', {'post':post})
+
+@login_required
+def save_post(request, pk):
+    post = Post.objects.get(pk=pk)
+    post.text = request.POST[f'posttext{pk}']
+    post.save()
+    messages.info(request, "Post edited.")
+    return render(request, 'snippets/post_form.html', {'post':post})

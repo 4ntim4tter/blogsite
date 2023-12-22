@@ -3,11 +3,11 @@
   <br />
   <center style="margin-left: 20%; margin-right: 20%; margin-top: 2%;">
     {% if messages %}
+    {% for message in messages %}
       <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1">
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
+      <li>{{ message }}</li>
       </ul>
+    {% endfor %}
     {% endif %}
     {% include 'snippets/load_on_scroll.html' %}
   </center>

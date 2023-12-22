@@ -16,12 +16,17 @@ hx-swap="outerHTML"
 _="on mouseenter add .lightgreen-background to me 
 on mouseleave remove .lightgreen-background from me">EDIT</a>
 {% if messages %}
-    <ul class="font-bold border-red-600 bg-red-400 mb-2 w-fit px-1 mt-1">
-        {% for message in messages %}
-            {% if message.tags == 'error' %}
+    {% for message in messages %}
+        {% if message.tags == 'error' %}
+            <ul class="font-bold border-red-600 bg-red-400 mb-2 w-fit px-1 mt-1">
                 <li>{{ message }}</li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+            </ul>
+        {% endif %}
+        {% if message.tags == 'info' %}
+            <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1 mt-1">
+                <li>{{ message }}</li>
+            </ul>
+        {% endif %}
+    {% endfor %}
 {% endif %}
 </div>
