@@ -1,15 +1,18 @@
 <div id="post{{ post.id }}" style="margin-top: 10px;">
-<b><h1 style="text-align: left; width: 60%;">{{post.title}}</h1></b>
-<textarea id="posttext{{ post.id }}" style="display:inline-block; 
-font-size: medium; 
-width: 60%; 
-text-overflow: ellipsis;
-height: 250px;
-text-align: justify;
-">{{post.text}}</textarea>
+  <b><h1 style="font-size: x-large; text-align: left; width: 60%;">{{ post.title }}</h1></b>
+  <textarea id="posttext{{ post.id }}" class="edit-box">{{ post.text }}</textarea>
   <br />
-  <a type="button" class="post-button" style="cursor: pointer; margin-top: 10px;" hx-confirm="Are you sure you want to delete this post?" hx-target="#post-container" hx-swap="outerHTML" _="on mouseenter add .lightgreen-background to me 
-    on mouseleave remove .lightgreen-background from me">SAVE</a>
-  <a type="button" class="post-button" style="cursor: pointer;" hx-target="#posttext{{ post.id }}" hx-swap="outerHTML" _="on mouseenter add .red-background to me 
-    on mouseleave remove .red-background from me">CANCEL</a>
+  <a type="button" class="post-button" style="cursor: pointer;" 
+    hx-confirm="Are you sure you want to delete this post?" 
+    hx-target="#post-container" 
+    hx-swap="outerHTML" _="on mouseenter add .lightgreen-background to me 
+                            on mouseleave remove .lightgreen-background from me">SAVE</a>
+  <a type="button" 
+    class="post-button" 
+    style="cursor: pointer;"
+    hx-confirm="You will lose your unsaved text, are you sure?"
+    hx-post="{% url 'cancel_edit' post.pk %}" 
+    hx-target="#post{{ post.id }}" 
+    hx-swap="outerHTML" _="on mouseenter add .red-background to me 
+                            on mouseleave remove .red-background from me">CANCEL</a>
 </div>
