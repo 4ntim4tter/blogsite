@@ -1,20 +1,33 @@
-<div id="post{{ post.id }}" style="margin-top: 10px;">
+<div id="post{{ post.id }}" style="margin-top: 10px;" _="on mouseenter toggle @hidden on #delete{{post.id}}
+                                                        on mouseenter toggle @hidden on #edit{{post.id}}
+                                                        on mouseleave toggle @hidden on #delete{{post.id}}
+                                                        on mouseleave toggle @hidden on #edit{{post.id}}
+                                                        on mouseenter transition #delete{{post.id}} opacity to 1 over 0.3 seconds 
+                                                        on mouseenter transition #edit{{post.id}} opacity to 1 over 0.3 seconds 
+                                                        on mouseleave transition #delete{{post.id}} opacity to 0
+                                                        on mouseleave transition #edit{{post.id}} opacity to 0
+                                                        on mouseenter transition my height to 200px over 0.6 seconds
+                                                        on mouseleave transition my height to 150px over 0.6 seconds">
 <b><h1 style="font-size: x-large; text-align: left; width: 60%;">{{ post.title }}</h1></b>
 <p id="posttext{{post.id}}" class="posted-text">{{ post.text }}</p>
 <br>
-<a type="button" class="post-button" style="cursor: pointer;"
+<a id="delete{{post.id}}" type="button" class="post-button" style="cursor: pointer; opacity: 0;"
+hidden
 hx-delete="{% url 'delete_post' post.pk %}" 
 hx-confirm="Are you sure you want to delete this post?" 
 hx-target="#post-container"
 hx-swap="outerHTML"
 _="on mouseenter add .red-background to me 
-on mouseleave remove .red-background from me">DELETE</a>
-<a type="button" class="post-button" style="cursor: pointer;"
+on mouseleave remove .red-background from me
+">DELETE</a>
+<a id="edit{{post.id}}" type="button" class="post-button" style="cursor: pointer; opacity: 0;" 
+hidden
 hx-post="{% url 'edit_post' post.pk %}" 
 hx-target="#post{{post.id}}"
 hx-swap="outerHTML"
 _="on mouseenter add .lightgreen-background to me 
-on mouseleave remove .lightgreen-background from me">EDIT</a>
+on mouseleave remove .lightgreen-background from me
+">EDIT</a>
 {% if messages %}
     {% for message in messages %}
         {% if message.tags == 'error' %}

@@ -4,18 +4,19 @@
   <b><h1 style="font-size: x-large; text-align: left; width: 60%;">{{ post.title }}</h1></b>
   <textarea id="posttext{{ post.id }}" name="posttext{{ post.id }}" class="edit-box">{{ post.text }}</textarea>
   <br />
-  <button type="submit" class="post-button" style="cursor: pointer;" 
+  <button type="submit" class="post-button" style="cursor: pointer;"
     hx-target="#post-container" 
     hx-swap="outerHTML"
-     _="on mouseenter add .lightgreen-background to me 
-          on mouseleave remove .lightgreen-background from me">SAVE</button>
+    _="on mouseenter add .lightgreen-background to me 
+        on mouseleave remove .lightgreen-background from me">SAVE</button>
   <a type="button" 
     class="post-button" 
     style="cursor: pointer;"
     hx-confirm="You will lose your unsaved text, are you sure?"
     hx-post="{% url 'cancel_edit' post.pk %}" 
     hx-target="#post{{ post.id }}" 
-    hx-swap="outerHTML" _="on mouseenter add .red-background to me 
-                            on mouseleave remove .red-background from me">CANCEL</a>
+    hx-swap="outerHTML" 
+    _="on mouseenter add .red-background to me 
+        on mouseleave remove .red-background from me">CANCEL</a>
   </form>
 </div>
