@@ -42,3 +42,7 @@
     height: 250px;
     text-align: justify;
 }
+
+.post-height{
+    height: fit-content;
+}
