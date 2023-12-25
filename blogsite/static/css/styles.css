@@ -43,6 +43,10 @@
     text-align: justify;
 }
 
+.transition-opacity{
+    transition: all() ease-in 300ms;
+}
+
 .post-height{
     height: fit-content;
 }
