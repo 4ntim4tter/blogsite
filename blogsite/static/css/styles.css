@@ -21,7 +21,6 @@
 }
 
 .posted-text{
-    display:inline-block; 
     font-size: medium; 
     width: 60%; 
     display:-webkit-box;
@@ -31,6 +30,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
     max-height: 75px;
+    text-align: justify;
+}
+
+.posted-text-mouseover{
+    font-size: medium; 
+    width: 60%; 
+    display:block;
+    overflow-wrap: break-word;
+    max-height: fit-content;
     text-align: justify;
 }
 

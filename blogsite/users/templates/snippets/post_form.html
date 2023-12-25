@@ -5,15 +5,14 @@ on mouseleave toggle @hidden on #delete{{post.id}}
 on mouseleave toggle @hidden on #edit{{post.id}}
 on mouseenter transition #delete{{post.id}} opacity to 1 over 0.4 seconds
 on mouseenter transition #edit{{post.id}} opacity to 1 over 0.4 seconds
-on mouseenter transition my *height to 300px over 0.5 seconds 
-on mouseenter remove .posted-text from me
+on mouseenter add .posted-text-mouseover to #posttext{{post.id}}
+on mouseleave remove .posted-text-mouseover from #posttext{{post.id}}
 ">
 <b><h1 style="font-size: x-large; text-align: left; width: 60%;">{{ post.title }}</h1></b>
 <p id="posttext{{post.id}}" class="posted-text">{{ post.text }}</p>
 <br>
-<div style="bottom: 0;">
+<div>
     <a id="delete{{post.id}}" type="button" class="post-button" style="cursor: pointer;"
-    _="if I match @hidden set *opacity to 0"
     hidden
     hx-delete="{% url 'delete_post' post.pk %}"
     hx-confirm="Are you sure you want to delete this post?"
