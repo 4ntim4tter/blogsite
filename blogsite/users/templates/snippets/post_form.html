@@ -1,47 +1,48 @@
-<div id="post{{ post.id }}" style="margin-top: 10px;" 
-_="on mouseenter toggle @hidden on #delete{{post.id}}
-on mouseenter toggle @hidden on #edit{{post.id}}
-on mouseleave toggle @hidden on #delete{{post.id}}
-on mouseleave toggle @hidden on #edit{{post.id}}
-on mouseenter transition #delete{{post.id}} opacity to 1 over 0.4 seconds
-on mouseenter transition #edit{{post.id}} opacity to 1 over 0.4 seconds
-on mouseenter add .posted-text-mouseover to #posttext{{post.id}}
-on mouseleave remove .posted-text-mouseover from #posttext{{post.id}}
-">
-<b><h1 style="font-size: x-large; text-align: left; width: 60%;">{{ post.title }}</h1></b>
-<p id="posttext{{post.id}}" class="posted-text">{{ post.text }}</p>
-<br>
-<div>
-    <a id="delete{{post.id}}" type="button" class="post-button" style="cursor: pointer;"
-    hidden
-    hx-delete="{% url 'delete_post' post.pk %}"
-    hx-confirm="Are you sure you want to delete this post?"
-    hx-target="#post-container"
-    hx-swap="outerHTML"
-    _="on mouseenter add .red-background to me
-    on mouseleave remove .red-background from me
-    ">DELETE</a>
-    <a id="edit{{post.id}}" type="button" class="post-button" style="cursor: pointer;"
-    hidden
-    hx-post="{% url 'edit_post' post.pk %}"
-    hx-target="#post{{post.id}}"
-    hx-swap="outerHTML"
-    _="on mouseenter add .lightgreen-background to me
-    on mouseleave remove .lightgreen-background from me
-    ">EDIT</a>
-</div>
-{% if messages %}
-    {% for message in messages %}
-        {% if message.tags == 'error' %}
-            <ul class="font-bold border-red-600 bg-red-400 mb-2 w-fit px-1 mt-1">
-                <li>{{ message }}</li>
-            </ul>
-        {% endif %}
-        {% if message.tags == 'info' %}
-            <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1 mt-1">
-                <li>{{ message }}</li>
-            </ul>
-        {% endif %}
-    {% endfor %}
-{% endif %}
+<div id="post{{ post.id }}" style="margin-top: 10px;"
+    _="on mouseenter toggle @hidden on #delete{{post.id}}
+    on mouseenter toggle @hidden on #edit{{post.id}}
+    on mouseleave toggle @hidden on #delete{{post.id}}
+    on mouseleave toggle @hidden on #edit{{post.id}}
+    on every mouseenter transition #delete{{post.id}} opacity to 1 over 0.4 seconds
+    on every mouseenter transition #edit{{post.id}} opacity to 1 over 0.4 seconds
+    on every mouseleave transition #delete{{post.id}} opacity to 0
+    on every mouseleave transition #edit{{post.id}} opacity to 0
+    on mouseenter set *padding-bottom to 30px
+    on mouseleave set *padding-bottom to 0px">
+    <b><h1 style="font-size: x-large; text-align: left; width: 76%;">{{ post.title }}</h1></b>
+    <p id="posttext{{post.id}}" class="posted-text">{{ post.text }}</p>
+    <br>
+    <div>
+        <a id="delete{{post.id}}" type="button" class="post-button opacity-0" style="cursor: pointer;"
+        hidden
+        hx-delete="{% url 'delete_post' post.pk %}"
+        hx-confirm="Are you sure you want to delete this post?"
+        hx-target="#post-container"
+        hx-swap="outerHTML"
+        _="on mouseenter add .red-background to me
+        on mouseleave remove .red-background from me
+        ">Delete</a>
+        <a id="edit{{post.id}}" type="button" class="post-button opacity-0" style="cursor: pointer;"
+        hidden
+        hx-post="{% url 'edit_post' post.pk %}"
+        hx-target="#post{{post.id}}"
+        hx-swap="outerHTML"
+        _="on mouseenter add .lightgreen-background to me
+        on mouseleave remove .lightgreen-background from me
+        ">Edit</a>
+    </div>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <ul class="font-bold border-red-600 bg-red-400 mb-2 w-fit px-1 mt-1" _="on load transition opacity to 0 over 3s then remove me">
+                    <li>{{ message }}</li>
+                </ul>
+            {% endif %}
+            {% if message.tags == 'info' %}
+                <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1 mt-1" _="on load transition opacity to 0 over 3s then remove me">
+                    <li>{{ message }}</li>
+                </ul>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 </div>

@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
   <br />
+  <a class="post-button" style="margin-top: 4%; position: fixed; right: 0; margin-right: 20%; width: 120px; text-align: center;"
+  _="on mouseenter add .lightgreen-background to me 
+        on mouseleave remove .lightgreen-background from me">New Post</a>
   <center style="margin-left: 20%; margin-right: 20%; margin-top: 2%;">
     {% include 'snippets/user_posts.html' %}
   </center>

@@ -1,6 +1,6 @@
 <div id="post-container" class="opacity-0" _="on load transition my opacity to 1 over 0.8 seconds">
     {% if messages %}
-      <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1">
+      <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1" _="on load transition opacity to 0 over 3s then remove me">
         {% for message in messages %}
           {% if message.tags != 'error'  %}
             <li>{{ message }}</li>

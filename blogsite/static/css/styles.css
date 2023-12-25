@@ -22,7 +22,7 @@
 
 .posted-text{
     font-size: medium; 
-    width: 60%; 
+    width: 76%; 
     display:-webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -45,7 +45,7 @@
 .edit-box{
     display:inline-block; 
     font-size: medium; 
-    width: 60%; 
+    width: 76%; 
     text-overflow: ellipsis;
     height: 250px;
     text-align: justify;
