@@ -5,19 +5,8 @@
   {% else %}
   <div>
   {% endif %}
-      <b><h1 style="font-size: x-large; text-align: left; width: 60%;">{{ post.title }}</h1></b>
-      <br />
-      <p style="display:inline-block; 
-      font-size: medium; 
-      width: 60%; 
-      display:-webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow-wrap: break-word;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-height: 75px;
-      text-align: justify;">
+      <b><h1 style="font-size: x-large; text-align: left;">{{ post.title }}</h1></b>
+      <p class="posted-text">
       {{ post.text }}</p>
       <br />
     </div>

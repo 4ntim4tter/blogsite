@@ -1,4 +1,4 @@
-<div id="post{{ post.id }}" style="margin-top: 10px;"
+<div id="post{{ post.id }}"
     _="on mouseenter toggle @hidden on #delete{{post.id}}
     on mouseenter toggle @hidden on #edit{{post.id}}
     on mouseleave toggle @hidden on #delete{{post.id}}
@@ -6,13 +6,11 @@
     on every mouseenter transition #delete{{post.id}} opacity to 1 over 0.4 seconds
     on every mouseenter transition #edit{{post.id}} opacity to 1 over 0.4 seconds
     on every mouseleave transition #delete{{post.id}} opacity to 0
-    on every mouseleave transition #edit{{post.id}} opacity to 0
-    on mouseenter set *padding-bottom to 30px
-    on mouseleave set *padding-bottom to 0px">
-    <b><h1 style="font-size: x-large; text-align: left; width: 76%;">{{ post.title }}</h1></b>
+    on every mouseleave transition #edit{{post.id}} opacity to 0">
+    <b><h1 style="font-size: x-large; text-align: left;">{{ post.title }}</h1></b>
     <p id="posttext{{post.id}}" class="posted-text">{{ post.text }}</p>
     <br>
-    <div>
+    <div style="padding-top: 10px; padding-bottom: 10px;">
         <a id="delete{{post.id}}" type="button" class="post-button opacity-0" style="cursor: pointer;"
         hidden
         hx-delete="{% url 'delete_post' post.pk %}"

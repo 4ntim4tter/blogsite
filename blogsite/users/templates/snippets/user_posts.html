@@ -1,20 +1,21 @@
-<div id="post-container" class="opacity-0" _="on load transition my opacity to 1 over 0.8 seconds">
-    {% if messages %}
-      <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1" _="on load transition opacity to 0 over 3s then remove me">
-        {% for message in messages %}
-          {% if message.tags != 'error'  %}
-            <li>{{ message }}</li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    {% endif %}
+<div id="post-container" _="on load transition my opacity to 1 over 0.8 seconds">
+  {% if messages %}
+  <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1 fixed"
+  style="left: 50%; transform: translate(-50%);"
+   _="on load transition opacity to 0 over 3s then remove me">
+    {% for message in messages %}
+      {% if message.tags != 'error'  %}
+        <li>{{ message }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endif %}
     {% for post in posts %}
         {% if forloop.last and posts.has_next %}
-            <div id="post{{post.id}}" hx-get="{% url 'dash_user' %}?page={{posts.number|add:1}}"
-            hx-trigger="revealed" hx-swap="afterend"
-            style="margin-top: 10px;">
+            <div hx-get="{% url 'dash_user' %}?page={{posts.number|add:1}}"
+            hx-trigger="revealed" hx-swap="afterend">
         {% else %}
-            <div id="post{{post.id}}" style="margin-top: 10px;">
+            <div>
         {% endif %}
             {% include 'snippets/post_form.html' %}
             </div>

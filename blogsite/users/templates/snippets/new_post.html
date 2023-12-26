@@ -1,0 +1,43 @@
+<div id="newpost" name="newpost" 
+style="position: fixed;
+margin-top: 20px; 
+right: 0; 
+margin-right: 4px; 
+text-align: justify;
+height: fit-content;">
+    <form hx-post="{% url 'save_new' %}" 
+      hx-confirm="Are you sure you want to create a new post?"
+      hx-swap="delete">
+    <b><input id="posttitle" name="posttitle" 
+        placeholder="Post title here..."
+        style="width:300px; 
+        font-size: x-large; 
+        text-align: left; 
+        border: 1px darkgray solid;"></input></b>
+    <br>
+    <textarea id="posttext" name="posttext" 
+    class="edit-box"
+    placeholder="Post text here..."
+    style="min-height:300px;
+    min-width: 300px; 
+    height:fit-content; 
+    width:250px; border: 
+    1px darkgray solid;"></textarea>
+    <br />
+    <button type="submit" 
+    class="post-button" 
+    style="cursor: pointer; text-align: center; left: 0px; position: relative;"
+      _="on mouseenter add .lightgreen-background to me 
+          on mouseleave remove .lightgreen-background from me">Save</button>
+    <a type="button" 
+      class="post-button" 
+      style="cursor: pointer; text-align: center; right: 0px; position: relative;"
+      hx-post="{% url 'cancel_new' %}"
+      hx-confirm="You will lose your unsaved text, are you sure?"
+      hx-target="#newpost"
+      hx-swap="outerHTML" 
+      _="on mouseenter add .red-background to me 
+          on mouseleave remove .red-background from me">Cancel</a>
+    </form>
+</div>
+  
