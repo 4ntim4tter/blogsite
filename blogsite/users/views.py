@@ -18,7 +18,7 @@ def register_user(request):
 @login_required
 def dash_user(request):
     user_id = request.user.id
-    posts = Post.objects.filter(username_id=f'{user_id}').order_by('-pub_date')
+    posts = Post.objects.filter(username_id=f'{user_id}').order_by('-pub_date', '-id')
     paginated_posts = Paginator(posts, 5)
     selected_page = paginated_posts.get_page(request.GET.get('page'))
     if request.htmx:
@@ -95,10 +95,8 @@ def save_new(request):
                                text=request.POST['posttext'], 
                                pub_date=datetime.date.today())
     post.save()
-    posts = Post.objects.filter(username_id=f'{user_id}').order_by('-pub_date')
-    paginated_posts = Paginator(posts, 5)
-    selected_page = paginated_posts.get_page(request.GET.get('page'))
-    return render(request, 'snippets/user_posts.html', {'posts':selected_page})
+    messages.success(request, "Post Saved")
+    return redirect('dash_user')
 
 @login_required
 def cancel_new(request):

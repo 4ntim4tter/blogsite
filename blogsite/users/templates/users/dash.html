@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
   <br />
-    {% include 'snippets/new_post_button.html' %}
+  <a id="new-post-button" name="new-post-button" class="post-button" style="position: fixed; margin-top: 20px;
+  right: 0; 
+  margin-right: 4px; 
+  width: 120px; 
+  text-align: center;" 
+  hx-post="{% url 'new_post' %}"
+  hx-swap="outerHTML"
+  _="on mouseenter add .lightgreen-background to me 
+      on mouseleave remove .lightgreen-background from me">+ New Post</a>
   <center style="margin-left: 20%; margin-right: 20%; margin-top: 4%;">
-    {% include 'snippets/user_posts.html' %}
+    <div id="main" name="main">
+      {% include 'snippets/user_posts.html' %}
+    </div>
   </center>
 {% endblock %}
