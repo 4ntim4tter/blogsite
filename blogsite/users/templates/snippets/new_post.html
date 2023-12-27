@@ -11,7 +11,10 @@ hx-target="#newpost"
 hx-swap="outerHTML">
     <form hx-post="{% url 'save_new' %}" 
       hx-confirm="Are you sure you want to create a new post?"
-      hx-target="#main">
+      hx-target="#main"
+      _="on keydown
+          if event's key is 'Control'
+            trigger submit">
     <b><input id="posttitle" name="posttitle" 
         placeholder="Post title here..."
         style="width:300px; 
@@ -41,7 +44,8 @@ hx-swap="outerHTML">
       hx-target="#newpost"
       hx-swap="innerHTML" 
       _="on mouseenter add .red-background to me 
-          on mouseleave remove .red-background from me">Cancel</a>
+          on mouseleave remove .red-background from me
+          on keyup[key is 'Escape'] from the body trigger click">Cancel</a>
     </form>
 </div>
   
