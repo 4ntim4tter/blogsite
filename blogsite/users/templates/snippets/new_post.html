@@ -12,15 +12,13 @@ hx-swap="outerHTML">
     <form hx-post="{% url 'save_new' %}" 
       hx-confirm="Are you sure you want to create a new post?"
       hx-target="#main"
-      _="on keydown
-          if event's key is 'Control'
-            trigger submit">
-    <b><input id="posttitle" name="posttitle" 
+      _="on keyup[ctrlKey and key is 'Enter'] from body trigger submit">
+    <b><textarea id="posttitle" name="posttitle" 
         placeholder="Post title here..."
         style="width:300px; 
         font-size: x-large; 
         text-align: left; 
-        border: 1px darkgray solid;"></input></b>
+        border: 1px darkgray solid;"></textarea></b>
     <br>
     <textarea id="posttext" name="posttext" 
     class="edit-box"

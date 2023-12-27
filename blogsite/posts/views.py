@@ -14,4 +14,4 @@ class PostsIndexView(ListView):
         return self.template_name
 
     def get_queryset(self):
-        return Post.objects.order_by('-pub_date')
+        return Post.objects.order_by('-pub_date', '-id')
