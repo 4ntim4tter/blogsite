@@ -5,7 +5,9 @@
   {% else %}
   <div>
   {% endif %}
-      <b><h1 style="font-size: x-large; text-align: left;">{{ post.title }}</h1></b>
+      <b><a href="{% url 'see_post' post.id %}">
+        <h1 class="posted-title" type="button" style="cursor: pointer;">{{ post.title }}</h1>
+      </a></b>
       <p class="posted-text">
       {{ post.text }}</p>
       <br />

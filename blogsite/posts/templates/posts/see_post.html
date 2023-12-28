@@ -9,6 +9,11 @@
       </ul>
     {% endfor %}
     {% endif %}
-    {% include 'snippets/load_on_scroll.html' %}
+    <b>
+      <h1 class="posted-title" type="button" style="text-align: center;">{{ post.title }}</h1>
+    </b>
+    <br>
+    <p class="posted-text-post" style="text-align: center; display: flex; overflow: auto; height: auto;">
+      {{ post.text }}</p>
   </center>
 {% endblock %}

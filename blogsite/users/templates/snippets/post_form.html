@@ -7,7 +7,7 @@
     on every mouseenter transition #edit{{post.id}} opacity to 1 over 0.4 seconds
     on every mouseleave transition #delete{{post.id}} opacity to 0
     on every mouseleave transition #edit{{post.id}} opacity to 0">
-    <b><h1 style="font-size: x-large; text-align: left;">{{ post.title }}</h1></b>
+    <b><h1 class="posted-title">{{ post.title }}</h1></b>
     <p id="posttext{{post.id}}" class="posted-text">{{ post.text }}</p>
     <br>
     <div>

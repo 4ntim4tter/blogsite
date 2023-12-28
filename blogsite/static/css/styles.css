@@ -32,9 +32,20 @@
     text-align: justify;
 }
 
+.posted-text-post{
+    font-size: medium;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    text-align: justify;
+}
+.posted-title{
+    font-size: x-large; 
+    text-align: left; 
+    overflow-wrap: break-word;
+}
+
 .posted-text-mouseover{
     font-size: medium; 
-    width: 60%; 
     display:block;
     overflow-wrap: break-word;
     max-height: fit-content;
@@ -56,4 +67,26 @@
 
 .post-height{
     height: fit-content;
+}
+
+.main-margin{
+    margin-left: 15%; 
+    margin-right: 15%; 
+    margin-top: 4%;
+}
+
+@media only screen and (max-device-width : 480px){
+    .main-margin{
+        margin-left: 5%; 
+        margin-right: 5%; 
+        margin-top: 15%;
+    }
+}
+
+@media only screen and (max-device-width : 840px){
+    .main-margin{
+        margin-left: 8%; 
+        margin-right: 8%; 
+        margin-top: 15%;
+    }
 }
