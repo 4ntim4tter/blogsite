@@ -1,0 +1,8 @@
+    {% for comment in comments %}
+    {% if comment.text != "" %}
+        <p style="text-align: justify; margin-right: 15%; border-bottom: 1px black solid; border-left: 1px black solid;">
+            {{comment.text}}
+        </p>
+    <br>
+    {% endif %}
+    {% endfor %}

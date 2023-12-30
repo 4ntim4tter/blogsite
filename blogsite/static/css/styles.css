@@ -37,6 +37,7 @@
     overflow-wrap: break-word;
     text-overflow: ellipsis;
     text-align: justify;
+    border-bottom: 1px black solid;
 }
 .posted-title{
     font-size: x-large; 

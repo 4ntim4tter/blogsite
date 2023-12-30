@@ -3,17 +3,18 @@
   <br />
   <center class="main-margin">
     {% if messages %}
-    {% for message in messages %}
-      <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1" _="on load transition opacity to 0 over 3s then remove me">
-      <li>{{ message }}</li>
-      </ul>
-    {% endfor %}
+      {% for message in messages %}
+        <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1" _="on load transition opacity to 0 over 3s then remove me">
+          <li>{{ message }}</li>
+        </ul>
+      {% endfor %}
     {% endif %}
-    <b>
-      <h1 class="posted-title" type="button" style="text-align: center;">{{ post.title }}</h1>
-    </b>
-    <br>
-    <p class="posted-text-post" style="text-align: center; display: flex; overflow: auto; height: auto;">
-      {{ post.text }}</p>
+    <b><h1 class="posted-title" type="button" style="text-align: center;">{{ post.title }}</h1></b>
+    <br />
+    <p class="posted-text-post" style="text-align: justify; display: flex; overflow: auto; height: auto; word-wrap: break-word;">{{ post.text }}</p>
+    <br />
+    <div hx-get="{% url 'show_comments' post.id %}" hx-trigger="load">
+      {% include 'snippets/comment.html' %}
+    </div>
   </center>
 {% endblock %}

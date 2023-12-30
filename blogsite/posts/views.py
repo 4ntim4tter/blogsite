@@ -1,9 +1,7 @@
-from typing import Any
-from django.db.models.query import QuerySet
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView
 
-from .models import Post
+from .models import Comment, Post
 
 class PostsIndexView(ListView):
     template_name = "posts/index.html"
@@ -26,4 +24,12 @@ class SeePost(ListView):
 
     def get(self, request, pk):
         post = Post.objects.get(pk=pk)
-        return render(request, 'posts/see_post.html', {'post':post})
+        return render(request, self.template_name, {'post':post})
+
+class ShowPostComments(ListView):
+    template_name = "snippets/comment.html"
+    model = Comment
+
+    def get(self, request, pk):
+        comments = Comment.objects.all().filter(post=pk)
+        return render(request, self.template_name, {'comments':comments})
