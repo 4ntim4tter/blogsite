@@ -76,6 +76,15 @@
     margin-top: 4%;
 }
 
+.posted-comment{
+    text-align: justify; 
+    margin-right: 15%; 
+    border-bottom: 1px black solid; 
+    border-left: 1px black solid; 
+    padding-left: 5px; 
+    padding-bottom: 5px;
+}
+
 @media only screen and (max-device-width : 480px){
     .main-margin{
         margin-left: 5%; 

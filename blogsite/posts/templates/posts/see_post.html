@@ -10,9 +10,32 @@
       {% endfor %}
     {% endif %}
     <b><h1 class="posted-title" type="button" style="text-align: center;">{{ post.title }}</h1></b>
-    <br />
-    <p class="posted-text-post" style="text-align: justify; display: flex; overflow: auto; height: auto; word-wrap: break-word;">{{ post.text }}</p>
-    <br />
+    <br/>
+    <p class="posted-text-post" style="text-align: justify; display: flex; overflow: auto; height: auto; word-wrap: break-word;">{{ post.text }}</p><br>
+    <button name="add-comment" id="add-comment" class="post-button" style="width: 120px; margin-right: 100%;" 
+    _="on click add @hidden to me then remove @hidden from #new-comment">Add Comment</button>
+    <br/>
+    <div name="new-comment" id="new-comment" hidden>
+      <form hx-post=""
+      _="on htmx:afterRequest add @hidden to #new-comment then remove @hidden from #add-comment
+          then put '' into <textarea />'s value">
+        <textarea name="new-comment-area" 
+        id="new-comment-area" 
+        cols="80" rows="10" 
+        placeholder="Comment here..."
+        style="margin-right: 100%;"
+        required></textarea>
+        <div style="display: inline-flex; float: inline-start;">
+          <button class="post-button" type="submit" style="margin-right: 10px; width: 100px;"
+          >Comment</button>
+          <button class="post-button" type="reset"
+          _="on click add @hidden to #new-comment then remove @hidden from #add-comment"
+          >Cancel</button>
+        </div>
+      </form>
+      <br>
+    </div>
+    <br/>
     <div hx-get="{% url 'show_comments' post.id %}" hx-trigger="load">
       {% include 'snippets/comment.html' %}
     </div>
