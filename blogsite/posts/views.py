@@ -1,5 +1,7 @@
-from django.shortcuts import get_object_or_404, render
+import datetime
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView
+from django.contrib import messages
 
 from .models import Comment, Post
 
@@ -31,5 +33,20 @@ class ShowPostComments(ListView):
     model = Comment
 
     def get(self, request, pk):
-        comments = Comment.objects.all().filter(post=pk)
+        comments = Comment.objects.all().filter(post=pk).order_by('-pub_date', '-id')
         return render(request, self.template_name, {'comments':comments})
+    
+class CommentPost(ListView):
+    template_name = "snippets/comment.html"
+    model = Comment
+
+    def post(self, request, pk):
+        post = Post.objects.get(pk=pk)
+        user = request.user
+        new_comment = Comment.objects.create(username=user, 
+                                             post=post, 
+                                             text=request.POST['new-comment-area'], 
+                                             pub_date=datetime.date.today())
+        new_comment.save()
+        messages.success(request, "Commented Successfuly.")
+        return redirect('show_comments', pk=pk)

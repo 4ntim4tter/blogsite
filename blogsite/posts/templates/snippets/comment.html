@@ -1,8 +1,13 @@
-    {% for comment in comments %}
-    {% if comment.text != "" %}
-        <p class="posted-comment">
-            {{comment.text}}
-        </p>
-    <br>
-    {% endif %}
-    {% endfor %}
+{% if messages %}
+  {% for message in messages %}
+    <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1" _="on load transition opacity to 0 over 3s then remove me">
+      <li>{{ message }}</li>
+    </ul>
+  {% endfor %}
+{% endif %}
+{% for comment in comments %}
+  {% if comment.text != '' %}
+    <p name="comment{{ comment.id }}" id="comment{{ comment.id }}" class="posted-comment">{{ comment.text }}</p>
+    <br />
+  {% endif %}
+{% endfor %}
