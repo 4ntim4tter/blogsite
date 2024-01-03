@@ -18,5 +18,6 @@ class Comment(models.Model):
     pub_date = models.DateField()
 
     def __str__(self):
-        return self.username.username + ":" + self.text[:20] + "..."
+        comment =  self.username.username + ": " + self.text.rstrip()
+        return comment
     

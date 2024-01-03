@@ -1,6 +1,9 @@
 .post-button{
     padding: 4px;
+    min-width: 80px;
+    min-height: 32px;
     width: 80px;
+    height: 32px;
     color: white;
     background-color: rgb(128,128,128) !important;
     -webkit-text-stroke: 1px white;

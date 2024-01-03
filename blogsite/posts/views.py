@@ -1,6 +1,6 @@
 import datetime
 from django.shortcuts import get_object_or_404, redirect, render
-from django.views.generic import ListView
+from django.views.generic import ListView, DeleteView
 from django.contrib import messages
 
 from .models import Comment, Post
@@ -38,6 +38,8 @@ class ShowPostComments(ListView):
     
 class CommentPost(ListView):
     template_name = "snippets/comment.html"
+    login_required = True
+    http_method_names = ["post"]
     model = Comment
 
     def post(self, request, pk):
@@ -50,3 +52,16 @@ class CommentPost(ListView):
         new_comment.save()
         messages.success(request, "Commented Successfuly.")
         return redirect('show_comments', pk=pk)
+
+class DeletePost(DeleteView):
+    template_name = "snippets/comment.html"
+    login_required = True
+    http_method_names = ["delete"]
+    model = Comment
+
+    def delete(self, request, pk):
+        comment = Comment.objects.get(pk=pk)
+        post_id = comment.post.id
+        comment.delete()
+        messages.success(request, "Comment Deleted.")
+        return redirect('show_comments', pk=post_id)

@@ -7,7 +7,16 @@
 {% endif %}
 {% for comment in comments %}
   {% if comment.text != '' %}
-    <p name="comment{{ comment.id }}" id="comment{{ comment.id }}" class="posted-comment">{{ comment.text }}</p>
-    <br />
+    <div style="display: inline-flex; width: 100%;">
+      <p name="comment{{ comment.id }}" id="comment{{ comment.id }}" class="posted-comment">{{ comment }}</p>
+      <a class="post-button" type="button"
+      hx-delete="{% url 'delete_comment' comment.id %}"
+      hx-target="#all-comments"
+      style="scale:70%; 
+      cursor: pointer; 
+      margin-left: auto; 
+      align-self: 
+      flex-end;">Delete</a>
+    </div>
   {% endif %}
 {% endfor %}
