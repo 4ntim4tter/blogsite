@@ -1,7 +1,9 @@
 import datetime
-from django.shortcuts import get_object_or_404, redirect, render
-from django.views.generic import ListView, DeleteView
+from django.shortcuts import redirect, render
+from django.views.generic import ListView
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods
 
 from .models import Comment, Post
 
@@ -38,7 +40,6 @@ class ShowPostComments(ListView):
     
 class CommentPost(ListView):
     template_name = "snippets/comment.html"
-    login_required = True
     http_method_names = ["post"]
     model = Comment
 
@@ -53,15 +54,11 @@ class CommentPost(ListView):
         messages.success(request, "Commented Successfuly.")
         return redirect('show_comments', pk=pk)
 
-class DeletePost(DeleteView):
-    template_name = "snippets/comment.html"
-    login_required = True
-    http_method_names = ["delete"]
-    model = Comment
-
-    def delete(self, request, pk):
-        comment = Comment.objects.get(pk=pk)
-        post_id = comment.post.id
-        comment.delete()
-        messages.success(request, "Comment Deleted.")
-        return redirect('show_comments', pk=post_id)
+@login_required
+@require_http_methods(['DELETE'])
+def delete_comment(request, pk):
+    comment = Comment.objects.get(pk=pk)
+    post_id = comment.post.id
+    comment.delete()
+    messages.success(request, "Comment Deleted.")
+    return redirect('show_comments', pk=post_id)
