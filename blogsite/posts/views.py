@@ -60,5 +60,6 @@ def delete_comment(request, pk):
     comment = Comment.objects.get(pk=pk)
     post_id = comment.post.id
     comment.delete()
+    comments = Comment.objects.all().filter(post=post_id).order_by('-pub_date', '-id')
     messages.success(request, "Comment Deleted.")
-    return redirect('show_comments', pk=post_id)
+    return render(request, 'snippets/comment.html', {'comments':comments})
