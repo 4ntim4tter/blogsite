@@ -10,6 +10,9 @@
       </a></b>
       <p class="posted-text">
       {{ post.text }}</p>
+      <div style="width: 100%;">
+        <p style="float: right;">{{post.comment_number}} {% if post.comment_number == 1 %}comment{% else %}comments{% endif %}</p>
+      </div>
       <br />
     </div>
   {% endfor %}

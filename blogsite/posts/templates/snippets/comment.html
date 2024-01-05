@@ -10,7 +10,7 @@
     <div style="display: inline-flex; width: 100%;">
       <p name="comment{{ comment.id }}" id="comment{{ comment.id }}" class="posted-comment">{{ comment }}</p>
       {% if user.is_authenticated and user.pk == comment.username.pk %}
-      <a class="post-button" type="button"
+      <a type="button"
       hx-delete="{% url 'delete_comment' comment.id %}"
       hx-target="#all-comments"
       hx-confirm="Are you sure?"
@@ -18,7 +18,8 @@
       cursor: pointer; 
       margin-left: auto; 
       align-self: 
-      flex-end;">Delete</a>
+      flex-end;
+      border: 1px darkgray solid;">Delete</a>
       {% endif %}
     </div>
   {% endif %}
