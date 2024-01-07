@@ -1,11 +1,12 @@
 import datetime
-from django.shortcuts import redirect, render
+from django.contrib.contenttypes.models import ContentType
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 
-from .models import Comment, Post
+from .models import Comment, Like, Post
 
 class PostsIndexView(ListView):
     template_name = "posts/index.html"
@@ -53,6 +54,17 @@ class CommentPost(ListView):
         new_comment.save()
         messages.success(request, "Commented Successfuly.")
         return redirect('show_comments', pk=pk)
+
+class LikePost(ListView):
+    template_name = "snippets/like_button.html"
+    http_method_names = ["get"]
+    model = Like
+    
+    def get(self, request, pk):
+        liked_post = Post.objects.get(pk=pk)
+        like = Like(content_object=liked_post, user=request.user, object_id=f"{pk}"+request.user.username)
+        print(like, pk)
+        return render(request, self.template_name)
 
 @login_required
 @require_http_methods(['DELETE'])

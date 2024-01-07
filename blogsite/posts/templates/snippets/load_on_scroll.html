@@ -11,10 +11,10 @@
       <p class="posted-text">
       {{ post.text }}</p>
       <div style="width: 100%;">
-        {% include 'snippets/like_button.html' %}
         <a href="{% url 'see_post' post.id %}">
         <p style="float: right;">{{post.comment_number}} {% if post.comment_number == 1 %}comment{% else %}comments{% endif %}</p>
         </a>
+        {% include 'snippets/like_button.html' %}
       </div>
       <br />
     </div>
