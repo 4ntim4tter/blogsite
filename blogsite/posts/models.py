@@ -32,13 +32,5 @@ class Comment(models.Model):
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.CharField(max_length=200, unique=True)
+    object_id = models.PositiveBigIntegerField()
     content_object = GenericForeignKey("content_type", "object_id")
-
-    def __str__(self):
-        return self.user.username
-    
-    class Meta:
-        indexes = [
-            models.Index(fields=["content_type", "object_id"]),
-        ]
