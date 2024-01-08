@@ -7,7 +7,7 @@ class LikeAdmin(admin.ModelAdmin):
     Like admin tabs
     """
     list_display = [
-        'user', 'object_id', 'content_type', 'content_object'
+        'user', 'object_id', 'content_type', 'content_object', 'liked'
         ]
 
 admin.site.register(Post)

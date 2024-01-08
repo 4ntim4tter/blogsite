@@ -1,4 +1,6 @@
 import datetime
+from django.contrib.admin.options import get_content_type_for_model
+from django.contrib.admin.utils import get_model_from_relation
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import ListView
@@ -57,14 +59,14 @@ class CommentPost(ListView):
 
 class LikePost(ListView):
     template_name = "snippets/like_button.html"
-    http_method_names = ["get"]
+    http_method_names = ["post", "get"]
     model = Like
-    
-    def get(self, request, pk):
+
+    def post(self, request, pk):
         liked_post = Post.objects.get(pk=pk)
-        like = Like(content_object=liked_post, user=request.user, object_id=f"{pk}"+request.user.username)
-        print(like, pk)
-        return render(request, self.template_name)
+        print(ContentType.objects.get('posts', 'post'))
+        like = Like(liked=True, content_object=liked_post, user=request.user, object_id=pk)
+        return render(request, 'snippets/like_button.html', {'post':liked_post})
 
 @login_required
 @require_http_methods(['DELETE'])
