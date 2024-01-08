@@ -1,5 +1,5 @@
-<a hx-post="{% url 'like_post' post.pk %}"
-hx-swap="outerHTML"
-class="far fa-heart" 
-type="button" 
-style="float: inline-end; position:relative; right: 10px; top:4px; cursor: pointer;">{{post.pk}}</a>
+{% if this_like.liked %}
+  <a hx-post="{% url 'like_post' post.pk %}" hx-swap="outerHTML" class="fas fa-heart" type="button" style="float: inline-end; position:relative; right: 10px; top:4px; cursor: pointer;">{{ post.pk }}</a>
+{% else %}
+  <a hx-post="{% url 'like_post' post.pk %}" hx-swap="outerHTML" class="far fa-heart" type="button" style="float: inline-end; position:relative; right: 10px; top:4px; cursor: pointer;">{{ post.pk }}</a>
+{% endif %}

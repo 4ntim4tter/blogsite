@@ -63,10 +63,24 @@ class LikePost(ListView):
     model = Like
 
     def post(self, request, pk):
+        this_like = Like.objects.all().filter(object_id=pk, user=request.user)
         liked_post = Post.objects.get(pk=pk)
-        print(ContentType.objects.get('posts', 'post'))
-        like = Like(liked=True, content_object=liked_post, user=request.user, object_id=pk)
-        return render(request, 'snippets/like_button.html', {'post':liked_post})
+        content_type = ContentType.objects.get_for_model(Post)
+        if this_like.count() == 0:
+            this_like = Like(liked=True, user=request.user, content_type=content_type, object_id=pk)
+            this_like.save()
+            print("if",this_like.liked)
+        elif this_like[0].liked:
+            this_like = this_like[0]
+            this_like.liked=False
+            this_like.save()
+            print("elif", this_like.liked)
+        else:
+            this_like = this_like[0]
+            this_like.liked=True
+            this_like.save()
+            print("else", this_like.liked)
+        return render(request, 'snippets/like_button.html', {'post':liked_post, 'this_like':this_like})
 
 @login_required
 @require_http_methods(['DELETE'])

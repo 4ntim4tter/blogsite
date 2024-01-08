@@ -33,5 +33,8 @@ class Like(models.Model):
     liked = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveBigIntegerField(unique=True)
+    object_id = models.PositiveBigIntegerField()
     content_object = GenericForeignKey("content_type", "object_id")
+
+    def __str__(self) -> str:
+        return f"{self.user.username} {self.content_object}"
