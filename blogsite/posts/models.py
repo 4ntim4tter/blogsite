@@ -17,7 +17,8 @@ class Post(models.Model):
         return self.comment_set.count()
 
     def likes(self):
-        return self.objects.annotate(num_of_likes=models.Count())
+        likes = Like.objects.all().filter(object_id=self.pk, liked=True).count()
+        return likes
 
 class Comment(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)

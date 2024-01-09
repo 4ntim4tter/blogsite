@@ -22,7 +22,7 @@ class PostsIndexView(ListView):
         return self.template_name
 
     def get_queryset(self):
-        return Post.objects.order_by('-pub_date', '-id')
+        return Post.objects.order_by('-pub_date', '-id')   
 
 class SeePost(ListView):
     template_name = "posts/see_post.html"
@@ -59,7 +59,7 @@ class CommentPost(ListView):
 
 class LikePost(ListView):
     template_name = "snippets/like_button.html"
-    http_method_names = ["post", "get"]
+    http_method_names = ["post"]
     model = Like
 
     def post(self, request, pk):
@@ -69,18 +69,28 @@ class LikePost(ListView):
         if this_like.count() == 0:
             this_like = Like(liked=True, user=request.user, content_type=content_type, object_id=pk)
             this_like.save()
-            print("if",this_like.liked)
         elif this_like[0].liked:
             this_like = this_like[0]
             this_like.liked=False
             this_like.save()
-            print("elif", this_like.liked)
         else:
             this_like = this_like[0]
             this_like.liked=True
             this_like.save()
-            print("else", this_like.liked)
         return render(request, 'snippets/like_button.html', {'post':liked_post, 'this_like':this_like})
+
+class IsLiked(ListView):
+    template_name = "snippets/like_button.html"
+    http_method_names = ["get"]
+    model = Like
+
+    def get(self, request, pk):
+        this_like = Like.objects.all().filter(object_id=pk, user=request.user)
+        is_liked = False
+        if this_like != []:
+            this_like = this_like[0]
+            is_liked = this_like.liked
+        return render(request, self.template_name, {'is_liked':is_liked})
 
 @login_required
 @require_http_methods(['DELETE'])
