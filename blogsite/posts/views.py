@@ -59,7 +59,7 @@ class CommentPost(ListView):
 
 class LikePost(ListView):
     template_name = "snippets/like_button.html"
-    http_method_names = ["post"]
+    http_method_names = ["post", "get"]
     model = Like
 
     def post(self, request, pk):
@@ -77,7 +77,11 @@ class LikePost(ListView):
             this_like = this_like[0]
             this_like.liked=True
             this_like.save()
-        return render(request, 'snippets/like_button.html', {'post':liked_post, 'this_like':this_like})
+        return render(request, self.template_name, {'post':liked_post, 'this_like':this_like})
+
+    def get(self, request, pk):
+        this_like = Like.objects.get(object_id=pk, user=request.user)
+        return redirect('like_post', {'this_like':this_like})
 
 class IsLiked(ListView):
     template_name = "snippets/like_button.html"

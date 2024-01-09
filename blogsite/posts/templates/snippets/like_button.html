@@ -1,13 +1,20 @@
-{% if this_like.liked %}
-<a hx-post="{% url 'like_post' post.pk %}" 
-hx-swap="outerHTML" 
-class="fas fa-heart" 
-type="button" 
-style="float: inline-end; position:relative; right: 10px; top:4px; cursor: pointer;"></a>
-{% else %}
-<a hx-post="{% url 'like_post' post.pk %}" 
-hx-swap="outerHTML" 
-class="far fa-heart" 
-type="button" 
-style="float: inline-end; position:relative; right: 10px; top:4px; cursor: pointer;"></a>
-{% endif %}
+<div hx-get="{% url 'this_like' post.pk %}" hx-trigger="revealed">
+  {% if this_like.liked %}
+  <div hx-post="{% url 'like_post' post.pk %}" 
+  hx-swap="outerHTML">
+  <p style="float: right; right: 10px; position: relative;">{{ post.likes }} Likes</p>
+    <a  
+    class="fas fa-heart" 
+    type="button" 
+    style="float: right; position:relative; right: 12px; top:4px; cursor: pointer;"></a>
+  </div>
+  {% else %}
+  <div hx-post="{% url 'like_post' post.pk %}" 
+  hx-swap="outerHTML">
+  <p style="float: right; right: 10px; position: relative;">{{ post.likes }} Likes</p>
+  <a 
+  class="far fa-heart" 
+  type="button" 
+  style="float: inline-end; position:relative; right: 12px; top:4px; cursor: pointer;"></a>
+  {% endif %}
+</div>
