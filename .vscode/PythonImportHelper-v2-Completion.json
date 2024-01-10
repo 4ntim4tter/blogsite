@@ -169,6 +169,94 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -251,6 +339,14 @@
         "documentation": {}
     },
     {
+        "label": "ContentType",
+        "importPath": "django.contrib.contenttypes.models",
+        "description": "django.contrib.contenttypes.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.contenttypes.models",
+        "documentation": {}
+    },
+    {
         "label": "User",
         "importPath": "django.contrib.auth.models",
         "description": "django.contrib.auth.models",
@@ -321,6 +417,14 @@
         "importPath": "datetime",
         "description": "datetime",
         "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
         "documentation": {}
     },
     {
@@ -662,6 +766,69 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "blogsite.posts.migrations.0005_alter_like_object_id",
+        "description": "blogsite.posts.migrations.0005_alter_like_object_id",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('posts', '0004_like'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='like',\n            name='object_id',\n            field=models.PositiveIntegerField(unique=True),\n        ),",
+        "detail": "blogsite.posts.migrations.0005_alter_like_object_id",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "blogsite.posts.migrations.0006_alter_like_object_id",
+        "description": "blogsite.posts.migrations.0006_alter_like_object_id",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('posts', '0005_alter_like_object_id'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='like',\n            name='object_id',\n            field=models.CharField(max_length=200, unique=True),\n        ),",
+        "detail": "blogsite.posts.migrations.0006_alter_like_object_id",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "blogsite.posts.migrations.0007_remove_like_posts_like_content_4ca6af_idx_and_more",
+        "description": "blogsite.posts.migrations.0007_remove_like_posts_like_content_4ca6af_idx_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('posts', '0006_alter_like_object_id'),\n    ]\n    operations = [\n        migrations.RemoveIndex(\n            model_name='like',\n            name='posts_like_content_4ca6af_idx',\n        ),\n        migrations.AlterField(",
+        "detail": "blogsite.posts.migrations.0007_remove_like_posts_like_content_4ca6af_idx_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "blogsite.posts.migrations.0008_like_liked_alter_like_object_id",
+        "description": "blogsite.posts.migrations.0008_like_liked_alter_like_object_id",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('posts', '0007_remove_like_posts_like_content_4ca6af_idx_and_more'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='like',\n            name='liked',\n            field=models.BooleanField(default=False),\n        ),",
+        "detail": "blogsite.posts.migrations.0008_like_liked_alter_like_object_id",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "blogsite.posts.migrations.0009_alter_like_object_id",
+        "description": "blogsite.posts.migrations.0009_alter_like_object_id",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('posts', '0008_like_liked_alter_like_object_id'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='like',\n            name='object_id',\n            field=models.PositiveBigIntegerField(),\n        ),",
+        "detail": "blogsite.posts.migrations.0009_alter_like_object_id",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "blogsite.posts.migrations.0010_remove_like_liked",
+        "description": "blogsite.posts.migrations.0010_remove_like_liked",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('posts', '0009_alter_like_object_id'),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name='like',\n            name='liked',\n        ),\n    ]",
+        "detail": "blogsite.posts.migrations.0010_remove_like_liked",
+        "documentation": {}
+    },
+    {
+        "label": "LikeAdmin",
+        "kind": 6,
+        "importPath": "blogsite.posts.admin",
+        "description": "blogsite.posts.admin",
+        "peekOfCode": "class LikeAdmin(admin.ModelAdmin):\n    \"\"\"\n    Like admin tabs\n    \"\"\"\n    list_display = [\n        'user', 'object_id', 'content_type', 'content_object'\n        ]\nadmin.site.register(Post)\nadmin.site.register(Comment)\nadmin.site.register(Like, LikeAdmin)",
+        "detail": "blogsite.posts.admin",
+        "documentation": {}
+    },
+    {
         "label": "PostsConfig",
         "kind": 6,
         "importPath": "blogsite.posts.apps",
@@ -693,7 +860,7 @@
         "kind": 6,
         "importPath": "blogsite.posts.models",
         "description": "blogsite.posts.models",
-        "peekOfCode": "class Like(models.Model):\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n    object_id = models.PositiveIntegerField()\n    content_object = GenericForeignKey(\"content_type\", \"object_id\")\n    def __str__(self):\n        return self.user\n    class Meta:\n        indexes = [\n            models.Index(fields=[\"content_type\", \"object_id\"]),",
+        "peekOfCode": "class Like(models.Model):\n    user = models.ForeignKey(User, on_delete=models.CASCADE)\n    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)\n    object_id = models.PositiveBigIntegerField()\n    content_object = GenericForeignKey(\"content_type\", \"object_id\")\n    def __str__(self) -> str:\n        return f\"{self.user.username} {self.content_object}\"",
         "detail": "blogsite.posts.models",
         "documentation": {}
     },
@@ -702,7 +869,7 @@
         "kind": 5,
         "importPath": "blogsite.posts.urls",
         "description": "blogsite.posts.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"\", views.PostsIndexView.as_view(), name=\"index\"),\n    path(\"post/<int:pk>/\", views.SeePost.as_view(), name=\"see_post\"),\n    path(\"comments/<int:pk>/\", views.ShowPostComments.as_view(), name=\"show_comments\"),\n    path(\"comment/<int:pk>/\", login_required(views.CommentPost.as_view()), name=\"post_comment\"),\n    path(\"comment/<int:pk>/delete\", views.delete_comment, name=\"delete_comment\")\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.PostsIndexView.as_view(), name=\"index\"),\n    path(\"post/<int:pk>/\", views.SeePost.as_view(), name=\"see_post\"),\n    path(\"comments/<int:pk>/\", views.ShowPostComments.as_view(), name=\"show_comments\"),\n    path(\"comment/<int:pk>/\", login_required(views.CommentPost.as_view()), name=\"post_comment\"),\n    path(\"comment/<int:pk>/delete/\", views.delete_comment, name=\"delete_comment\"),\n    path(\"post/like/<int:pk>/\", login_required(views.LikePost.as_view()), name=\"like_post\"),\n    path(\"post/this-like/<int:pk>/\", login_required(views.LikePost.as_view()), name=\"this_like\"),\n]",
         "detail": "blogsite.posts.urls",
         "documentation": {}
     },
@@ -739,6 +906,15 @@
         "importPath": "blogsite.posts.views",
         "description": "blogsite.posts.views",
         "peekOfCode": "class CommentPost(ListView):\n    template_name = \"snippets/comment.html\"\n    http_method_names = [\"post\"]\n    model = Comment\n    def post(self, request, pk):\n        post = Post.objects.get(pk=pk)\n        user = request.user\n        new_comment = Comment.objects.create(username=user, \n                                             post=post, \n                                             text=request.POST['new-comment-area'], ",
+        "detail": "blogsite.posts.views",
+        "documentation": {}
+    },
+    {
+        "label": "LikePost",
+        "kind": 6,
+        "importPath": "blogsite.posts.views",
+        "description": "blogsite.posts.views",
+        "peekOfCode": "class LikePost(ListView):\n    template_name = \"snippets/like_button.html\"\n    http_method_names = [\"post\", \"get\"]\n    model = Like\n    def post(self, request, pk):\n        this_like = Like.objects.all().filter(object_id=pk, user=request.user)\n        liked_post = Post.objects.get(pk=pk)\n        content_type = ContentType.objects.get_for_model(Post)\n        if this_like.count() == 0:\n            this_like = Like(user=request.user, content_type=content_type, object_id=pk)",
         "detail": "blogsite.posts.views",
         "documentation": {}
     },
