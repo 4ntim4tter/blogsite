@@ -15,7 +15,9 @@
         <p style="float: right;">{{post.comment_number}} {% if post.comment_number == 1 %}comment{% else %}comments{% endif %}</p>
         </a>
         {% if user.is_authenticated %}
-        {% include 'snippets/like_button.html' %}
+        <div hx-get="{% url 'this_like' post.pk %}" hx-swap="outerHTML" hx-trigger="load">
+          {% include 'snippets/like_button.html' %}
+        </div>
         {% endif %}
       </div>
       <br />
