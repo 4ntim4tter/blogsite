@@ -17,7 +17,7 @@ class Post(models.Model):
         return self.comment_set.count()
 
     def likes(self):
-        likes = Like.objects.all().filter(object_id=self.pk, liked=True).count()
+        likes = Like.objects.all().filter(object_id=self.pk).count()
         return likes
 
 class Comment(models.Model):
@@ -31,7 +31,6 @@ class Comment(models.Model):
         return comment
 
 class Like(models.Model):
-    liked = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveBigIntegerField()

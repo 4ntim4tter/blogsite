@@ -1,8 +1,7 @@
 import datetime
-from django.contrib.admin.options import get_content_type_for_model
-from django.contrib.admin.utils import get_model_from_relation
+from typing import Any
 from django.contrib.contenttypes.models import ContentType
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import redirect, render
 from django.views.generic import ListView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -22,7 +21,7 @@ class PostsIndexView(ListView):
         return self.template_name
 
     def get_queryset(self):
-        return Post.objects.order_by('-pub_date', '-id')   
+        return Post.objects.order_by('-pub_date', '-id')
 
 class SeePost(ListView):
     template_name = "posts/see_post.html"
@@ -67,21 +66,19 @@ class LikePost(ListView):
         liked_post = Post.objects.get(pk=pk)
         content_type = ContentType.objects.get_for_model(Post)
         if this_like.count() == 0:
-            this_like = Like(liked=True, user=request.user, content_type=content_type, object_id=pk)
+            this_like = Like(user=request.user, content_type=content_type, object_id=pk)
             this_like.save()
-        elif this_like[0].liked:
-            this_like = this_like[0]
-            this_like.liked=False
-            this_like.save()
+            return render(request, self.template_name, {'post':liked_post, 'this_like':this_like})
         else:
             this_like = this_like[0]
-            this_like.liked=True
-            this_like.save()
-        return render(request, self.template_name, {'post':liked_post, 'this_like':this_like})
+            this_like.delete()
+            this_like = None
+            return render(request, self.template_name, {'post':liked_post, 'this_like':this_like})
 
     def get(self, request, pk):
-        this_like = Like.objects.get(object_id=pk, user=request.user)
-        return redirect('like_post', {'this_like':this_like})
+        this_like = Like.objects.all().filter(object_id=pk, user=request.user)
+        post = Post.objects.get(pk=pk)
+        return render(request, self.template_name, {'post':post, 'this_like':this_like})
 
 class IsLiked(ListView):
     template_name = "snippets/like_button.html"
