@@ -851,7 +851,7 @@
         "kind": 6,
         "importPath": "blogsite.posts.models",
         "description": "blogsite.posts.models",
-        "peekOfCode": "class Comment(models.Model):\n    username = models.ForeignKey(User, on_delete=models.CASCADE)\n    post = models.ForeignKey(Post, on_delete=models.CASCADE)\n    text = models.CharField(max_length=700)\n    pub_date = models.DateField()\n    def __str__(self):\n        comment =  self.username.username + \": \" + self.text.rstrip()\n        return comment\nclass Like(models.Model):\n    user = models.ForeignKey(User, on_delete=models.CASCADE)",
+        "peekOfCode": "class Comment(models.Model):\n    username = models.ForeignKey(User, on_delete=models.CASCADE)\n    post = models.ForeignKey(Post, on_delete=models.CASCADE)\n    text = models.CharField(max_length=700)\n    pub_date = models.DateField()\n    def __str__(self):\n        comment =  self.username.username + \": \" + self.text.rstrip()\n        return comment\n    def likes(self):\n        content_type = ContentType.objects.get_for_model(Comment)",
         "detail": "blogsite.posts.models",
         "documentation": {}
     },
@@ -869,7 +869,7 @@
         "kind": 5,
         "importPath": "blogsite.posts.urls",
         "description": "blogsite.posts.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"\", views.PostsIndexView.as_view(), name=\"index\"),\n    path(\"post/<int:pk>/\", views.SeePost.as_view(), name=\"see_post\"),\n    path(\"comments/<int:pk>/\", views.ShowPostComments.as_view(), name=\"show_comments\"),\n    path(\"comment/<int:pk>/\", login_required(views.CommentPost.as_view()), name=\"post_comment\"),\n    path(\"comment/<int:pk>/delete/\", views.delete_comment, name=\"delete_comment\"),\n    path(\"post/like/<int:pk>/\", login_required(views.LikePost.as_view()), name=\"like_post\"),\n    path(\"post/this-like/<int:pk>/\", login_required(views.LikePost.as_view()), name=\"this_like\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.PostsIndexView.as_view(), name=\"index\"),\n    path(\"post/<int:pk>/\", views.SeePost.as_view(), name=\"see_post\"),\n    path(\"comments/<int:pk>/\", views.ShowPostComments.as_view(), name=\"show_comments\"),\n    path(\"comment/<int:pk>/\", login_required(views.CommentPost.as_view()), name=\"post_comment\"),\n    path(\"comment/<int:pk>/delete/\", views.delete_comment, name=\"delete_comment\"),\n    path(\"post/like/<int:pk>/\", login_required(views.LikePost.as_view()), name=\"like_post\"),\n    path(\"post/this-like/<int:pk>/\", login_required(views.LikePost.as_view()), name=\"this_like\"),\n    path(\"comment/comment-like/<int:pk>/\", login_required(views.LikeComment.as_view()), name=\"comment_like\"),\n    path(\"comment/like/<int:pk>/\", login_required(views.LikeComment.as_view()), name=\"like_comment\")",
         "detail": "blogsite.posts.urls",
         "documentation": {}
     },
@@ -915,6 +915,15 @@
         "importPath": "blogsite.posts.views",
         "description": "blogsite.posts.views",
         "peekOfCode": "class LikePost(ListView):\n    template_name = \"snippets/like_button.html\"\n    http_method_names = [\"post\", \"get\"]\n    model = Like\n    def post(self, request, pk):\n        this_like = Like.objects.all().filter(object_id=pk, user=request.user)\n        liked_post = Post.objects.get(pk=pk)\n        content_type = ContentType.objects.get_for_model(Post)\n        if this_like.count() == 0:\n            this_like = Like(user=request.user, content_type=content_type, object_id=pk)",
+        "detail": "blogsite.posts.views",
+        "documentation": {}
+    },
+    {
+        "label": "LikeComment",
+        "kind": 6,
+        "importPath": "blogsite.posts.views",
+        "description": "blogsite.posts.views",
+        "peekOfCode": "class LikeComment(ListView):\n    template_name = \"snippets/like_button2.html\"\n    http_method_names = [\"post\", \"get\"]\n    model = Like\n    def post(self, request, pk):\n        this_like = Like.objects.all().filter(object_id=pk, user=request.user)\n        comment = Comment.objects.get(pk=pk)\n        content_type = ContentType.objects.get_for_model(Comment)\n        if this_like.count() == 0:\n            this_like = Like(user=request.user, content_type=content_type, object_id=pk)",
         "detail": "blogsite.posts.views",
         "documentation": {}
     },
