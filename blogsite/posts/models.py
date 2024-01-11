@@ -17,7 +17,8 @@ class Post(models.Model):
         return self.comment_set.count()
 
     def likes(self):
-        likes = Like.objects.all().filter(object_id=self.pk).count()
+        content_type = ContentType.objects.get_for_model(Post)
+        likes = Like.objects.all().filter(object_id=self.pk, content_type=content_type).count()
         return likes
 
 class Comment(models.Model):
@@ -30,6 +31,11 @@ class Comment(models.Model):
         comment =  self.username.username + ": " + self.text.rstrip()
         return comment
 
+    def likes(self):
+        content_type = ContentType.objects.get_for_model(Comment)
+        likes = Like.objects.all().filter(object_id=self.pk, content_type=content_type).count()
+        return likes
+    
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)

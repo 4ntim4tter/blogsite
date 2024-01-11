@@ -80,6 +80,16 @@ class LikePost(ListView):
         post = Post.objects.get(pk=pk)
         return render(request, self.template_name, {'post':post, 'this_like':this_like})
 
+class LikeComment(ListView):
+    template_name = "snippets/like_button.html"
+    http_method_names = ["post", "get"]
+    model = Like
+
+    def get(self, request, pk):
+        comment_like = Like.objects.all().filter(object_id=pk, user=request.user)
+        comment = Comment.objects.get(pk=pk)
+        return render(request, self.template_name, {'comment':comment, 'comment_like':comment_like})
+
 @login_required
 @require_http_methods(['DELETE'])
 def delete_comment(request, pk):

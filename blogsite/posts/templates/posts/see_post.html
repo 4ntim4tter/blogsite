@@ -5,7 +5,11 @@
     <b><h1 class="posted-title" type="button" style="text-align: center;">{{ post.title }}</h1></b>
     <br/>
     <p class="posted-text-post" style="text-align: justify; display: flex; overflow: auto; height: auto; word-wrap: break-word;">{{ post.text }}</p><br>
-    
+    {% if user.is_authenticated %}
+        <div hx-get="{% url 'this_like' post.pk %}" hx-swap="outerHTML" hx-trigger="load">
+          {% include 'snippets/like_button.html' %}
+        </div>
+    {% endif %}
     {% if user.is_authenticated %}
     <button name="add-comment" id="add-comment" class="post-button" style="width: 120px; margin-right: 100%;" 
     _="on click add @hidden to me then remove @hidden from #new-comment">Add Comment</button>

@@ -10,4 +10,5 @@ urlpatterns = [
     path("comment/<int:pk>/delete/", views.delete_comment, name="delete_comment"),
     path("post/like/<int:pk>/", login_required(views.LikePost.as_view()), name="like_post"),
     path("post/this-like/<int:pk>/", login_required(views.LikePost.as_view()), name="this_like"),
+    path("comment/comment-like/<int:pk>/", login_required(views.LikeComment.as_view()), name="comment_like"),
 ]
