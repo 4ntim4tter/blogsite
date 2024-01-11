@@ -1,11 +1,11 @@
-  {% if this_like %}
-    <div hx-post="{% url 'like_post' post.pk %}" hx-swap="outerHTML">
-      <p style="float: right; right: 10px; position: relative;">{{ post.likes }} Likes</p>
-      <a class="fas fa-heart" type="button" style="float: right; position:relative; right: 12px; top:4px; cursor: pointer;"></a>
-    </div>
-  {% else %}
-    <div name="like" id="like" hx-post="{% url 'like_post' post.pk %}" hx-swap="outerHTML">
-      <p style="float: right; right: 10px; position: relative;">{{ post.likes }} Likes</p>
-      <a class="far fa-heart" type="button" style="float: right; position:relative; right: 12px; top:4px; cursor: pointer;"></a>
-    </div>
-  {% endif %}
+{% if this_like %}
+  <div hx-post="{% url 'like_post' post.pk %}" hx-swap="outerHTML">
+    <p style="float: right; right: 10px; position: relative;">{{ post.likes }} Likes</p>
+    <a class="fas fa-heart" type="button" style="float: right; position:relative; right: 12px; top:4px; cursor: pointer;"></a>
+  </div>
+{% else %}
+  <div hx-post="{% url 'like_post' post.pk %}" hx-swap="outerHTML">
+    <p style="float: right; right: 10px; position: relative;">{{ post.likes }} Likes</p>
+    <a class="far fa-heart" type="button" style="float: right; position:relative; right: 12px; top:4px; cursor: pointer;"></a>
+  </div>
+{% endif %}
