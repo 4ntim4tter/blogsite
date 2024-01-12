@@ -7,22 +7,23 @@
 {% endif %}
 {% for comment in comments %}
   {% if comment.text != '' %}
-    <div style="width: 100%;">
-      <p name="comment{{ comment.id }}" id="comment{{ comment.id }}" class="posted-comment">{{ comment }}</p>
-        {% if user.is_authenticated and user.pk == comment.username.pk %}
-        <a type="button" hx-delete="{% url 'delete_comment' comment.id %}" hx-target="#all-comments" hx-confirm="Are you sure?" style="scale:90%;
-        padding-right: 4px;
-        padding-left: 4px;
-        cursor: pointer;
-        float:right;
-        position: relative;
-        border: 1px darkgray solid;">Delete</a>
-        {% endif %}
-        {% if user.is_authenticated %}
-        <div hx-get="{% url 'comment_like' comment.pk %}" hx-swap="outerHTML" hx-trigger="load">
-          {% include 'snippets/like_button2.html' %}
-        </div>
-        {% endif %}
+    <div style="width: 100%; display: inline-block; padding-bottom: 20px;">
+      <p name="comment{{ comment.id }}" id="comment{{ comment.id }}" class="posted-comment" style="">{{ comment }}</p>
+        <span style="display: inline-flex; float:right; width: 200px; justify-content: end;">
+          {% if user.is_authenticated %}
+          <div style="display: inline-flex; justify-content: space-evenly; flex-direction: row;" hx-get="{% url 'comment_like' comment.pk %}" hx-swap="outerHTML" hx-trigger="load">
+            {% include 'snippets/like_button2.html' %}
+          </div>
+          {% endif %}
+          {% if user.is_authenticated and user.pk == comment.username.pk %}
+          <a type="button" hx-delete="{% url 'delete_comment' comment.id %}" hx-target="#all-comments" hx-confirm="Are you sure?" style="scale:90%;
+          padding-right: 4px;
+          padding-left: 4px;
+          height: fit-content;
+          cursor: pointer;
+          border: 1px darkgray solid;">Delete</a>
+          {% endif %}
+        </span>
     </div>
   {% endif %}
 {% endfor %}

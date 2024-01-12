@@ -1,11 +1,11 @@
 {% if comment_like %}
   <div hx-post="{% url 'like_comment' comment.pk %}" hx-swap="outerHTML">
-    <p style="float: right; right: 2px; position: relative;">{{ comment.likes }} Likes</p>
-    <a class="fas fa-heart" type="button" style="float: right; position:relative; right: 4px; top:4px; cursor: pointer;"></a>
+    <a class="fas fa-heart" type="button" style="right: 4px; top:4px; cursor: pointer; display: inline;"></a>
+    <p style="right: 2px; display: inline;">{{ comment.likes }} Likes</p>
   </div>
 {% else %}
 <div hx-post="{% url 'like_comment' comment.pk %}" hx-swap="outerHTML">
-  <p style="float: right; right: 2px; position: relative;">{{ comment.likes }} Likes</p>
-  <a class="far fa-heart" type="button" style="float: right; position:relative; right: 4px; top:4px; cursor: pointer;"></a>
+  <a class="far fa-heart" type="button" style="right: 4px; top:4px; cursor: pointer; display: inline;"></a>
+  <p style="right: 2px; display: inline;">{{ comment.likes }} Likes</p>
 </div>
 {% endif %}
