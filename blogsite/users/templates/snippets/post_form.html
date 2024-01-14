@@ -8,7 +8,14 @@
     on every mouseleave transition #delete{{post.id}} opacity to 0
     on every mouseleave transition #edit{{post.id}} opacity to 0">
     <b><h1 class="posted-title">{{ post.title }}</h1></b>
+    {% autoescape off %}
     <p id="posttext{{post.id}}" class="posted-text">{{ post.text }}</p>
+    {% endautoescape %}
+    {% for link in post.get_links %}
+        {% autoescape off %}
+        {{link.link}}
+        {% endautoescape %}
+    {% endfor %}
     <br>
     <div>
         <a id="delete{{post.id}}" type="button" class="post-button" style="cursor: pointer;"

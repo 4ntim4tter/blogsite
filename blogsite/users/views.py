@@ -109,6 +109,7 @@ def save_new(request):
         text=request.POST["posttext"],
         pub_date=datetime.date.today(),
     )
+    post.text = post.create_links(request.POST["posttext"])
     post.save()
     messages.success(request, "Post Saved")
     return redirect("dash_user")

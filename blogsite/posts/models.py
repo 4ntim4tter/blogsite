@@ -20,6 +20,33 @@ class Post(models.Model):
         content_type = ContentType.objects.get_for_model(Post)
         likes = Like.objects.all().filter(object_id=self.pk, content_type=content_type).count()
         return likes
+    
+    def create_links(self, text:str):
+        links = []
+        if "youtube.com/watch" in text:
+            links = text.split(' ')
+        else:
+            return None
+
+        for index, link  in enumerate(links):
+            if "youtube.com/watch" in link:
+                links[index] = f"<a href={link}>{link}</a>"
+                video_code = link.split('=')[1]
+                embeded_link = f"<iframe src='http://www.youtube.com/embed/{video_code} 'width='560' height='315' frameborder='0' allowfullscreen></iframe>"
+                new_link = Link(post=self, link=embeded_link)
+                new_link.save()
+        
+        return ' '.join(links)
+
+    def get_links(self):
+        links = Link.objects.all().filter(post=self)
+        return links
+
+
+class Link(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    link = models.TextField(max_length=1000)
+
 
 class Comment(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)

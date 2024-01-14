@@ -103,3 +103,18 @@
         margin-top: 15%;
     }
 }
+
+a:link{
+    color: blue;
+    text-decoration-line: underline;
+}
+
+a:visited{
+    color: darkmagenta;
+    text-decoration-line: underline;
+}
+
+a:hover{
+    color: lightblue;
+    text-decoration-line: underline;
+}
