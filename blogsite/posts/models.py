@@ -31,7 +31,7 @@ class Post(models.Model):
         for index, link  in enumerate(links):
             if "youtube.com/watch" in link:
                 links[index] = f"<a href={link}>{link}</a>"
-                video_code = link.split('=')[1]
+                video_code = link.split('=')[1].split('&')[0]
                 embeded_link = f"<iframe src='http://www.youtube.com/embed/{video_code} 'width='560' height='315' frameborder='0' allowfullscreen></iframe>"
                 new_link = Link(post=self, link=embeded_link)
                 new_link.save()

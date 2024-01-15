@@ -4,7 +4,14 @@
   <center class="main-margin">
     <b><h1 class="posted-title" type="button" style="text-align: center;">{{ post.title }}</h1></b>
     <br/>
+    {% autoescape off %}
     <p class="posted-text-post" style="text-align: justify; display: flex; overflow: auto; height: auto; word-wrap: break-word;">{{ post.text }}</p><br>
+    {% endautoescape %}
+    {% for link in post.get_links %}
+        {% autoescape off %}
+        {{link.link}}
+        {% endautoescape %}
+    {% endfor %}
     {% if user.is_authenticated %}
         <div hx-get="{% url 'this_like' post.pk %}" hx-swap="outerHTML" hx-trigger="load">
           {% include 'snippets/like_button.html' %}
