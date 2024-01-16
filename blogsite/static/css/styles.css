@@ -88,6 +88,14 @@
     padding-right: 20px;
 }
 
+.x-button {
+    color: black;
+}
+
+.x-button:hover {
+    color: red;
+}
+
 @media only screen and (max-device-width : 480px){
     .main-margin{
         margin-left: 5%; 

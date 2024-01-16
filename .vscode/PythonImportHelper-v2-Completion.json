@@ -257,6 +257,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -820,6 +836,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "blogsite.posts.migrations.0011_link",
+        "description": "blogsite.posts.migrations.0011_link",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('posts', '0010_remove_like_liked'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Link',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('link', models.TextField(max_length=1000)),",
+        "detail": "blogsite.posts.migrations.0011_link",
+        "documentation": {}
+    },
+    {
         "label": "LikeAdmin",
         "kind": 6,
         "importPath": "blogsite.posts.admin",
@@ -843,6 +868,15 @@
         "importPath": "blogsite.posts.models",
         "description": "blogsite.posts.models",
         "peekOfCode": "class Post(models.Model):\n    username = models.ForeignKey(User, on_delete=models.CASCADE)\n    title = models.CharField(max_length=100)\n    text = models.TextField(max_length=5000)\n    pub_date = models.DateField()\n    def __str__(self) -> str:\n        return self.title\n    def comment_number(self):\n        return self.comment_set.count()\n    def likes(self):",
+        "detail": "blogsite.posts.models",
+        "documentation": {}
+    },
+    {
+        "label": "Link",
+        "kind": 6,
+        "importPath": "blogsite.posts.models",
+        "description": "blogsite.posts.models",
+        "peekOfCode": "class Link(models.Model):\n    post = models.ForeignKey(Post, on_delete=models.CASCADE)\n    link = models.TextField(max_length=1000)\nclass Comment(models.Model):\n    username = models.ForeignKey(User, on_delete=models.CASCADE)\n    post = models.ForeignKey(Post, on_delete=models.CASCADE)\n    text = models.CharField(max_length=700)\n    pub_date = models.DateField()\n    def __str__(self):\n        comment =  self.username.username + \": \" + self.text.rstrip()",
         "detail": "blogsite.posts.models",
         "documentation": {}
     },
@@ -1067,7 +1101,7 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def save_new(request):\n    user_id = request.user.id\n    user = User.objects.get(pk=user_id)\n    post = Post.objects.create(\n        username=user,\n        title=request.POST[\"posttitle\"],\n        text=request.POST[\"posttext\"],\n        pub_date=datetime.date.today(),\n    )\n    post.save()",
+        "peekOfCode": "def save_new(request):\n    user_id = request.user.id\n    user = User.objects.get(pk=user_id)\n    post = Post.objects.create(\n        username=user,\n        title=request.POST[\"posttitle\"],\n        text=request.POST[\"posttext\"],\n        pub_date=datetime.date.today(),\n    )\n    post.text = post.create_links(request.POST[\"posttext\"])",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
