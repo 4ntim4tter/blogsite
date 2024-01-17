@@ -11,11 +11,7 @@
     {% autoescape off %}
     <p id="posttext{{post.id}}" class="posted-text">{{ post.text }}</p>
     {% endautoescape %}
-    {% for link in post.get_links %}
-        {% autoescape off %}
-        {{link.link}}
-        {% endautoescape %}
-    {% endfor %}
+    {% include 'show_links.html' %}
     <br>
     <div>
         <a id="delete{{post.id}}" type="button" class="post-button" style="cursor: pointer;"

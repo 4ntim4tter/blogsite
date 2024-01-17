@@ -96,6 +96,11 @@
     color: red;
 }
 
+.video-thumb {
+    width: 48px;
+    height: 48px;
+}
+
 @media only screen and (max-device-width : 480px){
     .main-margin{
         margin-left: 5%; 

@@ -1,0 +1,14 @@
+{% for link in post.get_links %}
+    {% autoescape off %}
+    <span style="display: flex;">
+      <div name="link{{forloop.counter}}{{post.id}}" id="link{{forloop.counter}}{{post.id}}" 
+      style="width: fit-content; align-self: flex-start;">{{link.link}}</div>
+      <p type="button" class="fa-solid fa-circle-xmark x-button" style="cursor: pointer; align-self: flex-end;"
+      _="on click toggle @hidden on #link{{forloop.counter}}{{post.id}}
+      on click toggle @hidden on #text{{forloop.counter}}{{post.id}}
+      on load add .video-thumb to the closest <iframe/>">
+      <p name="text{{forloop.counter}}{{post.id}}" id="text{{forloop.counter}}{{post.id}}" 
+      style="font-family: Arial, Helvetica, sans-serif; font-size:small; position: relative; top:1px;"></p></p class="mouseover-x">
+    </span>
+    {% endautoescape %}
+{% endfor %}

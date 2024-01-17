@@ -11,15 +11,7 @@
       {% autoescape off %}
     <p id="posttext{{post.id}}" class="posted-text">{{ post.text }}</p>
     {% endautoescape %}
-    {% for link in post.get_links %}
-    {% autoescape off %}
-    <span style="display: flex;">
-      <div name="link{{forloop.counter}}{{post.id}}" id="link{{forloop.counter}}{{post.id}}" style="width: fit-content; align-self: flex-start;" hidden>{{link.link}}</div>
-      <p type="button" class="fa-solid fa-circle-xmark x-button" style="cursor: pointer; align-self: flex-end;"
-      _="on click toggle @hidden on #link{{forloop.counter}}{{post.id}}"></p class="mouseover-x">
-    </span>
-    {% endautoescape %}
-    {% endfor %}
+    {% include 'show_links.html' %}
       <div style="width: 100%;">
         <a href="{% url 'see_post' post.id %}">
         <p style="float: right;">{{post.comment_number}} {% if post.comment_number == 1 %}comment{% else %}comments{% endif %}</p>
