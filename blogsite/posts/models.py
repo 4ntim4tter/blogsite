@@ -25,6 +25,8 @@ class Post(models.Model):
         links = []
         if "youtube.com/watch" in text:
             links = text.split(' ')
+        elif "youtu.be/" in text:
+            links = text.split(' ')
         else:
             return None
 
@@ -32,7 +34,13 @@ class Post(models.Model):
             if "youtube.com/watch" in link:
                 links[index] = f"<a href={link}>{link}</a>"
                 video_code = link.split('=')[1].split('&')[0]
-                embeded_link = f"<iframe src='http://www.youtube.com/embed/{video_code}' width='560' height='315' frameborder='0' allowfullscreen></iframe>"
+                embeded_link = f"<iframe src='http://www.youtube.com/embed/{video_code}' style='width:560px; height:316px'frameborder='0' allowfullscreen></iframe>"
+                new_link = Link(post=self, link=embeded_link)
+                new_link.save()
+            elif "youtu.be/" in link:
+                links[index] = f"<a href={link}>{link}</a>"
+                video_code = link.split('/')[-1].split('&')[0]
+                embeded_link = f"<iframe src='http://www.youtube.com/embed/{video_code}' style='width:560px; height:316px'frameborder='0' allowfullscreen></iframe>"
                 new_link = Link(post=self, link=embeded_link)
                 new_link.save()
         
