@@ -1,5 +1,6 @@
 <div id="post{{ post.id }}"
-    _="on mouseenter remove @hidden from #delete{{post.id}}
+    _="on load transition my opacity to 1 over 0.8 seconds
+    on mouseenter remove @hidden from #delete{{post.id}}
     on mouseenter remove @hidden from #edit{{post.id}}
     on mouseleave add @hidden to #delete{{post.id}}
     on mouseleave add @hidden to #edit{{post.id}}
