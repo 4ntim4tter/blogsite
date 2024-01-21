@@ -5,8 +5,8 @@
     style="position:absolute; left: 10px; top: 3px; text-align: center;"
     _="on mouseenter add .darkgrey-background to me 
     on mouseleave remove .darkgrey-background from me">Home</a>
-    <p class="post-button" 
-    style="position:absolute; right: 200px; top: 3px; text-align: right;">{{user}}</p >
+    <a href="{% url 'user_profile' %}" class="post-button" 
+    style="position:absolute; right: 200px; top: 3px; text-align: right;">{{user}}</a >
     <a href="{% url 'logout_user' %}" 
     class="post-button" 
     style="position:absolute; right: 10px; top: 3px; text-align: center;"

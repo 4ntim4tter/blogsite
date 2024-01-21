@@ -55,6 +55,9 @@ def auth_user(request):
         messages.error(request, "Incorrect Credentials")
         return render(request, "users/login.html")
 
+@login_required
+def user_profile(request):
+    return render(request, "users/profile.html")
 
 @login_required
 def logout_user(request):

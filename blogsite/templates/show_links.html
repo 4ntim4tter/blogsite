@@ -3,7 +3,7 @@
     <span style="display: flex;">
       <div name="link{{forloop.counter}}{{post.id}}" id="link{{forloop.counter}}{{post.id}}" 
       style="width: fit-content; align-self: flex-start;" hidden>
-      {{link.link}}</div>
+      <iframe src='http://www.youtube.com/embed/{{link.link}}' style='width:560px; height:316px' frameborder='1' allowfullscreen></iframe></div>
       <p type="button" class="fab fa-youtube x-button" style="cursor: pointer; align-self: flex-end;"
       _="on click toggle @hidden on #link{{forloop.counter}}{{post.id}}
       on click toggle @hidden on #text{{forloop.counter}}{{post.id}}">
