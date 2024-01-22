@@ -17,6 +17,6 @@ class TestViews(TestCase):
 
     def test_create_user(self):
         client = Client()
-        response = client.post('/create/', {'username':'digimon22', 'password':'232312'})
+        client.post('/create/', {'username':'digimon22', 'password':'232312'})
         user = User.objects.get(username='digimon22')
         self.assertEqual(user.username, 'digimon22')
