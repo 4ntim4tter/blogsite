@@ -10,11 +10,6 @@ class TestViews(TestCase):
         response = client.post('/authenticate/', {'username':'sarmica', 'password':'123321'})
         self.assertEqual(response.status_code, 200)
 
-    # def test_create_user_exists(self):
-    #     client = Client()
-    #     response = client.post('/create/', {'username':'sarmica', 'password':'123321'})
-    #     self.assertEqual(response.status_code, 302)
-
     def test_create_user(self):
         client = Client()
         client.post('/create/', {'username':'digimon22', 'password':'232312'})
