@@ -3,6 +3,7 @@ from django.contrib.sessions.backends.base import SessionBase
 from django.contrib.sessions.middleware import SessionMiddleware
 import django.shortcuts
 from django.test import RequestFactory, TestCase
+from django.urls import reverse
 from .views import logout_user
 
 # Create your tests here.
@@ -24,9 +25,9 @@ class TestViews(TestCase):
         self.assertEqual(user.username, 'createduser')
 
     def test_logout_user(self):
-        response = self.client.get('/logout/')  
-        self.assertIn('_auth_user_id', self.client.session)                  
-        self.assertRedirects(response, '', status_code=302, 
-        target_status_code=200, fetch_redirect_response=True)
+        self.client.force_login(user=self.user)
+        response = self.client.post(reverse('logout_user'), follow=True)
+        self.assertEqual(response.status_code, 200)               
+        self.assertRedirects(response, reverse('index'))
 
     
