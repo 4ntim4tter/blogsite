@@ -1,5 +1,6 @@
 from django.test import RequestFactory, TestCase
 from django.urls import reverse
+from users.views import save_new
 
 from posts.models import Post
 from django.contrib.auth.models import User
@@ -31,5 +32,7 @@ class TestViews(TestCase):
 
     def test_save_post(self):       
         self.client.force_login(user=self.user)
-        response = self.client.post('/save_new/', {'pk': self.user.pk})
+        request = self.factory.get('/save_new/')
+        request.user = self.user
+        response = save_new(request)
         self.assertEqual(response.status_code, 200)
