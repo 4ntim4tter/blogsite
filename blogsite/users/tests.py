@@ -1,10 +1,8 @@
-from django.contrib.auth.models import User
-from django.contrib.sessions.backends.base import SessionBase
-from django.contrib.sessions.middleware import SessionMiddleware
-import django.shortcuts
 from django.test import RequestFactory, TestCase
 from django.urls import reverse
-from .views import logout_user
+
+from posts.models import Post
+from django.contrib.auth.models import User
 
 # Create your tests here.
 from django.test import Client
@@ -14,6 +12,7 @@ class TestViews(TestCase):
         self.factory = RequestFactory()
         self.client = Client()
         self.user = User.objects.create(username='digimon22', password='232312')
+        self.post = Post.objects.create(username=self.user, title="Post Title", text="This is the text of the post", pub_date="2024-01-25")
 
     def test_auth_user(self):
         response = self.client.post('/authenticate/', {'username':'digimon22', 'password':'232312'})
@@ -30,4 +29,7 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)               
         self.assertRedirects(response, reverse('index'))
 
-    
+    def test_save_post(self):       
+        self.client.force_login(user=self.user)
+        response = self.client.post('/save_new/', {'pk': self.user.pk})
+        self.assertEqual(response.status_code, 200)
