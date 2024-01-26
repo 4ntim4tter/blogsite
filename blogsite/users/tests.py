@@ -32,7 +32,6 @@ class TestViews(TestCase):
 
     def test_save_post(self):       
         self.client.force_login(user=self.user)
-        request = self.factory.get('/save_new/')
-        request.user = self.user
-        response = save_new(request)
+        response = self.client.post(reverse('save_new'), data={'posttitle':'title', 'posttext':'texty'}, follow=True)
         self.assertEqual(response.status_code, 200)
+        self.assertRedirects(response, reverse('dash_user'))
