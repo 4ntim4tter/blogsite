@@ -41,3 +41,9 @@ class TestViews(TestCase):
         response = self.client.post(reverse('save_post', kwargs={'pk':self.user.pk}), data={f'posttext{self.user.pk}':'newtext'}, follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertEqual(Post.objects.get(pk=self.user.pk).text , 'newtext')
+
+    def test_delete_post(self):
+        self.client.force_login(user=self.user)
+        response = self.client.delete(reverse('delete_post', kwargs={'pk':self.user.pk}), follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(Post.objects.filter(pk=self.user.pk).exists())
