@@ -30,8 +30,14 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)               
         self.assertRedirects(response, reverse('index'))
 
-    def test_save_post(self):       
+    def test_save_new(self):       
         self.client.force_login(user=self.user)
         response = self.client.post(reverse('save_new'), data={'posttitle':'title', 'posttext':'texty'}, follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, reverse('dash_user'))
+    
+    def test_save_post(self):
+        self.client.force_login(user=self.user)
+        response = self.client.post(reverse('save_post', kwargs={'pk':self.user.pk}), data={f'posttext{self.user.pk}':'newtext'}, follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(Post.objects.get(pk=self.user.pk).text , 'newtext')
