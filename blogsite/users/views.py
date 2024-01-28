@@ -57,7 +57,8 @@ def auth_user(request):
 
 @login_required
 def user_profile(request):
-    return render(request, "users/profile.html")
+    posts = Post.objects.filter(username=request.user.pk)
+    return render(request, "users/profile.html", {'posts':posts})
 
 @login_required
 def logout_user(request):
