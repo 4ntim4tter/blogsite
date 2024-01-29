@@ -3,11 +3,13 @@
 
 {% block content %}
 <div style="width: 100%;">
-    <h1 style="margin-top: 50px; margin-left: 15px; font-size: xx-large; font-weight: bolder; text-transform: capitalize;">
-       Username: {{user.username}}
-       
-    </h1>
-        {{user.post_set.count}}
+    <div class="title-card" style="margin-top: 50px; margin-left: -500px; opacity: 0;"
+    _="on load transition my *margin-left to '15px' over 0.6s
+        on load transition my *opacity to 1 over 1.2s">
+        <h1 style="font-size: xx-large; font-weight: bolder; text-transform: capitalize;">
+           Username: {{user.username}}
+        </h1>
+    </div>
 </div>
 {% endblock %}
     

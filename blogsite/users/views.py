@@ -55,10 +55,12 @@ def auth_user(request):
         messages.error(request, "Incorrect Credentials")
         return render(request, "users/login.html")
 
+
 @login_required
 def user_profile(request):
     posts = Post.objects.filter(username=request.user.pk)
-    return render(request, "users/profile.html", {'posts':posts})
+    return render(request, "users/profile.html", {"posts": posts})
+
 
 @login_required
 def logout_user(request):

@@ -101,6 +101,26 @@
     height: 48px;
 }
 
+.title-card {
+    background-color: lightgray;
+    width: max-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+a:link{
+    color: blue;
+}
+
+a:visited{
+    color: darkmagenta;
+}
+
+a:hover{
+    color: lightblue;
+}
+
 @media only screen and (max-device-width : 480px){
     .main-margin{
         margin-left: 5%; 
@@ -115,16 +135,4 @@
         margin-right: 8%; 
         margin-top: 15%;
     }
-}
-
-a:link{
-    color: blue;
-}
-
-a:visited{
-    color: darkmagenta;
-}
-
-a:hover{
-    color: lightblue;
 }
