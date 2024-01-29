@@ -9,6 +9,7 @@
     -webkit-text-stroke: 1px white;
     border-radius: 4px;
     cursor: pointer;
+    box-shadow: 2px 2px 2px rgb(58, 58, 58);
 }
 
 .red-background{
@@ -107,6 +108,16 @@
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 5px;
+    box-shadow: 5px 5px 5px gray;
+}
+
+.post-card {
+    background-color: lightgray;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 5px gray;
 }
 
 a:link{

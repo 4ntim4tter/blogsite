@@ -22,7 +22,7 @@ def register_user(request):
 def dash_user(request):
     user_id = request.user.id
     posts = Post.objects.filter(username_id=f"{user_id}").order_by("-pub_date", "-id")
-    paginated_posts = Paginator(posts, 5)
+    paginated_posts = Paginator(posts, 1)
     selected_page = paginated_posts.get_page(request.GET.get("page"))
     if request.htmx:
         return render(request, "snippets/user_posts.html", {"posts": selected_page})

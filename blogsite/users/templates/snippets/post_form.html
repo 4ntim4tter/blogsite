@@ -1,9 +1,8 @@
-<div id="post{{ post.id }}"
-    _="on load transition my opacity to 1 over 0.8 seconds
-    on mouseenter remove @hidden from #delete{{post.id}}
-    on mouseenter remove @hidden from #edit{{post.id}}
-    on mouseleave add @hidden to #delete{{post.id}}
-    on mouseleave add @hidden to #edit{{post.id}}
+<div class="post-card" id="post{{ post.id }}" style="transform: translateX(-150%); opacity: 0;"
+    _="on load transition my *opacity to 1 over 1 seconds
+    on load transition my *transform to 'translateX(0%)' over 0.5 seconds
+    on mouseenter toggle @hidden on #delete{{post.id}} until mouseleave
+    on mouseenter toggle @hidden on #edit{{post.id}} until mouseleave
     on every mouseenter transition #delete{{post.id}} opacity to 1 over 0.4 seconds
     on every mouseenter transition #edit{{post.id}} opacity to 1 over 0.4 seconds
     on every mouseleave transition #delete{{post.id}} opacity to 0
@@ -14,7 +13,7 @@
     {% endautoescape %}
     {% include 'show_links.html' %}
     <br>
-    <div>
+    <div style="padding-bottom: 15px;">
         <a id="delete{{post.id}}" type="button" class="post-button" style="cursor: pointer;"
         hidden
         hx-delete="{% url 'delete_post' post.pk %}"
