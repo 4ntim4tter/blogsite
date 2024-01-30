@@ -58,7 +58,8 @@ def auth_user(request):
 
 @login_required
 def user_profile(request):
-    posts = Post.objects.filter(username=request.user.pk)
+    posts = Post.objects.filter(username=request.user.pk).order_by('-pub_date')
+    print(posts)
     return render(request, "users/profile.html", {"posts": posts})
 
 

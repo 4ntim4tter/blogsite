@@ -28,7 +28,7 @@ class Post(models.Model):
         elif "youtu.be/" in text:
             links = text.split(' ')
         else:
-            return ''
+            return text
 
         for index, link  in enumerate(links):
             if "youtube.com/watch" in link:
