@@ -1,5 +1,5 @@
 {% if user.is_authenticated %}
-  <div style="background-color: gray; height: 40px; border-bottom: 1px black solid; position:fixed; top: 0; width: 100%; z-index: 100;">
+  <div style="background-color: lightgray; height: 40px; position:fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 0 5px 5px gray;">
     <a href="{% url 'index' %}" 
     class="post-button" 
     style="position:absolute; left: 10px; top: 3px; text-align: center;"
@@ -17,7 +17,7 @@
     _="on mouseenter toggle .lightgreen-background on me until mouseleave">Dashboard</a>
   </div>
 {% else %}
-  <div style="background-color: gray; height: 40px; border-bottom: 1px black solid; position:fixed; top: 0; width: 100%; z-index: 100;">
+  <div style="background-color: gray; height: 40px; position:fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 0 5px 5px gray;">
     <a href="{% url 'index' %}" 
     class="post-button" 
     style="position:absolute; left: 10px; top: 3px; text-align: center;"
