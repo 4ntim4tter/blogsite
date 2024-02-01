@@ -1,12 +1,12 @@
 <div id="post{{ post.id }}" style="margin-top: 10px;">
   <form hx-post="{% url 'save_post' post.pk %}" 
-    hx-confirm="Are you sure you want to edit this post?">
+    hx-confirm="Are you sure you want to edit this post?"
+    hx-target="#post{{ post.id }}" 
+    hx-swap="outerHTML">
   <b><h1 style="font-size: x-large; text-align: left;">{{ post.title }}</h1></b>
   <textarea id="posttext{{ post.id }}" name="posttext{{ post.id }}" class="edit-box">{{ post.text }}</textarea>
   <br />
   <button type="submit" class="post-button" style="cursor: pointer;"
-    hx-target="#post{{ post.id }}" 
-    hx-swap="outerHTML"
     _="on mouseenter add .lightgreen-background to me 
         on mouseleave remove .lightgreen-background from me">Save</button>
   <a type="button" 
