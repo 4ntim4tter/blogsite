@@ -89,6 +89,14 @@
         "documentation": {}
     },
     {
+        "label": "reverse",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -379,7 +387,23 @@
         "documentation": {}
     },
     {
+        "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
         "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "RequestFactory",
         "importPath": "django.test",
         "description": "django.test",
         "isExtraImport": true,
@@ -500,6 +524,30 @@
         "documentation": {}
     },
     {
+        "label": "save_new",
+        "importPath": "users.views",
+        "description": "users.views",
+        "isExtraImport": true,
+        "detail": "users.views",
+        "documentation": {}
+    },
+    {
+        "label": "Post",
+        "importPath": "posts.models",
+        "description": "posts.models",
+        "isExtraImport": true,
+        "detail": "posts.models",
+        "documentation": {}
+    },
+    {
+        "label": "Post",
+        "importPath": "posts.models",
+        "description": "posts.models",
+        "isExtraImport": true,
+        "detail": "posts.models",
+        "documentation": {}
+    },
+    {
         "label": "views",
         "importPath": "posts",
         "description": "posts",
@@ -537,14 +585,6 @@
         "description": "django.core.paginator",
         "isExtraImport": true,
         "detail": "django.core.paginator",
-        "documentation": {}
-    },
-    {
-        "label": "Post",
-        "importPath": "posts.models",
-        "description": "posts.models",
-        "isExtraImport": true,
-        "detail": "posts.models",
         "documentation": {}
     },
     {
@@ -912,7 +952,7 @@
         "kind": 6,
         "importPath": "blogsite.posts.views",
         "description": "blogsite.posts.views",
-        "peekOfCode": "class PostsIndexView(ListView):\n    template_name = \"posts/index.html\"\n    context_object_name = \"latest_posts_list\"\n    model = Post\n    paginate_by = 3\n    def get_template_names(self):\n        if self.request.htmx:\n            return 'snippets/load_on_scroll.html'\n        return self.template_name\n    def get_queryset(self):",
+        "peekOfCode": "class PostsIndexView(ListView):\n    template_name = \"posts/index.html\"\n    context_object_name = \"latest_posts_list\"\n    model = Post\n    paginate_by = 1\n    def get_template_names(self):\n        if self.request.htmx:\n            return 'snippets/load_on_scroll.html'\n        return self.template_name\n    def get_queryset(self):",
         "detail": "blogsite.posts.views",
         "documentation": {}
     },
@@ -984,7 +1024,7 @@
         "kind": 6,
         "importPath": "blogsite.users.tests",
         "description": "blogsite.users.tests",
-        "peekOfCode": "class TestViews(TestCase):\n    def test_auth_user(self):\n        client = Client()\n        response = client.post('/authenticate/', {'username':'sarmica', 'password':'123321'})\n        self.assertEqual(response.status_code, 200)",
+        "peekOfCode": "class TestViews(TestCase):\n    def setUp(self):\n        self.factory = RequestFactory()\n        self.client = Client()\n        self.user = User.objects.create(username='digimon22', password='232312')\n        self.post = Post.objects.create(username=self.user, title=\"Post Title\", text=\"This is the text of the post\", pub_date=\"2024-01-25\")\n    def test_auth_user(self):\n        response = self.client.post('/authenticate/', {'username':'digimon22', 'password':'232312'})\n        self.assertEqual(response.status_code, 200)\n    def test_create_user(self):",
         "detail": "blogsite.users.tests",
         "documentation": {}
     },
@@ -993,7 +1033,7 @@
         "kind": 5,
         "importPath": "blogsite.users.urls",
         "description": "blogsite.users.urls",
-        "peekOfCode": "urlpatterns = [\n    path('login/', views.login_user, name='login_user'),\n    path('register/', views.register_user, name='register_user'),\n    path('create/', views.create_user, name='create_user'),\n    path('authenticate/', views.auth_user, name='auth_user'),\n    path('dash/', views.dash_user, name='dash_user'),\n    path('new_post/', views.new_post, name='new_post'),\n    path('save_new/', views.save_new, name='save_new'),\n    path('cancel_new/', views.cancel_new, name='cancel_new'),\n    path('edit_post/<int:pk>/', views.edit_post, name='edit_post'),",
+        "peekOfCode": "urlpatterns = [\n    path('login/', views.login_user, name='login_user'),\n    path('register/', views.register_user, name='register_user'),\n    path('create/', views.create_user, name='create_user'),\n    path('authenticate/', views.auth_user, name='auth_user'),\n    path('user_profile/', views.user_profile, name='user_profile'),\n    path('dash/', views.dash_user, name='dash_user'),\n    path('new_post/', views.new_post, name='new_post'),\n    path('save_new/', views.save_new, name='save_new'),\n    path('cancel_new/', views.cancel_new, name='cancel_new'),",
         "detail": "blogsite.users.urls",
         "documentation": {}
     },
@@ -1002,7 +1042,7 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def login_user(request):\n    return render(request, \"users/login.html\", {})\ndef register_user(request):\n    return render(request, \"users/register.html\", {})\n@login_required\ndef dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 5)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))",
+        "peekOfCode": "def login_user(request):\n    return render(request, \"users/login.html\", {})\ndef register_user(request):\n    return render(request, \"users/register.html\", {})\n@login_required\ndef dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 1)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
@@ -1011,7 +1051,7 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def register_user(request):\n    return render(request, \"users/register.html\", {})\n@login_required\ndef dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 5)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))\n    if request.htmx:\n        return render(request, \"snippets/user_posts.html\", {\"posts\": selected_page})",
+        "peekOfCode": "def register_user(request):\n    return render(request, \"users/register.html\", {})\n@login_required\ndef dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 1)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))\n    if request.htmx:\n        return render(request, \"snippets/user_posts.html\", {\"posts\": selected_page})",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
@@ -1020,7 +1060,7 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 5)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))\n    if request.htmx:\n        return render(request, \"snippets/user_posts.html\", {\"posts\": selected_page})\n    return render(request, \"users/dash.html\", {\"posts\": selected_page})\ndef create_user(request):\n    if User.objects.filter(username=request.POST[\"username\"]):",
+        "peekOfCode": "def dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 1)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))\n    if request.htmx:\n        return render(request, \"snippets/user_posts.html\", {\"posts\": selected_page})\n    return render(request, \"users/dash.html\", {\"posts\": selected_page})\ndef create_user(request):\n    if User.objects.filter(username=request.POST[\"username\"]):",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
@@ -1039,6 +1079,15 @@
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
         "peekOfCode": "def auth_user(request):\n    user = authenticate(\n        request, username=request.POST[\"username\"], password=request.POST[\"password\"]\n    )\n    if user is not None:\n        login(request, user)\n        messages.success(request, \"Login Successful.\")\n        return redirect(\"index\")\n    else:\n        messages.error(request, \"Incorrect Credentials\")",
+        "detail": "blogsite.users.views",
+        "documentation": {}
+    },
+    {
+        "label": "user_profile",
+        "kind": 2,
+        "importPath": "blogsite.users.views",
+        "description": "blogsite.users.views",
+        "peekOfCode": "def user_profile(request):\n    posts = Post.objects.filter(username=request.user.pk).order_by('-pub_date')[:5]\n    return render(request, \"users/profile.html\", {\"posts\": posts})\n@login_required\ndef logout_user(request):\n    logout(request)\n    messages.success(request, \"Logged out.\")\n    return redirect(\"index\")\n@login_required\n@require_http_methods([\"DELETE\"])",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
