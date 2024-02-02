@@ -1,9 +1,10 @@
 <a id="new-post-button" name="new-post-button" class="post-button" style="position: fixed;
-    margin-top:20px;
+    margin-top:30px;
     right: 0; 
     margin-right: 4px; 
     width: 120px; 
-    text-align: center;" 
+    text-align: center;
+    z-index: 7;" 
     hx-post="{% url 'new_post' %}"
     hx-swap="outerHTML"
     _="on mouseenter add .lightgreen-background to me 

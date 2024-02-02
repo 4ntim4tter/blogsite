@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
   <br />
-  <center class="main-margin post-card">
+  <center class="main-margin post-card fixed">
     <b><h1 class="posted-title" type="button" style="text-align: center;">{{ post.title }}</h1></b>
     <br/>
     {% autoescape off %}
-    <p class="posted-text-post" style="text-align: justify; display: flex; overflow: auto; height: auto; word-wrap: break-word;">{{ post.text }}</p><br>
+    <p class="posted-text-post" style="text-align: justify; overflow: auto; height: auto; word-wrap: break-word;">{{ post.text }}</p><br>
     {% endautoescape %}
     {% for link in post.get_links %}
         {% autoescape off %}
@@ -18,7 +18,7 @@
         </div>
     {% endif %}
     {% if user.is_authenticated %}
-    <button name="add-comment" id="add-comment" class="post-button" style="width: 120px; margin-right: 100%;" 
+    <button name="add-comment" id="add-comment" class="post-button" style="width: 120px; position: absolute; left:5px; bottom:5px;" 
     _="on click add @hidden to me then remove @hidden from #new-comment">Add Comment</button>
     <br/>
     <div name="new-comment" id="new-comment" hidden>
