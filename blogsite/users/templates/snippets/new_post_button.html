@@ -1,11 +1,9 @@
-<a id="new-post-button" name="new-post-button" class="post-button" style="position: fixed;
-    margin-top:30px;
-    right: 0; 
-    margin-right: 4px; 
-    width: 120px; 
+<a id="new-post-button" name="new-post-button" type="button" class="new-post-button" style="position: fixed;
+    top: 48px;
+    right: 4px; 
     text-align: center;
     z-index: 7;" 
     hx-post="{% url 'new_post' %}"
     hx-swap="outerHTML"
     _="on mouseenter add .lightgreen-background to me 
-        on mouseleave remove .lightgreen-background from me">+ New Post</a>
+        on mouseleave remove .lightgreen-background from me"></a>

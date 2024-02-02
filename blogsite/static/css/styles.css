@@ -12,6 +12,22 @@
     box-shadow: 2px 2px 2px rgb(58, 58, 58);
 }
 
+.new-post-button:before{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    min-width: 32px;
+    min-height: 32px;
+    color: white;
+    background-color: rgb(128,128,128) !important;
+    -webkit-text-stroke: 1px white;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px rgb(58, 58, 58);
+    content: '+ New Post';
+}
+
 .red-background{
     background-color: red !important;
 }
@@ -75,8 +91,8 @@
 }
 
 .main-margin{
-    margin-left: 15%; 
-    margin-right: 15%; 
+    margin-left: 20%; 
+    margin-right: 20%; 
     margin-top: 4%;
 }
 
@@ -145,5 +161,21 @@ a:hover{
         margin-left: 8%; 
         margin-right: 8%; 
         margin-top: 15%;
+    }
+}
+
+@media screen and (max-device-width : 480px){
+    .new-post-button:before{
+        padding-left: 10px;
+        padding-right: 10px;
+        min-width: 32px;
+        min-height: 32px;
+        color: white;
+        background-color: rgb(128,128,128) !important;
+        -webkit-text-stroke: 1px white;
+        border-radius: 4px;
+        cursor: pointer;
+        box-shadow: 2px 2px 2px rgb(58, 58, 58);
+        content: '+';
     }
 }
