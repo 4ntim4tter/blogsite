@@ -1,3 +1,7 @@
+html{
+    background-color: rgb(230, 230, 230);
+}
+
 .post-button{
     padding: 4px;
     min-width: 80px;
@@ -95,6 +99,7 @@
     margin-right: 20%; 
     margin-top: 4%;
 }
+
 
 .posted-comment{
     text-align: justify;
