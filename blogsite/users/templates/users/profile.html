@@ -9,23 +9,8 @@
                {{user}}
             </h1>
         </div>
-        <div class="title-card" style="margin-top: 30px; margin-left: 15px; transform: translateX(-150%); opacity: 0; padding-bottom: 7px;"
-        _="on load wait 0.1s then transition my *opacity to 1
-        on load wait 0.1s then transition my *transform to 'translateX(0%)' over 0.2s">
-        <p style="font-weight: bold; border-radius: 3px; border-bottom: 2px solid black;">Latest posts:</p>
-        {% for post in posts %}
-            <div style="border-radius: 3px; border-bottom: 2px solid black;">
-                <p style="font-size: small; font-weight: bold; text-transform: capitalize;">
-                   <a href="{% url 'see_post' post.pk %}" type="button" style="cursor: pointer;">
-                       {{post}}
-                   </a>
-                </p>
-                <p style="font-size: small; font-weight: bold; text-transform: capitalize;">
-                    Liked: {{post.likes}} {% if post.likes == 1 %}time.{% else %}times.{% endif %}
-                </p>
-            </div>
-        {% endfor %}
-        </div>
+        {% include 'snippets/latest_posts.html' %}
+        {% include 'snippets/top_liked_posts.html' %}
     </div>
 </center>
 {% endblock %}
