@@ -16,17 +16,12 @@ class Post(models.Model):
         return self.title
     
     def comment_number(self):
-        count = self.comment_set.count()
-        self.comments_count = count
-        self.save()
-        return self.comments_count
+        return self.comment_set.count()
 
     def likes(self):
         content_type = ContentType.objects.get_for_model(Post)
         likes = Like.objects.all().filter(object_id=self.pk, content_type=content_type).count()
-        self.likes_count = likes
-        self.save()
-        return self.likes_count
+        return likes
     
     def create_links(self, text:str):
         links = []
@@ -64,6 +59,7 @@ class Comment(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     text = models.CharField(max_length=700)
+    likes_count = models.IntegerField()
     pub_date = models.DateField()
 
     def __str__(self):

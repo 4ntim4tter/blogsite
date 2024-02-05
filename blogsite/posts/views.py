@@ -53,6 +53,8 @@ class CommentPost(ListView):
                                              text=request.POST['new-comment-area'], 
                                              pub_date=datetime.date.today())
         new_comment.save()
+        post.comments_count += 1
+        post.save()
         messages.success(request, "Commented Successfuly.")
         return redirect('show_comments', pk=pk)
 
@@ -68,10 +70,14 @@ class LikePost(ListView):
         if this_like.count() == 0:
             this_like = Like(user=request.user, content_type=content_type, object_id=pk)
             this_like.save()
+            liked_post.likes_count += 1
+            liked_post.save()
             return render(request, self.template_name, {'post':liked_post, 'this_like':this_like})
         else:
             this_like = this_like[0]
             this_like.delete()
+            liked_post.likes_count -= 1
+            liked_post.save()
             this_like = None
             return render(request, self.template_name, {'post':liked_post, 'this_like':this_like})
 
@@ -92,10 +98,14 @@ class LikeComment(ListView):
         if this_like.count() == 0:
             this_like = Like(user=request.user, content_type=content_type, object_id=pk)
             this_like.save()
+            comment.likes_count += 1
+            comment.save()
             return render(request, self.template_name, {'comment':comment, 'comment_like':this_like})
         else:
             this_like = this_like[0]
             this_like.delete()
+            comment.likes_count -= 1
+            comment.save()
             this_like = None
             return render(request, self.template_name, {'comment':comment, 'comment_like':this_like})
         
