@@ -58,8 +58,9 @@ def auth_user(request):
 
 @login_required
 def user_profile(request):
-    posts = Post.objects.filter(username=request.user.pk).order_by('-pub_date')[:5]
-    return render(request, "users/profile.html", {"posts": posts})
+    latest_posts = Post.objects.filter(username=request.user.pk).order_by('-pub_date')[:5]
+    top_posts = Post.objects.filter(username=request.user.pk).order_by('-likes_count')[:5]
+    return render(request, "users/profile.html", {"latest_posts": latest_posts, "top_posts": top_posts})
 
 
 @login_required

@@ -1,16 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 <center>
-    <div class="" style="width: 100%; position: relative;">
+    <div style="width: 100%; position: relative;">
         <div class="title-card" style="margin-top: 100px; margin-left: 15px; transform: translateX(-150%); opacity: 0;"
         _="on load transition my *opacity to 1
         on load transition my *transform to 'translateX(0%)' over 0.2s">
-            <h1 style="font-size: xx-large; font-weight: bolder; text-transform: capitalize;">
+            <h1 style="font-size: xx-large; font-weight: bolder; text-transform: capitalize; ">
                {{user}}
             </h1>
         </div>
-        {% include 'snippets/latest_posts.html' %}
-        {% include 'snippets/top_liked_posts.html' %}
+        <div class="profile-cards">
+            {% include 'snippets/latest_posts.html' %}
+            {% include 'snippets/top_liked_posts.html' %}
+        </div>
+        <div class="profile-cards">
+            {% include 'snippets/latest_posts.html' %}
+            {% include 'snippets/top_liked_posts.html' %}
+        </div>
     </div>
 </center>
 {% endblock %}

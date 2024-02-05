@@ -8,18 +8,25 @@ class Post(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     text = models.TextField(max_length=5000)
+    likes_count = models.IntegerField()
+    comments_count = models.IntegerField()
     pub_date = models.DateField()
 
     def __str__(self) -> str:
         return self.title
     
     def comment_number(self):
-        return self.comment_set.count()
+        count = self.comment_set.count()
+        self.comments_count = count
+        self.save()
+        return self.comments_count
 
     def likes(self):
         content_type = ContentType.objects.get_for_model(Post)
         likes = Like.objects.all().filter(object_id=self.pk, content_type=content_type).count()
-        return likes
+        self.likes_count = likes
+        self.save()
+        return self.likes_count
     
     def create_links(self, text:str):
         links = []
