@@ -141,6 +141,16 @@ html{
     box-shadow: 5px 5px 5px gray;
 }
 
+.profile-card {
+    background-color: lightgray;
+    width: 300px;
+    height: 231px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px gray;
+}
+
 .profile-cards {
     display: inline-flex;
 }

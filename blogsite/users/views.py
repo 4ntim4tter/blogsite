@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
 from django.core.paginator import Paginator
-from posts.models import Post
+from posts.models import Post, Comment
 import datetime
 
 
@@ -58,9 +58,20 @@ def auth_user(request):
 
 @login_required
 def user_profile(request):
-    latest_posts = Post.objects.filter(username=request.user.pk).order_by('-pub_date')[:5]
-    top_posts = Post.objects.filter(username=request.user.pk).order_by('-likes_count')[:5]
-    return render(request, "users/profile.html", {"latest_posts": latest_posts, "top_posts": top_posts})
+    latest_posts = Post.objects.filter(username=request.user.pk).order_by("-pub_date")[:5]
+    top_posts = Post.objects.filter(username=request.user.pk).order_by("-likes_count")[:5]
+    latest_comments = Comment.objects.filter(username=request.user.pk).order_by("-pub_date")[:5]
+    top_comments = Comment.objects.filter(username=request.user.pk).order_by("-likes_count")[:5]
+    return render(
+        request,
+        "users/profile.html",
+        {
+            "latest_posts": latest_posts,
+            "top_posts": top_posts,
+            "latest_comments": latest_comments,
+            "top_comments": top_comments,
+        },
+    )
 
 
 @login_required
