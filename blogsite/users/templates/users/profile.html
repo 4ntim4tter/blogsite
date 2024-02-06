@@ -9,14 +9,15 @@
                {{user}}
             </h1>
         </div>
-        <div class="profile-cards">
-            {% include 'snippets/latest_posts.html' %}
-            {% include 'snippets/top_posts.html' %}
-        </div>
-        <div class="profile-cards">
-            {% include 'snippets/latest_comments.html' %}
-            {% include 'snippets/top_comments.html' %}
-        </div>
+            <div class="profile-cards">
+                {% include 'snippets/latest_posts.html' %}
+                {% include 'snippets/top_posts.html' %}
+            </div>
+            <br>
+            <div class="profile-cards">
+                {% include 'snippets/latest_comments.html' %}
+                {% include 'snippets/top_comments.html' %}
+            </div>
     </div>
 </center>
 {% endblock %}
