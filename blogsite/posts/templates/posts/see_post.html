@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
   <br />
-  <center class="main-margin post-card fixed">
+  <center class="post-card" style="position: absolute; left: 50%; transform: translateX(-50%); top: 65px;">
     <b><h1 class="posted-title" type="button" style="text-align: center;">{{ post.title }}</h1></b>
     <br/>
     {% autoescape off %}
@@ -18,21 +18,20 @@
         </div>
     {% endif %}
     {% if user.is_authenticated %}
-    <button name="add-comment" id="add-comment" class="post-button" style="width: 120px; position: absolute; left:5px; bottom:5px;" 
+    <button name="add-comment" id="add-comment" class="post-button" style="width: 120px; position: absolute; left: 5px;" 
     _="on click add @hidden to me then remove @hidden from #new-comment">Add Comment</button>
     <br/>
     <div name="new-comment" id="new-comment" hidden>
       <form hx-post="{% url 'post_comment' post.id %}"
             hx-target="#all-comments"
       _="on htmx:afterRequest add @hidden to #new-comment then remove @hidden from #add-comment
-          then put '' into <textarea />'s value">
+          then put '' into <textarea />"s value">
         <textarea name="new-comment-area" 
         id="new-comment-area" 
         cols="80" rows="10" 
         placeholder="Comment here..."
-        style="margin-right: 100%;"
         required></textarea>
-        <div style="display: inline-flex; float: inline-start;">
+        <div style="">
           <button class="post-button" type="submit" style="margin-right: 10px; width: 100px;"
           >Comment</button>
           <button class="post-button" type="reset"
