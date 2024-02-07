@@ -1,11 +1,12 @@
 <div id="newpost" name="newpost" class="post-card"
 style="position: fixed;
-margin-top: 20px; 
-right: 0; 
-margin-right: 4px; 
+margin-top: 40px;
+left: 50%;
+transform: translateX(-50%);
 text-align: justify;
 height: fit-content;
-z-index: 7;"
+z-index: 7;
+box-shadow: 0 0 2px 2px gray;"
 hx-post="{% url 'cancel_new' %}"
 hx-trigger="htmx:afterRequest once"
 hx-target="#newpost"
@@ -19,7 +20,10 @@ hx-swap="outerHTML">
         style="width:300px; 
         font-size: x-large; 
         text-align: left; 
-        border: 1px darkgray solid;"></textarea></b>
+        border: 1px darkgray solid;
+        border-radius: 4px;
+        box-shadow: 0 0 2px 2px gray;
+        margin-top: 10px;"></textarea></b>
     <br>
     <textarea id="posttext" name="posttext" 
     class="edit-box"
@@ -27,22 +31,26 @@ hx-swap="outerHTML">
     style="min-height:300px;
     min-width: 300px; 
     height:fit-content; 
-    width:250px; border: 
-    1px darkgray solid;"></textarea>
+    width:250px; 
+    border: 1px darkgray solid;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 2px gray;"></textarea>
     <br />
-    <button id="save_button" name="save_button" type="submit" 
-    class="post-button" 
-    style="cursor: pointer; text-align: center; left: 0px; position: relative;"
-      _="on mouseenter toggle .lightgreen-background on me until mouseleave">Save</button>
-    <a type="button" 
-      class="post-button" 
-      style="cursor: pointer; text-align: center; right: 0px; position: relative;"
-      hx-post="{% url 'cancel_new' %}"
-      hx-confirm="You will lose your unsaved text, are you sure?"
-      hx-target="#newpost"
-      hx-swap="innerHTML" 
-      _="on mouseenter toggle .red-background on me until mouseleave
-          on keyup[key is 'Escape'] from the body trigger click">Cancel</a>
+    <center style="padding:5px">
+      <button id="save_button" name="save_button" type="submit"
+      class="post-button"
+      style="cursor: pointer; text-align: center; left: 0px; position: relative;"
+        _="on mouseenter toggle .lightgreen-background on me until mouseleave">Save</button>
+      <a type="button"
+        class="post-button"
+        style="cursor: pointer; text-align: center; right: 0px; position: relative;"
+        hx-post="{% url 'cancel_new' %}"
+        hx-confirm="You will lose your unsaved text, are you sure?"
+        hx-target="#newpost"
+        hx-swap="innerHTML"
+        _="on mouseenter toggle .red-background on me until mouseleave
+            on keyup[key is 'Escape'] from the body trigger click">Cancel</a>
+    </center>
     </form>
-</div>
+  </div>
   

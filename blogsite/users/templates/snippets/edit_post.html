@@ -1,4 +1,4 @@
-<div id="post{{ post.id }}" style="margin-top: 10px; padding-bottom: 50px;">
+<div id="post{{ post.id }}" class="post-card" style="margin-top: 15px; padding-bottom: 20px;">
   <form hx-post="{% url 'save_post' post.pk %}" 
     hx-confirm="Are you sure you want to edit this post?"
     hx-target="#post{{ post.id }}" 
@@ -8,17 +8,19 @@
     <textarea id="posttext{{ post.id }}" name="posttext{{ post.id }}" class="edit-box">{{ post.text }}</textarea>
   </div>
   <br />
-  <button type="submit" class="post-button" style="cursor: pointer;"
-    _="on mouseenter add .lightgreen-background to me 
-        on mouseleave remove .lightgreen-background from me">Save</button>
-  <a type="button" 
-    class="post-button" 
-    style="cursor: pointer;"
-    hx-confirm="You will lose your unsaved text, are you sure?"
-    hx-post="{% url 'cancel_edit' post.pk %}" 
-    hx-target="#post{{ post.id }}" 
-    hx-swap="outerHTML" 
-    _="on mouseenter add .red-background to me 
-        on mouseleave remove .red-background from me">Cancel</a>
+  <div>
+    <button type="submit" class="post-button" style="cursor: pointer;"
+      _="on mouseenter add .lightgreen-background to me
+          on mouseleave remove .lightgreen-background from me">Save</button>
+    <a type="button"
+      class="post-button"
+      style="cursor: pointer;"
+      hx-confirm="You will lose your unsaved text, are you sure?"
+      hx-post="{% url 'cancel_edit' post.pk %}"
+      hx-target="#post{{ post.id }}"
+      hx-swap="outerHTML"
+      _="on mouseenter add .red-background to me
+          on mouseleave remove .red-background from me">Cancel</a>
+  </center>
   </form>
 </div>

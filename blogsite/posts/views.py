@@ -51,7 +51,8 @@ class CommentPost(ListView):
         new_comment = Comment.objects.create(username=user, 
                                              post=post, 
                                              text=request.POST['new-comment-area'], 
-                                             pub_date=datetime.date.today())
+                                             pub_date=datetime.date.today(),
+                                             likes_count=0)
         new_comment.save()
         post.comments_count += 1
         post.save()

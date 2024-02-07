@@ -8,10 +8,10 @@ on load transition my opacity to 1 over 0.7 seconds">
   <div class="post-card" style="position: relative; transform: translateX(-150%);"
   _="on load transition my *transform to 'translateX(0%)' over 0.5s">
   {% endif %}
-        <a href="">
+        <a href="" style="cursor: pointer;">
           <p style="float:right; text-transform: capitalize;">{{post.username}}</p>
         </a>
-        <b style="">
+        <b>
           <h1 class="posted-title">
             <a href="{% url 'see_post' post.id %}" type="button" style="cursor: pointer;">{{ post.title }}</a></h1>
         </b>

@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-  <br />
+  <br /> 
+  {% if user.is_authenticated %}
+  {% include 'snippets/new_post_button.html' %}
+  {% endif %}
   <center class="main-margin">
     {% if messages %}
     {% for message in messages %}
@@ -9,6 +12,8 @@
       </ul>
     {% endfor %}
     {% endif %}
-    {% include 'snippets/load_on_scroll.html' %}
+    <div id="main" name="main">
+      {% include 'snippets/load_on_scroll.html' %}
+    </div>
   </center>
 {% endblock %}

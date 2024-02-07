@@ -19,13 +19,16 @@
 <div class="post-card" id="post{{ post.id }}" style="transform: translateX(-150%); opacity: 0;"
     _="on load transition my *opacity to 1 over 1 seconds
     on load transition my *transform to 'translateX(0%)' over 0.5 seconds
-    on mouseenter toggle @hidden on #delete{{post.id}} until mouseleave
-    on mouseenter toggle @hidden on #edit{{post.id}} until mouseleave
-    on every mouseenter transition #delete{{post.id}} opacity to 1 over 0.4 seconds
-    on every mouseenter transition #edit{{post.id}} opacity to 1 over 0.4 seconds
-    on every mouseleave transition #delete{{post.id}} opacity to 0
-    on every mouseleave transition #edit{{post.id}} opacity to 0">
+    on mouseenter wait 0.5s then toggle @hidden on #delete{{post.id}} until mouseleave
+    on mouseenter wait 0.5s then toggle @hidden on #edit{{post.id}} until mouseleave
+    on every mouseenter wait 0.5s then transition #delete{{post.id}} opacity to 1 over 0.4 seconds
+    on every mouseenter wait 0.5s then transition #edit{{post.id}} opacity to 1 over 0.4 seconds
+    on every mouseleave wait 0.5s then transition #delete{{post.id}} opacity to 0
+    on every mouseleave wait 0.5s then transition #edit{{post.id}} opacity to 0">
     <b><h1 class="posted-title">{{ post.title }}</h1></b>
+    <a href="{% url 'see_post' post.id %}">
+        <p style="position:absolute; left: 5px; bottom: 5px;">{{post.comment_number}} {% if post.comment_number == 1 %}comment{% else %}comments{% endif %}</p>
+    </a>
     {% autoescape off %}
     <p id="posttext{{post.id}}" class="posted-text">{{ post.text }}</p>
     {% endautoescape %}

@@ -126,6 +126,8 @@ def save_new(request):
         title=request.POST["posttitle"],
         text=request.POST["posttext"],
         pub_date=datetime.date.today(),
+        likes_count=0,
+        comments_count=0,
     )
     post.text = post.create_links(request.POST["posttext"])
     post.save()
