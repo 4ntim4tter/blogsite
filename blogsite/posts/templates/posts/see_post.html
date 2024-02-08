@@ -25,7 +25,7 @@
       <form hx-post="{% url 'post_comment' post.id %}"
             hx-target="#all-comments"
       _="on htmx:afterRequest add @hidden to #new-comment then remove @hidden from #add-comment
-          then put '' into <textarea />"s value">
+          then put '' into <textarea />'s value">
         <textarea name="new-comment-area" 
         id="new-comment-area" 
         cols="80" rows="10" 

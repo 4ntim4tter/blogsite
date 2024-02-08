@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
@@ -58,6 +59,8 @@ def auth_user(request):
 
 @login_required
 def user_profile(request):
+    liked_posts = Post.objects.filter(username=request.user.pk).aggregate(Sum('likes_count'))['likes_count__sum']
+    liked_comments = Comment.objects.filter(username=request.user.pk).aggregate(Sum('likes_count'))['likes_count__sum']
     latest_posts = Post.objects.filter(username=request.user.pk).order_by("-pub_date")[:5]
     top_posts = Post.objects.filter(username=request.user.pk).order_by("-likes_count")[:5]
     latest_comments = Comment.objects.filter(username=request.user.pk).order_by("-pub_date")[:5]
@@ -70,6 +73,8 @@ def user_profile(request):
             "top_posts": top_posts,
             "latest_comments": latest_comments,
             "top_comments": top_comments,
+            "liked_posts" : liked_posts,
+            "liked_comments" : liked_comments
         },
     )
 

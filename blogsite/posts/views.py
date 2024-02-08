@@ -1,5 +1,4 @@
 import datetime
-from typing import Any
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import redirect, render
 from django.views.generic import ListView

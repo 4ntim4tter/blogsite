@@ -125,6 +125,8 @@ html{
 
 .title-card {
     background-color: lightgray;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
     width: max-content;
     padding-left: 10px;
     padding-right: 10px;
@@ -134,6 +136,8 @@ html{
 
 .post-card {
     background-color: lightgray;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
     border-radius: 5px;
     padding-left: 5px;
     padding-right: 5px;
@@ -143,6 +147,8 @@ html{
 
 .profile-card {
     background-color: lightgray;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
     width: 300px;
     height: 231px;
     padding-left: 10px;
@@ -153,6 +159,10 @@ html{
 
 .profile-cards {
     display: inline-flex;
+}
+
+.disable-click {
+    pointer-events: none;
 }
 
 a:link{

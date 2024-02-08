@@ -7,6 +7,10 @@
         on load transition my *transform to 'translateX(0%)' over 0.2s">
             <h1 style="font-size: xx-large; font-weight: bolder; text-transform: capitalize; ">
                {{user}}
+               {{user.comment_set.count}}
+               {{user.post_set.count}}
+               {{liked_posts}}
+               {{liked_comments}}
             </h1>
         </div>
             <div class="profile-cards">
