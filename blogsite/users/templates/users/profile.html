@@ -7,11 +7,22 @@
         on load transition my *transform to 'translateX(0%)' over 0.2s">
             <h1 style="font-size: xx-large; font-weight: bolder; text-transform: capitalize; ">
                {{user}}
-               {{user.comment_set.count}}
-               {{user.post_set.count}}
-               {{liked_posts}}
-               {{liked_comments}}
             </h1>
+            <b>
+                Times Commented: {{user.comment_set.count}}
+            </b>
+            <br>
+            <b>
+                Posts Made: {{user.post_set.count}}
+            </b>
+            <br>
+            <b>
+                Likes on Posts: {{liked_posts}}
+            </b>
+            <br>
+            <b>
+                Likes on Comments: {{liked_comments}}
+            </b>
         </div>
             <div class="profile-cards">
                 {% include 'snippets/latest_posts.html' %}
