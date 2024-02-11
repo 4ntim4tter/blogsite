@@ -102,7 +102,6 @@ html{
 
 
 .posted-comment{
-    text-align: justify;
     border-bottom: 1px black solid; 
     border-left: 1px black solid; 
     padding-left: 5px; 
@@ -143,6 +142,11 @@ html{
     padding-right: 5px;
     margin-bottom: 20px;
     box-shadow: 5px 5px 5px gray;
+    transition: 500ms;
+}
+
+.post-card:hover{
+    background-color: rgb(189, 189, 189);
 }
 
 .profile-card {

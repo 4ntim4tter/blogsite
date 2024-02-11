@@ -16,9 +16,8 @@
             {% endif %}
         {% endfor %}
     {% endif %}
-<div class="post-card" id="post{{ post.id }}" style="transform: translateX(-150%); opacity: 0;"
-    _="on load transition my *opacity to 1 over 1 seconds
-    on load transition my *transform to 'translateX(0%)' over 0.5 seconds
+<div class="post-card" id="post{{ post.id }}" style="transform: translateX(-150%);"
+    _="on load transition my *transform to 'translateX(0%)' over 0.5 seconds
     on mouseenter wait 0.5s then toggle @hidden on #delete{{post.id}} until mouseleave
     on mouseenter wait 0.5s then toggle @hidden on #edit{{post.id}} until mouseleave
     on mouseenter wait 0.5s then remove .disable-click from #mod-buttons{{post.id}}
