@@ -118,8 +118,9 @@ html{
 }
 
 .video-thumb {
-    width: 48px;
-    height: 48px;
+    width: 100%;
+    border-radius: 5px;
+    resize: both;
 }
 
 .title-card {

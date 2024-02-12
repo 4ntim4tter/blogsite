@@ -1,14 +1,17 @@
 {% for link in post.get_links %}
     {% autoescape off %}
-    <span style="display: flex;">
-      <div name="link{{forloop.counter}}{{post.id}}" id="link{{forloop.counter}}{{post.id}}" 
-      style="width: fit-content; align-self: flex-start;" hidden>
-      <iframe src='http://www.youtube.com/embed/{{link.link}}' style='width:560px; height:316px' frameborder='1' allowfullscreen></iframe></div>
-      <p type="button" class="fab fa-youtube x-button" style="cursor: pointer; align-self: flex-end;"
-      _="on click toggle @hidden on #link{{forloop.counter}}{{post.id}}
-      on click toggle @hidden on #text{{forloop.counter}}{{post.id}}">
-      <p name="text{{forloop.counter}}{{post.id}}" id="text{{forloop.counter}}{{post.id}}" 
-      style="font-family: Arial, Helvetica, sans-serif; font-size:small; position: relative; top:1px;"></p></p class="mouseover-x">
-    </span>
+    <div style="line-height: 16px;">
+      <span style="display: flex;">
+        <p type="button" class="fab fa-youtube x-button" style="cursor: pointer; position: absolute; left: 7px;"
+        _="on click toggle @hidden on #link{{forloop.counter}}{{post.id}}
+        on click toggle @hidden on #text{{forloop.counter}}{{post.id}}">
+        <div name="link{{forloop.counter}}{{post.id}}" id="link{{forloop.counter}}{{post.id}}"
+        style="width: fit-content; align-self: flex-start; " hidden>
+        <iframe src='http://www.youtube.com/embed/{{link.link}}' class="video-thumb" frameborder='1' allowfullscreen></iframe></div>
+        <p name="text{{forloop.counter}}{{post.id}}" id="text{{forloop.counter}}{{post.id}}"
+        style="font-family: Arial, Helvetica, sans-serif; font-size:small; position: relative; top:1px;"></p></p class="mouseover-x">
+      </span>
+      <br>
+    </div>
     {% endautoescape %}
 {% endfor %}

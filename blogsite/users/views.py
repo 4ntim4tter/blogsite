@@ -57,18 +57,19 @@ def auth_user(request):
         return render(request, "users/login.html")
 
 
-@login_required
-def user_profile(request):
-    liked_posts = Post.objects.filter(username=request.user.pk).aggregate(Sum('likes_count'))['likes_count__sum']
-    liked_comments = Comment.objects.filter(username=request.user.pk).aggregate(Sum('likes_count'))['likes_count__sum']
-    latest_posts = Post.objects.filter(username=request.user.pk).order_by("-pub_date")[:5]
-    top_posts = Post.objects.filter(username=request.user.pk).order_by("-likes_count")[:5]
-    latest_comments = Comment.objects.filter(username=request.user.pk).order_by("-pub_date")[:5]
-    top_comments = Comment.objects.filter(username=request.user.pk).order_by("-likes_count")[:5]
+def user_profile(request, pk):
+    user = User.objects.get(pk=pk)
+    liked_posts = Post.objects.filter(username=user.pk).aggregate(Sum('likes_count'))['likes_count__sum']
+    liked_comments = Comment.objects.filter(username=user.pk).aggregate(Sum('likes_count'))['likes_count__sum']
+    latest_posts = Post.objects.filter(username=user.pk).order_by("-pub_date")[:5]
+    top_posts = Post.objects.filter(username=user.pk).order_by("-likes_count")[:5]
+    latest_comments = Comment.objects.filter(username=user.pk).order_by("-pub_date")[:5]
+    top_comments = Comment.objects.filter(username=user.pk).order_by("-likes_count")[:5]
     return render(
         request,
         "users/profile.html",
         {
+            "username": user.username,
             "latest_posts": latest_posts,
             "top_posts": top_posts,
             "latest_comments": latest_comments,

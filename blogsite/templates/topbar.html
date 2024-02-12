@@ -4,7 +4,7 @@
     class="post-button" 
     style="position:absolute; left: 10px; top: 3px; text-align: center;"
     _="on mouseenter toggle .lightgreen-background on me until mouseleave">Home</a>
-    <a href="{% url 'user_profile' %}" class="post-button" 
+    <a href="{% url 'user_profile' user.pk %}" class="post-button" 
     style="position:absolute; right: 200px; top: 3px; text-align: center; text-transform: capitalize;"
     _="on mouseenter toggle .lightgreen-background on me until mouseleave">{{user}}</a >
     <a href="{% url 'logout_user' %}" 
