@@ -17,15 +17,14 @@
         {% endfor %}
     {% endif %}
 <div class="post-card opacity-0" id="post{{ post.id }}" style="position: relative;"
-    _="on mouseenter wait 0.5s then toggle @hidden on #delete{{post.id}} until mouseleave
-    on mouseenter wait 0.5s then toggle @hidden on #edit{{post.id}} until mouseleave
+    _="
     on mouseenter wait 0.5s then remove .disable-click from #mod-buttons{{post.id}}
     on mouseleave add .disable-click to #mod-buttons{{post.id}}
     on load transition my opacity to 1 over 0.7 seconds
-    on every mouseenter wait 0.5s then transition #delete{{post.id}} opacity to 1 over 0.4 seconds
-    on every mouseenter wait 0.5s then transition #edit{{post.id}} opacity to 1 over 0.4 seconds
-    on every mouseleave wait 0.5s then transition #delete{{post.id}} opacity to 0
-    on every mouseleave wait 0.5s then transition #edit{{post.id}} opacity to 0">
+    on every mouseenter transition #delete{{post.id}} opacity to 1 over 0.5 seconds
+    on every mouseenter transition #edit{{post.id}} opacity to 1 over 0.5 seconds
+    on every mouseleave transition #delete{{post.id}} opacity to 0
+    on every mouseleave transition #edit{{post.id}} opacity to 0">
     <b><h1 class="posted-title">{{ post.title }}</h1></b>
     <div style="flex">
         {% include 'show_links.html' %}
@@ -44,7 +43,6 @@
     top: 5px; 
     right: 5px;">
         <a id="delete{{post.id}}" type="button" class="post-button" style="cursor: pointer;"
-        hidden
         hx-delete="{% url 'delete_post' post.pk %}"
         hx-confirm="Are you sure you want to delete this post?"
         hx-target="#post-container"
@@ -54,7 +52,6 @@
         on load set *opacity to 0
         ">Delete</a>
         <a id="edit{{post.id}}" type="button" class="post-button" style="cursor: pointer;"
-        hidden
         hx-post="{% url 'edit_post' post.pk %}"
         hx-target="#post{{post.id}}"
         hx-swap="outerHTML"
