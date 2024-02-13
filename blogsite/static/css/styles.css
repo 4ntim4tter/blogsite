@@ -24,7 +24,8 @@ html{
     height: 32px;
     color:  rgb(128,128,128);
     background-color:rgb(230, 230, 230);
-    -webkit-text-stroke: 1px rgb(128, 128, 128);
+    font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     border-radius: 4px;
     cursor: pointer;
     box-shadow: 2px 2px 2px rgb(58, 58, 58);
@@ -112,11 +113,11 @@ html{
 .main-margin{
     margin-left: 20%; 
     margin-right: 20%;
-    padding-top: 3%;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 50px;
     border-left: 2px solid lightgray; 
     border-right: 2px solid lightgray;
-    padding-left: 1%;
-    padding-right: 1%;
     box-shadow: 15px 0 15px gray, -15px 0 15px gray;
 }
 
@@ -156,13 +157,11 @@ html{
 
 .post-card {
     background-color: lightgray;
-    border-top: 1px solid gray;
-    border-left: 1px solid gray;
     border-radius: 5px;
     padding-left: 5px;
     padding-right: 5px;
     margin-bottom: 20px;
-    box-shadow: 3px 3px 3px gray;
+    box-shadow: 0px 2px 2px gray;
     transition: 500ms;
 }
 
@@ -183,7 +182,10 @@ html{
 }
 
 .profile-cards {
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-around;
 }
 
 .disable-click {
@@ -209,16 +211,14 @@ a:hover{
 @media only screen and (max-device-width : 480px){
     .main-margin{
         margin-left: 5%; 
-        margin-right: 5%; 
-        margin-top: 15%;
+        margin-right: 5%;
     }
 }
 
 @media only screen and (max-device-width : 840px){
     .main-margin{
         margin-left: 8%; 
-        margin-right: 8%; 
-        margin-top: 15%;
+        margin-right: 8%;
     }
 }
 
@@ -238,8 +238,8 @@ a:hover{
     }
 }
 
-@media screen and (max-device-width : 620px){
+/* @media screen and (max-device-width : 620px){
     .profile-cards {
         display: block;
     }
-}
+} */

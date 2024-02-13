@@ -2,33 +2,33 @@
   <div style="background-color: lightgray; height: 40px; position:fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 0 3px 3px gray;">
     <a href="{% url 'index' %}" 
     class="topbar-button" 
-    style="position:absolute; left: 10px; top: 3px; text-align: center;"
+    style="position:absolute; left: 10px; top: 3px; text-align: center; color: black;"
     _="on mouseenter toggle .lightgreen-background on me until mouseleave">Home</a>
     <a href="{% url 'user_profile' user.pk %}" class="topbar-button" 
-    style="position:absolute; right: 200px; top: 3px; text-align: center; text-transform: capitalize;"
+    style="position:absolute; right: 200px; top: 3px; text-align: center; text-transform: capitalize; color: black;"
     _="on mouseenter toggle .lightgreen-background on me until mouseleave">{{user}}</a >
     <a href="{% url 'logout_user' %}" 
     class="topbar-button" 
-    style="position:absolute; right: 10px; top: 3px; text-align: center;"
+    style="position:absolute; right: 10px; top: 3px; text-align: center; color: black;"
     _="on mouseenter toggle .lightgreen-background on me until mouseleave">Logout</a>
     <a href="{% url 'dash_user' %}"
     class="topbar-button" 
-    style="position:absolute; right: 100px; top: 3px; text-align: center; width: 90px;"
+    style="position:absolute; right: 100px; top: 3px; text-align: center; width: 90px; color: black;"
     _="on mouseenter toggle .lightgreen-background on me until mouseleave">Dashboard</a>
   </div>
 {% else %}
   <div style="background-color: lightgray; height: 40px; position:fixed; top: 0; width: 100%; z-index: 100; box-shadow: 0 0 3px 3px gray;">
     <a href="{% url 'index' %}" 
     class="topbar-button" 
-    style="position:absolute; left: 10px; top: 3px; text-align: center;"
+    style="position:absolute; left: 10px; top: 3px; text-align: center; color: black;"
     _="on mouseenter toggle .lightgreen-background on me until mouseleave">Home</a>
     <a href="{% url 'login_user' %}" 
     class="topbar-button" 
-    style="position:absolute; right: 10px; top: 3px; text-align: center;"
+    style="position:absolute; right: 10px; top: 3px; text-align: center; color: black;"
     _="on mouseenter toggle .lightgreen-background on me until mouseleave">Login</a>
     <a href="{% url 'register_user' %}" 
     class="topbar-button" 
-    style="position:absolute; right: 100px; top: 3px; text-align: center;"
+    style="position:absolute; right: 100px; top: 3px; text-align: center; color: black;"
     _="on mouseenter toggle .lightgreen-background on me until mouseleave">Register</a>
   </div>
 {% endif %}

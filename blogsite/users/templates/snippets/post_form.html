@@ -16,31 +16,32 @@
             {% endif %}
         {% endfor %}
     {% endif %}
-<div class="post-card" id="post{{ post.id }}" style="transform: translateX(-150%);"
-    _="on load transition my *transform to 'translateX(0%)' over 0.5 seconds
-    on mouseenter wait 0.5s then toggle @hidden on #delete{{post.id}} until mouseleave
+<div class="post-card opacity-0" id="post{{ post.id }}" style="position: relative;"
+    _="on mouseenter wait 0.5s then toggle @hidden on #delete{{post.id}} until mouseleave
     on mouseenter wait 0.5s then toggle @hidden on #edit{{post.id}} until mouseleave
     on mouseenter wait 0.5s then remove .disable-click from #mod-buttons{{post.id}}
     on mouseleave add .disable-click to #mod-buttons{{post.id}}
+    on load transition my opacity to 1 over 0.7 seconds
     on every mouseenter wait 0.5s then transition #delete{{post.id}} opacity to 1 over 0.4 seconds
     on every mouseenter wait 0.5s then transition #edit{{post.id}} opacity to 1 over 0.4 seconds
     on every mouseleave wait 0.5s then transition #delete{{post.id}} opacity to 0
     on every mouseleave wait 0.5s then transition #edit{{post.id}} opacity to 0">
     <b><h1 class="posted-title">{{ post.title }}</h1></b>
-    <a href="{% url 'see_post' post.id %}">
-        <p style="position:absolute; left: 5px; bottom: 5px;">{{post.comment_number}} {% if post.comment_number == 1 %}comment{% else %}comments{% endif %}</p>
-    </a>
+    <div style="flex">
+        {% include 'show_links.html' %}
+    </div>
     {% autoescape off %}
     <p id="posttext{{post.id}}" class="posted-text">{{ post.text }}</p>
     {% endautoescape %}
-    {% include 'show_links.html' %}
+    <a href="{% url 'see_post' post.id %}" style="position: absolute; right: 5px;">
+        <p>{{post.comment_number}} {% if post.comment_number == 1 %}comment{% else %}comments{% endif %}</p>
+    </a>
     <br>
     <div id="mod-buttons{{post.id}}" name="mod-buttons{{post.id}}"
     class="disable-click"
-    style="display: inline-flex; 
-    column-gap: 5px; 
-    position: absolute; 
-    bottom: 5px; 
+    style="position: absolute;
+    column-gap: 5px;
+    top: 5px; 
     right: 5px;">
         <a id="delete{{post.id}}" type="button" class="post-button" style="cursor: pointer;"
         hidden
@@ -52,7 +53,7 @@
         on mouseleave remove .red-background from me
         on load set *opacity to 0
         ">Delete</a>
-        <a id="edit{{post.id}}" type="button" class="post-button opacity-0" style="cursor: pointer;"
+        <a id="edit{{post.id}}" type="button" class="post-button" style="cursor: pointer;"
         hidden
         hx-post="{% url 'edit_post' post.pk %}"
         hx-target="#post{{post.id}}"
