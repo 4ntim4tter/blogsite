@@ -2,7 +2,7 @@
 {% block content %}
   <br />
     {% include 'snippets/new_post_button.html' %}
-  <center class="main-margin">
+  <center class="main-margin opacity-0" _="on load transition my opacity to 1 over 0.7 seconds">
     <div id="main" name="main">
       {% include 'snippets/user_posts.html' %}
     </div>

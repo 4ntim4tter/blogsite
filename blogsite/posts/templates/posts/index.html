@@ -4,7 +4,8 @@
   {% if user.is_authenticated %}
   {% include 'snippets/new_post_button.html' %}
   {% endif %}
-  <center class="main-margin">
+  <center class="main-margin opacity-0" 
+  _="on load transition my *opacity to 1 over 0.7 seconds">
     {% if messages %}
     {% for message in messages %}
       <ul class="font-bold border-green-600 bg-green-400 mb-2 w-fit px-1" _="on load transition opacity to 0 over 3s then remove me">

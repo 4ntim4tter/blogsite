@@ -12,7 +12,7 @@ class PostsIndexView(ListView):
     template_name = "posts/index.html"
     context_object_name = "latest_posts_list"
     model = Post
-    paginate_by = 1
+    paginate_by = 3
 
     def get_template_names(self):
         if self.request.htmx:

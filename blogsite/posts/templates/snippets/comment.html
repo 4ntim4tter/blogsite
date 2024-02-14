@@ -7,16 +7,17 @@
 {% endif %}
 {% for comment in comments %}
   {% if comment.text != '' %}
-    <div style="width: 100%; display: inline-block; padding-bottom: 20px;">
-      <p name="comment{{ comment.id }}" id="comment{{ comment.id }}" class="posted-comment" style="">{{ comment }}</p>
-        <span style="display: inline-flex; float:right; width: 200px; justify-content: end;">
+    <div style="display: grid;">
+      <p name="comment{{ comment.id }}" id="comment{{ comment.id }}" class="posted-comment">{{ comment }}</p>
+        <span style="">
           {% if user.is_authenticated %}
-          <div style="display: inline-flex; justify-content: space-evenly; flex-direction: row;" hx-get="{% url 'comment_like' comment.pk %}" hx-swap="outerHTML" hx-trigger="load">
+          <div style="" hx-get="{% url 'comment_like' comment.pk %}" hx-swap="outerHTML" hx-trigger="load">
             {% include 'snippets/like_button2.html' %}
           </div>
           {% endif %}
           {% if user.is_authenticated and user.pk == comment.username.pk %}
-          <a type="button" hx-delete="{% url 'delete_comment' comment.id %}" hx-target="#all-comments" hx-confirm="Are you sure?" style="scale:90%;
+          <a type="button" hx-delete="{% url 'delete_comment' comment.id %}" hx-target="#all-comments" hx-confirm="Are you sure?" 
+          style="scale:90%;
           padding-right: 4px;
           padding-left: 4px;
           height: fit-content;
