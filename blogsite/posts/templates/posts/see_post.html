@@ -18,8 +18,8 @@
         </div>
     {% endif %}
     {% if user.is_authenticated %}
-    <button name="add-comment" id="add-comment" class="post-button" style="width: 120px; position: absolute; left: 5px;" 
-    _="on click add @hidden to me then remove @hidden from #new-comment">Add Comment</button>
+    <button name="add-comment" id="add-comment" class="post-button" style="width: 100px; position: absolute; left: 5px;" 
+    _="on click add @hidden to me then remove @hidden from #new-comment">Comment</button>
     <br/>
     <div name="new-comment" id="new-comment" hidden>
       <form hx-post="{% url 'post_comment' post.id %}"
