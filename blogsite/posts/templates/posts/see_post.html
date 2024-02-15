@@ -24,8 +24,11 @@
     <div name="new-comment" id="new-comment" hidden>
       <form hx-post="{% url 'post_comment' post.id %}"
             hx-target="#all-comments"
+            hx-confirm="Post Comment?"
       _="on htmx:afterRequest add @hidden to #new-comment then remove @hidden from #add-comment
-          then put '' into <textarea />'s value">
+          then put '' into <textarea />'s value
+        
+        on keyup[ctrlKey and key is 'Enter'] from body if #new-comment does not match @hidden trigger submit">
         <textarea name="new-comment-area" 
         id="new-comment-area" 
         cols="80" rows="10" 

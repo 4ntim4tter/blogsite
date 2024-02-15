@@ -76,7 +76,8 @@ html{
     overflow-wrap: break-word;
     text-overflow: ellipsis;
     text-align: justify;
-    border-bottom: 1px black solid;
+    padding-bottom: 3svh;
+    border-bottom: 1px rgb(167, 167, 167) solid;
 }
 
 .posted-title{

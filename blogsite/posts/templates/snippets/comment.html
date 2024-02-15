@@ -7,24 +7,35 @@
 {% endif %}
 {% for comment in comments %}
   {% if comment.text != '' %}
-    <div style="display: grid; margin-bottom: 1vh;">
-      <p name="comment{{ comment.id }}" id="comment{{ comment.id }}" class="posted-comment" style="margin-bottom: 5px;">{{ comment }}</p>
-        <span style="">
-          {% if user.is_authenticated %}
-          <div style="" hx-get="{% url 'comment_like' comment.pk %}" hx-swap="outerHTML" hx-trigger="load">
-            {% include 'snippets/like_button2.html' %}
-          </div>
-          {% endif %}
-          {% if user.is_authenticated and user.pk == comment.username.pk %}
-          <a type="button" hx-delete="{% url 'delete_comment' comment.id %}" hx-target="#all-comments" hx-confirm="Are you sure?" 
-          style="scale:90%;
-          padding-right: 4px;
-          padding-left: 4px;
-          height: fit-content;
-          cursor: pointer;
-          border: 1px darkgray solid;">Delete</a>
-          {% endif %}
-        </span>
+    <div style="
+    display: inline-grid;
+    grid-template-columns: 3fr 1fr 1fr; 
+    margin-bottom: 1vh; 
+    column-gap: 1vh;
+    word-wrap: break-word;
+    word-break: break-all; 
+    width: 100%;">
+      <p name="comment{{ comment.id }}" id="comment{{ comment.id }}" class="posted-comment" 
+      style="margin-bottom: 5px;
+      grid-row: 1;
+      grid-column: 1;">
+        {{ comment }}</p>
+        {% if user.is_authenticated %}
+        <div style="grid-row: 1; grid-column: 2;" hx-get="{% url 'comment_like' comment.pk %}" hx-swap="outerHTML" hx-trigger="load">
+          {% include 'snippets/like_button2.html' %}
+        </div>
+        {% endif %}
+        {% if user.is_authenticated and user.pk == comment.username.pk %}
+        <a type="button" hx-delete="{% url 'delete_comment' comment.id %}" hx-target="#all-comments" hx-confirm="Are you sure?" 
+        style="scale:90%;
+        padding-right: 4px;
+        padding-left: 4px;
+        height: fit-content;
+        cursor: pointer;
+        border: 1px darkgray solid;
+        grid-column: 3;
+        ">Delete</a>
+        {% endif %}
     </div>
   {% endif %}
 {% endfor %}
