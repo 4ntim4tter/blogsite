@@ -1,12 +1,4 @@
-<div id="newpost" name="newpost" class="post-card"
-style="position: fixed;
-margin-top: 40px;
-left: 50%;
-transform: translateX(-50%);
-text-align: justify;
-height: fit-content;
-z-index: 7;
-box-shadow: 0px 5px 5px 2px gray;"
+<div id="newpost" name="newpost" class="new-post-card"
 hx-post="{% url 'cancel_new' %}"
 hx-trigger="htmx:afterRequest once"
 hx-target="#newpost"
