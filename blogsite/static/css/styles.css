@@ -7,17 +7,38 @@ a {
 }
 
 .post-button{
-    padding: 4px;
+    padding: 3px;
     min-width: 80px;
     min-height: 32px;
     width: 80px;
     height: 32px;
-    color: white;
-    background-color: rgb(128,128,128) !important;
-    -webkit-text-stroke: 1px white;
-    border-radius: 4px;
+    color: black !important;
+    font-weight: 900;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     cursor: pointer;
-    box-shadow: 2px 2px 2px rgb(58, 58, 58);
+    transition: all 500ms;
+}
+
+.comment-post-button {
+    padding: 3px;
+    min-width: 80px;
+    min-height: 32px;
+    width: 80px;
+    height: 32px;
+    color: black !important;
+    font-weight: 900;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+    transition: all 500ms;
+}
+
+.comment-post-button:hover{
+    background-color: lightgreen !important;
+    color: darkslategray !important;
 }
 
 .topbar-button{
@@ -184,7 +205,15 @@ a {
 
 .post-view{
     padding: 10px;
+    margin-top: 20px;
+    width: 60%;
+    max-width: 80%;
     border-bottom: 1px solid rgb(175, 175, 175);
+    border-left: 1px solid rgb(175, 175, 175);
+    border-right: 1px solid rgb(175, 175, 175);
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
 }
 
 .post-card:hover{

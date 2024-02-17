@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
   <br />
-  <center class="post-view" style="position: absolute; left: 50%; transform: translateX(-50%); top: 65px; min-width: 40vh;">
+  <center class="post-view">
     <b><h1 class="posted-title" type="button" style="text-align: center;">{{ post.title }}</h1></b>
     <br/>
     {% autoescape off %}
@@ -18,7 +18,7 @@
         </div>
     {% endif %}
     {% if user.is_authenticated %}
-    <button name="add-comment" id="add-comment" class="post-button" style="width: 100px; position: absolute; left: 5px;" 
+    <button name="add-comment" id="add-comment" class="comment-post-button" style="width: 100px; position: absolute; left: 20px;" 
     _="on click add @hidden to me then remove @hidden from #new-comment">Comment</button>
     <br/>
     <div name="new-comment" id="new-comment" hidden>

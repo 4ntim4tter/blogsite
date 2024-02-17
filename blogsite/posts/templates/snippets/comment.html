@@ -7,15 +7,15 @@
 {% endif %}
 {% for comment in comments %}
   {% if comment.text != '' %}
-    <div style="
+    <div class="posted-comment" style="
     display: inline-grid;
-    grid-template-columns: 3fr 1fr 1fr; 
+    grid-template-columns: 3fr minmax(0, 0.5fr) minmax(0,0.5fr); 
     margin-bottom: 1vh; 
     column-gap: 1vh;
     word-wrap: break-word;
     word-break: break-all; 
     width: 100%;">
-      <p name="comment{{ comment.id }}" id="comment{{ comment.id }}" class="posted-comment" 
+      <p name="comment{{ comment.id }}" id="comment{{ comment.id }}" 
       style="margin-bottom: 5px;
       grid-row: 1;
       grid-column: 1;">
