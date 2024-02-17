@@ -26,12 +26,12 @@
     on every mouseleave transition #delete{{post.id}} opacity to 0
     on every mouseleave transition #edit{{post.id}} opacity to 0">
     <b><h1 class="posted-title">{{ post.title }}</h1></b>
-    <div style="flex">
-        {% include 'show_links.html' %}
-    </div>
     {% autoescape off %}
     <p id="posttext{{post.id}}" class="posted-text">{{ post.text }}</p>
     {% endautoescape %}
+    <div style="flex">
+        {% include 'show_links.html' %}
+    </div>
     <a href="{% url 'see_post' post.id %}" style="position: absolute; right: 5px;">
         <p>{{post.comment_number}} {% if post.comment_number == 1 %}comment{% else %}comments{% endif %}</p>
     </a>
