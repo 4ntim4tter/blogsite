@@ -7,11 +7,7 @@
     {% autoescape off %}
     <p class="posted-text-post" style="text-align: justify; overflow: auto; height: auto; word-wrap: break-word;">{{ post.text }}</p><br>
     {% endautoescape %}
-    {% for link in post.get_links %}
-        {% autoescape off %}
-        {{link.link}}
-        {% endautoescape %}
-    {% endfor %}
+    <div style="padding-bottom: 5px;">{% include 'show_links.html' %}</div>
     {% if user.is_authenticated %}
         <div hx-get="{% url 'this_like' post.pk %}" hx-swap="outerHTML" hx-trigger="load">
           {% include 'snippets/like_button.html' %}
