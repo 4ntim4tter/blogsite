@@ -281,6 +281,38 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -460,14 +492,6 @@
         "documentation": {}
     },
     {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
         "label": "redirect",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -548,11 +572,27 @@
         "documentation": {}
     },
     {
+        "label": "Comment",
+        "importPath": "posts.models",
+        "description": "posts.models",
+        "isExtraImport": true,
+        "detail": "posts.models",
+        "documentation": {}
+    },
+    {
         "label": "views",
         "importPath": "posts",
         "description": "posts",
         "isExtraImport": true,
         "detail": "posts",
+        "documentation": {}
+    },
+    {
+        "label": "Sum",
+        "importPath": "django.db.models",
+        "description": "django.db.models",
+        "isExtraImport": true,
+        "detail": "django.db.models",
         "documentation": {}
     },
     {
@@ -646,7 +686,7 @@
         "kind": 5,
         "importPath": "blogsite.blogsite.settings",
         "description": "blogsite.blogsite.settings",
-        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'posts.apps.PostsConfig',\n    'django_htmx',\n    'users.apps.UsersConfig'",
+        "peekOfCode": "INSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'posts.apps.PostsConfig',\n    'django_htmx',\n    'users.apps.UsersConfig',",
         "detail": "blogsite.blogsite.settings",
         "documentation": {}
     },
@@ -655,7 +695,7 @@
         "kind": 5,
         "importPath": "blogsite.blogsite.settings",
         "description": "blogsite.blogsite.settings",
-        "peekOfCode": "MIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n    'django_htmx.middleware.HtmxMiddleware',\n]",
+        "peekOfCode": "MIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n    'debug_toolbar.middleware.DebugToolbarMiddleware',\n    'django_htmx.middleware.HtmxMiddleware',",
         "detail": "blogsite.blogsite.settings",
         "documentation": {}
     },
@@ -736,7 +776,7 @@
         "kind": 5,
         "importPath": "blogsite.blogsite.settings",
         "description": "blogsite.blogsite.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.2/howto/static-files/\nSTATIC_URL = 'static/'\n# STATIC_ROOT = BASE_DIR/\"static/\"\nSTATICFILES_DIRS = [BASE_DIR/\"static/\"]\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/4.2/howto/static-files/\nSTATIC_URL = 'static/'\n# STATIC_ROOT = BASE_DIR/\"static/\"\nSTATICFILES_DIRS = [BASE_DIR/\"static/\"]\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nINTERNAL_IPS = [",
         "detail": "blogsite.blogsite.settings",
         "documentation": {}
     },
@@ -745,7 +785,7 @@
         "kind": 5,
         "importPath": "blogsite.blogsite.settings",
         "description": "blogsite.blogsite.settings",
-        "peekOfCode": "STATIC_URL = 'static/'\n# STATIC_ROOT = BASE_DIR/\"static/\"\nSTATICFILES_DIRS = [BASE_DIR/\"static/\"]\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "STATIC_URL = 'static/'\n# STATIC_ROOT = BASE_DIR/\"static/\"\nSTATICFILES_DIRS = [BASE_DIR/\"static/\"]\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nDEBUG_TOOLBAR_CONFIG = {",
         "detail": "blogsite.blogsite.settings",
         "documentation": {}
     },
@@ -754,7 +794,7 @@
         "kind": 5,
         "importPath": "blogsite.blogsite.settings",
         "description": "blogsite.blogsite.settings",
-        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR/\"static/\"]\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR/\"static/\"]\n# Default primary key field type\n# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nDEBUG_TOOLBAR_CONFIG = {\n    \"ROOT_TAG_EXTRA_ATTRS\": \"hx-preserve\"\n}",
         "detail": "blogsite.blogsite.settings",
         "documentation": {}
     },
@@ -763,7 +803,25 @@
         "kind": 5,
         "importPath": "blogsite.blogsite.settings",
         "description": "blogsite.blogsite.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nDEBUG_TOOLBAR_CONFIG = {\n    \"ROOT_TAG_EXTRA_ATTRS\": \"hx-preserve\"\n}",
+        "detail": "blogsite.blogsite.settings",
+        "documentation": {}
+    },
+    {
+        "label": "INTERNAL_IPS",
+        "kind": 5,
+        "importPath": "blogsite.blogsite.settings",
+        "description": "blogsite.blogsite.settings",
+        "peekOfCode": "INTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nDEBUG_TOOLBAR_CONFIG = {\n    \"ROOT_TAG_EXTRA_ATTRS\": \"hx-preserve\"\n}",
+        "detail": "blogsite.blogsite.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG_TOOLBAR_CONFIG",
+        "kind": 5,
+        "importPath": "blogsite.blogsite.settings",
+        "description": "blogsite.blogsite.settings",
+        "peekOfCode": "DEBUG_TOOLBAR_CONFIG = {\n    \"ROOT_TAG_EXTRA_ATTRS\": \"hx-preserve\"\n}",
         "detail": "blogsite.blogsite.settings",
         "documentation": {}
     },
@@ -772,7 +830,7 @@
         "kind": 5,
         "importPath": "blogsite.blogsite.urls",
         "description": "blogsite.blogsite.urls",
-        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include(\"posts.urls\")),\n    path('', include('users.urls')),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', include('posts.urls')),\n    path('', include('users.urls')),\n    path('--debug--/', include('debug_toolbar.urls'))\n]",
         "detail": "blogsite.blogsite.urls",
         "documentation": {}
     },
@@ -885,6 +943,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "blogsite.posts.migrations.0012_post_comments_count_post_likes_count",
+        "description": "blogsite.posts.migrations.0012_post_comments_count_post_likes_count",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('posts', '0011_link'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='post',\n            name='comments_count',\n            field=models.IntegerField(default=0),\n            preserve_default=False,",
+        "detail": "blogsite.posts.migrations.0012_post_comments_count_post_likes_count",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "blogsite.posts.migrations.0013_comment_likes_count",
+        "description": "blogsite.posts.migrations.0013_comment_likes_count",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('posts', '0012_post_comments_count_post_likes_count'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='comment',\n            name='likes_count',\n            field=models.IntegerField(default=0),\n            preserve_default=False,",
+        "detail": "blogsite.posts.migrations.0013_comment_likes_count",
+        "documentation": {}
+    },
+    {
         "label": "LikeAdmin",
         "kind": 6,
         "importPath": "blogsite.posts.admin",
@@ -907,7 +983,7 @@
         "kind": 6,
         "importPath": "blogsite.posts.models",
         "description": "blogsite.posts.models",
-        "peekOfCode": "class Post(models.Model):\n    username = models.ForeignKey(User, on_delete=models.CASCADE)\n    title = models.CharField(max_length=100)\n    text = models.TextField(max_length=5000)\n    pub_date = models.DateField()\n    def __str__(self) -> str:\n        return self.title\n    def comment_number(self):\n        return self.comment_set.count()\n    def likes(self):",
+        "peekOfCode": "class Post(models.Model):\n    username = models.ForeignKey(User, on_delete=models.CASCADE)\n    title = models.CharField(max_length=100)\n    text = models.TextField(max_length=5000)\n    likes_count = models.IntegerField()\n    comments_count = models.IntegerField()\n    pub_date = models.DateField()\n    def __str__(self) -> str:\n        return self.title\n    def comment_number(self):",
         "detail": "blogsite.posts.models",
         "documentation": {}
     },
@@ -916,7 +992,7 @@
         "kind": 6,
         "importPath": "blogsite.posts.models",
         "description": "blogsite.posts.models",
-        "peekOfCode": "class Link(models.Model):\n    post = models.ForeignKey(Post, on_delete=models.CASCADE)\n    link = models.TextField(max_length=1000)\nclass Comment(models.Model):\n    username = models.ForeignKey(User, on_delete=models.CASCADE)\n    post = models.ForeignKey(Post, on_delete=models.CASCADE)\n    text = models.CharField(max_length=700)\n    pub_date = models.DateField()\n    def __str__(self):\n        comment =  self.username.username + \": \" + self.text.rstrip()",
+        "peekOfCode": "class Link(models.Model):\n    post = models.ForeignKey(Post, on_delete=models.CASCADE)\n    link = models.TextField(max_length=1000)\nclass Comment(models.Model):\n    username = models.ForeignKey(User, on_delete=models.CASCADE)\n    post = models.ForeignKey(Post, on_delete=models.CASCADE)\n    text = models.CharField(max_length=700)\n    likes_count = models.IntegerField()\n    pub_date = models.DateField()\n    def __str__(self):",
         "detail": "blogsite.posts.models",
         "documentation": {}
     },
@@ -925,7 +1001,7 @@
         "kind": 6,
         "importPath": "blogsite.posts.models",
         "description": "blogsite.posts.models",
-        "peekOfCode": "class Comment(models.Model):\n    username = models.ForeignKey(User, on_delete=models.CASCADE)\n    post = models.ForeignKey(Post, on_delete=models.CASCADE)\n    text = models.CharField(max_length=700)\n    pub_date = models.DateField()\n    def __str__(self):\n        comment =  self.username.username + \": \" + self.text.rstrip()\n        return comment\n    def likes(self):\n        content_type = ContentType.objects.get_for_model(Comment)",
+        "peekOfCode": "class Comment(models.Model):\n    username = models.ForeignKey(User, on_delete=models.CASCADE)\n    post = models.ForeignKey(Post, on_delete=models.CASCADE)\n    text = models.CharField(max_length=700)\n    likes_count = models.IntegerField()\n    pub_date = models.DateField()\n    def __str__(self):\n        comment =  self.username.username + \": \" + self.text.rstrip()\n        return comment\n    def likes(self):",
         "detail": "blogsite.posts.models",
         "documentation": {}
     },
@@ -952,7 +1028,7 @@
         "kind": 6,
         "importPath": "blogsite.posts.views",
         "description": "blogsite.posts.views",
-        "peekOfCode": "class PostsIndexView(ListView):\n    template_name = \"posts/index.html\"\n    context_object_name = \"latest_posts_list\"\n    model = Post\n    paginate_by = 1\n    def get_template_names(self):\n        if self.request.htmx:\n            return 'snippets/load_on_scroll.html'\n        return self.template_name\n    def get_queryset(self):",
+        "peekOfCode": "class PostsIndexView(ListView):\n    template_name = \"posts/index.html\"\n    context_object_name = \"latest_posts_list\"\n    model = Post\n    paginate_by = 3\n    def get_template_names(self):\n        if self.request.htmx:\n            return 'snippets/load_on_scroll.html'\n        return self.template_name\n    def get_queryset(self):",
         "detail": "blogsite.posts.views",
         "documentation": {}
     },
@@ -1033,7 +1109,7 @@
         "kind": 5,
         "importPath": "blogsite.users.urls",
         "description": "blogsite.users.urls",
-        "peekOfCode": "urlpatterns = [\n    path('login/', views.login_user, name='login_user'),\n    path('register/', views.register_user, name='register_user'),\n    path('create/', views.create_user, name='create_user'),\n    path('authenticate/', views.auth_user, name='auth_user'),\n    path('user_profile/', views.user_profile, name='user_profile'),\n    path('dash/', views.dash_user, name='dash_user'),\n    path('new_post/', views.new_post, name='new_post'),\n    path('save_new/', views.save_new, name='save_new'),\n    path('cancel_new/', views.cancel_new, name='cancel_new'),",
+        "peekOfCode": "urlpatterns = [\n    path('login/', views.login_user, name='login_user'),\n    path('register/', views.register_user, name='register_user'),\n    path('create/', views.create_user, name='create_user'),\n    path('authenticate/', views.auth_user, name='auth_user'),\n    path('user_profile/<int:pk>/', views.user_profile, name='user_profile'),\n    path('dash/', views.dash_user, name='dash_user'),\n    path('new_post/', views.new_post, name='new_post'),\n    path('save_new/', views.save_new, name='save_new'),\n    path('cancel_new/', views.cancel_new, name='cancel_new'),",
         "detail": "blogsite.users.urls",
         "documentation": {}
     },
@@ -1042,7 +1118,7 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def login_user(request):\n    return render(request, \"users/login.html\", {})\ndef register_user(request):\n    return render(request, \"users/register.html\", {})\n@login_required\ndef dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 1)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))",
+        "peekOfCode": "def login_user(request):\n    return render(request, \"users/login.html\", {})\ndef register_user(request):\n    return render(request, \"users/register.html\", {})\n@login_required\ndef dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 3)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
@@ -1051,7 +1127,7 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def register_user(request):\n    return render(request, \"users/register.html\", {})\n@login_required\ndef dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 1)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))\n    if request.htmx:\n        return render(request, \"snippets/user_posts.html\", {\"posts\": selected_page})",
+        "peekOfCode": "def register_user(request):\n    return render(request, \"users/register.html\", {})\n@login_required\ndef dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 3)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))\n    if request.htmx:\n        return render(request, \"snippets/user_posts.html\", {\"posts\": selected_page})",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
@@ -1060,7 +1136,7 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 1)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))\n    if request.htmx:\n        return render(request, \"snippets/user_posts.html\", {\"posts\": selected_page})\n    return render(request, \"users/dash.html\", {\"posts\": selected_page})\ndef create_user(request):\n    if User.objects.filter(username=request.POST[\"username\"]):",
+        "peekOfCode": "def dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 3)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))\n    if request.htmx:\n        return render(request, \"snippets/user_posts.html\", {\"posts\": selected_page})\n    return render(request, \"users/dash.html\", {\"posts\": selected_page})\ndef create_user(request):\n    if User.objects.filter(username=request.POST[\"username\"]):",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
@@ -1087,7 +1163,7 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def user_profile(request):\n    posts = Post.objects.filter(username=request.user.pk).order_by('-pub_date')[:5]\n    return render(request, \"users/profile.html\", {\"posts\": posts})\n@login_required\ndef logout_user(request):\n    logout(request)\n    messages.success(request, \"Logged out.\")\n    return redirect(\"index\")\n@login_required\n@require_http_methods([\"DELETE\"])",
+        "peekOfCode": "def user_profile(request, pk):\n    user = User.objects.get(pk=pk)\n    liked_posts = Post.objects.filter(username=user.pk).aggregate(Sum('likes_count'))['likes_count__sum']\n    liked_comments = Comment.objects.filter(username=user.pk).aggregate(Sum('likes_count'))['likes_count__sum']\n    latest_posts = Post.objects.filter(username=user.pk).order_by(\"-pub_date\")[:5]\n    top_posts = Post.objects.filter(username=user.pk).order_by(\"-likes_count\")[:5]\n    latest_comments = Comment.objects.filter(username=user.pk).order_by(\"-pub_date\")[:5]\n    top_comments = Comment.objects.filter(username=user.pk).order_by(\"-likes_count\")[:5]\n    return render(\n        request,",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
@@ -1150,7 +1226,7 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def save_new(request):\n    user_id = request.user.id\n    user = User.objects.get(pk=user_id)\n    post = Post.objects.create(\n        username=user,\n        title=request.POST[\"posttitle\"],\n        text=request.POST[\"posttext\"],\n        pub_date=datetime.date.today(),\n    )\n    post.text = post.create_links(request.POST[\"posttext\"])",
+        "peekOfCode": "def save_new(request):\n    user_id = request.user.id\n    user = User.objects.get(pk=user_id)\n    post = Post.objects.create(\n        username=user,\n        title=request.POST[\"posttitle\"],\n        text=request.POST[\"posttext\"],\n        pub_date=datetime.date.today(),\n        likes_count=0,\n        comments_count=0,",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
