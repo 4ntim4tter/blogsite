@@ -6,6 +6,7 @@
     <form action="{% url 'create_user' %}" method="post">
       {% csrf_token %}
       <input type="text" name="username" placeholder=" Username..." style="border: 1px darkgray solid; margin: 10px;" /><br />
+      <input type="email" name="email" placeholder=" Email..." style="border: 1px darkgray solid; margin: 10px;" /><br />
       <input type="password" name="password" placeholder=" Password..." style="border: 1px darkgray solid; margin: 10px;" /><br />
       {% if messages %}
       <ul class="font-bold border-red-600 bg-red-400 mb-2 w-fit px-1" _="on load transition opacity to 0 over 3s then remove me">

@@ -1,3 +1,4 @@
+from django.core.validators import validate_email
 from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
@@ -31,12 +32,17 @@ def dash_user(request):
 
 
 def create_user(request):
-    if User.objects.filter(username=request.POST["username"]):
+    if User.objects.filter(username=request.POST["username"]).exists():
         messages.error(request, "User already exists.")
+        return redirect(register_user)
+    elif validate_email(request.POST["email"]) or User.objects.filter(email=request.POST["email"]).exists():
+        messages.error(request, "Invalid e-mail or already exists.")
         return redirect(register_user)
     else:
         user = User.objects.create_user(
-            username=request.POST["username"], password=request.POST["password"]
+            username=request.POST["username"], 
+            password=request.POST["password"], 
+            email=request.POST["email"],
         )
         user.save()
         login(request, user)
