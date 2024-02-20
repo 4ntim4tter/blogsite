@@ -6,6 +6,10 @@ a {
     transition: all 500ms;
 }
 
+button{
+    transition: all 500ms;;
+}
+
 .post-button{
     padding: 3px;
     min-width: 80px;
@@ -249,6 +253,10 @@ a:visited{
 
 a:hover{
     color: lightgreen;
+}
+
+button:hover{
+    background-color: lightgreen;
 }
 
 

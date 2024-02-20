@@ -50,6 +50,18 @@ def create_user(request):
         return redirect("index")
 
 
+def forgot_password(request):
+    return render(request, 'users/forgot_password.html')
+
+
+def get_recovery_email(request):
+    exists = True
+    if exists:
+        return render(request, 'snippets/email_sent.html')
+    else:
+        messages.error(request, "E-mail does not exist.")
+        return render(request, 'users/forgot_password.html')
+
 def auth_user(request):
     user = authenticate(
         request, username=request.POST["username"], password=request.POST["password"]
