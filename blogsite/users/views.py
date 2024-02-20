@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.core.validators import validate_email
 from django.db.models import Sum
 from django.shortcuts import render, redirect
@@ -54,9 +55,16 @@ def forgot_password(request):
     return render(request, 'users/forgot_password.html')
 
 
-def get_recovery_email(request):
-    exists = True
+def get_recovery_email(request):    
+    exists = User.objects.filter(email=request.POST['email']).exists()
     if exists:
+        send_mail(
+        "Forgotten Password",
+        "This is your password reset link:",
+        "me@me.com",
+        [request.POST['email']],
+        fail_silently=False,
+    )
         return render(request, 'snippets/email_sent.html')
     else:
         messages.error(request, "E-mail does not exist.")
