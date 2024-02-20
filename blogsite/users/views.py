@@ -1,3 +1,5 @@
+import email
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import send_mail
 from django.core.validators import validate_email
 from django.db.models import Sum
@@ -58,9 +60,11 @@ def forgot_password(request):
 def get_recovery_email(request):    
     exists = User.objects.filter(email=request.POST['email']).exists()
     if exists:
+        user = User.objects.get(email=request.POST['email'])
+        token = PasswordResetTokenGenerator().make_token(user)
         send_mail(
         "Forgotten Password",
-        "This is your password reset link:",
+        f"This is your password reset link: {token}",
         "me@me.com",
         [request.POST['email']],
         fail_silently=False,
