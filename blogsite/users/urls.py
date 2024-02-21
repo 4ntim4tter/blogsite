@@ -8,6 +8,7 @@ urlpatterns = [
     path('create/', views.create_user, name='create_user'),
     path('forgot_password/', views.forgot_password, name='forgot_password'),
     path('get_recovery_email/', views.get_recovery_email, name='get_recovery_email'),
+    path('recover_account/', views.recover_account, name='recover_account'),
     path('authenticate/', views.auth_user, name='auth_user'),
     path('user_profile/<int:pk>/', views.user_profile, name='user_profile'),
     path('dash/', views.dash_user, name='dash_user'),

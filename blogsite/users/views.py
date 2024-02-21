@@ -3,6 +3,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import send_mail
 from django.core.validators import validate_email
 from django.db.models import Sum
+from django.http import response
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
@@ -58,21 +59,33 @@ def forgot_password(request):
 
 
 def get_recovery_email(request):    
-    exists = User.objects.filter(email=request.POST['email']).exists()
+    email = request.POST['email']
+    exists = User.objects.filter(email=email).exists()
     if exists:
-        user = User.objects.get(email=request.POST['email'])
+        user = User.objects.get(email=email)
         token = PasswordResetTokenGenerator().make_token(user)
         send_mail(
         "Forgotten Password",
-        f"This is your password reset link: {token}",
+        f"This is your password reset link: http://127.0.0.1:8000/recover_account?token={token}&email={email}",
         "me@me.com",
-        [request.POST['email']],
+        [email],
         fail_silently=False,
     )
+        print(PasswordResetTokenGenerator().check_token(user, token))
         return render(request, 'snippets/email_sent.html')
     else:
         messages.error(request, "E-mail does not exist.")
         return render(request, 'users/forgot_password.html')
+
+
+def recover_account(request):
+    email = request.GET.get('email')
+    user = User.objects.get(email=email)
+    if PasswordResetTokenGenerator().check_token(user, request.GET.get('token')):
+        return render(request, 'users/change_password.html')
+    else:
+        return response.HttpResponse("Token Invalid")
+
 
 def auth_user(request):
     user = authenticate(
