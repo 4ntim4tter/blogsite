@@ -8,6 +8,7 @@
       <input type="text" name="username" placeholder=" Username..." style="border: 1px darkgray solid; margin: 10px;" /><br />
       <input type="email" name="email" placeholder=" Email..." style="border: 1px darkgray solid; margin: 10px;" /><br />
       <input type="password" name="password" placeholder=" Password..." style="border: 1px darkgray solid; margin: 10px;" /><br />
+      <input type="password" name="password" placeholder=" Repeat password..." style="border: 1px darkgray solid; margin: 10px;" /><br />
       {% if messages %}
       <ul class="font-bold border-red-600 bg-red-400 mb-2 w-fit px-1" _="on load transition opacity to 0 over 3s then remove me">
         {% for message in messages %}
@@ -15,7 +16,7 @@
         {% endfor %}
       </ul>
       {% endif %}
-      <button type="submit" style="border: 1px darkgray solid;">Register</button><br />
+      <button type="submit" class="post-button">Register</button><br />
       <a href="{% url 'login_user' %}" style="font-size: smaller;">Already a member? Login here.</a><br />
     </form>
   </center>
