@@ -1,6 +1,5 @@
 from django.test import RequestFactory, TestCase
 from django.urls import reverse
-from users.views import save_new
 
 from posts.models import Post
 from django.contrib.auth.models import User

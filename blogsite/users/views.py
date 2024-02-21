@@ -1,4 +1,3 @@
-import email
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import send_mail
 from django.core.validators import validate_email
@@ -71,7 +70,6 @@ def get_recovery_email(request):
         [email],
         fail_silently=False,
     )
-        print(PasswordResetTokenGenerator().check_token(user, token))
         return render(request, 'snippets/email_sent.html')
     else:
         messages.error(request, "E-mail does not exist.")
@@ -82,10 +80,13 @@ def recover_account(request):
     email = request.GET.get('email')
     user = User.objects.get(email=email)
     if PasswordResetTokenGenerator().check_token(user, request.GET.get('token')):
-        return render(request, 'users/change_password.html')
+        return redirect(password_change)
     else:
         return response.HttpResponse("Token Invalid")
 
+
+def password_change(request):
+    return render(request, 'users/change_password.html')
 
 def auth_user(request):
     user = authenticate(
