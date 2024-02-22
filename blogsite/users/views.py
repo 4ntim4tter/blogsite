@@ -49,7 +49,13 @@ def create_user(request):
         )
         user.is_active = False
         user.save()
-        login(request, user)
+        token = PasswordResetTokenGenerator().make_token(user)
+        send_mail(
+        "Forgotten Password",
+        f"This is your activation link: http://127.0.0.1:8000/activate_account?token={token}&email={user.email}",
+        "me@me.com",
+        [user.email],
+        fail_silently=False,)
         messages.success(request, "Registration Successful.\n Please check your inbox\nfor your verification e-mail.")
         return redirect("index")
 
