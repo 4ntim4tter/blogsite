@@ -47,9 +47,10 @@ def create_user(request):
             password=request.POST["password"], 
             email=request.POST["email"],
         )
+        user.is_active = False
         user.save()
         login(request, user)
-        messages.success(request, "Registration Successful.")
+        messages.success(request, "Registration Successful.\n Please check your inbox\nfor your verification e-mail.")
         return redirect("index")
 
 
@@ -87,6 +88,7 @@ def recover_account(request):
 
 def password_change(request):
     return render(request, 'users/change_password.html')
+
 
 def auth_user(request):
     user = authenticate(
