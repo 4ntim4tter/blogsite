@@ -60,6 +60,17 @@ def create_user(request):
         return redirect("index")
 
 
+def activate_user(request):
+    user = User.objects.get(email=request.GET.get('email'))
+    if PasswordResetTokenGenerator().check_token(user, request.GET.get('token')):
+        user.is_active = True
+        user.save()
+        login(request, user)
+        messages.success(request, "Your account is now activated.")
+        return redirect('index')
+    else:
+        return response.HttpResponse("Token expired.")
+
 def forgot_password(request):
     return render(request, 'users/forgot_password.html')
 
