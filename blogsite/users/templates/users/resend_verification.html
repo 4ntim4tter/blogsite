@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <center name="forgot-password" id="forgot-password" style="margin-top: 15%;">
+    <h1 class="title-card">Your account is not active.</h1>
+    <br>
+    <h1 class="title-card">Click Send for a new verification e-mail.<h1>
+    <br>
+    <form method="post" 
+    hx-post="{% url 'get_recovery_email' %}"
+    hx-target="#forgot-password"
+    hx-swap="outerHTML">
+      {% csrf_token %}
+      <input type="email" name="email" id="email" value="{{user.email}}">
+      <button type="submit" class="post-button">Send</button><br />
+    </form>
+  </center>
+{% endblock %}

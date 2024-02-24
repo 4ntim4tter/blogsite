@@ -149,4 +149,4 @@ SESSION_COOKIE_AGE = 60*60*24*30
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
-PASSWORD_RESET_TIMEOUT = 5
+PASSWORD_RESET_TIMEOUT = 60 * 2

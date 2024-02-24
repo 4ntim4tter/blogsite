@@ -78,8 +78,12 @@ def forgot_password(request):
 def get_recovery_email(request):    
     email = request.POST['email']
     exists = User.objects.filter(email=email).exists()
-    if exists:
-        user = User.objects.get(email=email)
+    if not exists:
+        messages.error(request, "E-mail does not exist.")
+        return render(request, 'users/forgot_password.html')            
+    
+    user = User.objects.get(email=email)
+    if user.is_active:
         token = PasswordResetTokenGenerator().make_token(user)
         send_mail(
         "Forgotten Password",
@@ -90,8 +94,16 @@ def get_recovery_email(request):
     )
         return render(request, 'snippets/email_sent.html')
     else:
-        messages.error(request, "E-mail does not exist.")
-        return render(request, 'users/forgot_password.html')
+        token = PasswordResetTokenGenerator().make_token(user)
+        send_mail(
+        "Forgotten Password",
+        f"This is your password reset link: http://127.0.0.1:8000/activate_account?token={token}&email={email}",
+        "me@me.com",
+        [email],
+        fail_silently=False,
+    )
+        return render(request, 'snippets/email_sent.html')
+
 
 
 def recover_account(request):
@@ -108,16 +120,18 @@ def password_change(request):
 
 
 def auth_user(request):
-    user = authenticate(
-        request, username=request.POST["username"], password=request.POST["password"]
-    )
-    if user is not None:
+    user = User.objects.get(username=request.POST["username"])
+    if user is None:
+        messages.error(request, "Incorrect Credentials")
+        return render(request, "users/login.html")
+    
+    if user.is_active:
+        user = authenticate(request, username=request.POST["username"], password=request.POST["password"])
         login(request, user)
         messages.success(request, "Login Successful.")
         return redirect("index")
     else:
-        messages.error(request, "Incorrect Credentials")
-        return render(request, "users/login.html")
+        return render(request, "users/resend_verification.html", {'user':user})
 
 
 def user_profile(request, pk):
