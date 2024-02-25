@@ -34,89 +34,101 @@ def dash_user(request):
     return render(request, "users/dash.html", {"posts": selected_page})
 
 
+def check_username(request):
+    search_term = request.GET['username']
+    exists = User.objects.filter(username__iexact=search_term).exists()
+    return render(request, 'snippets/username_checker.html', {'exists':exists})
+
 def create_user(request):
     if User.objects.filter(username=request.POST["username"]).exists():
         messages.error(request, "User already exists.")
         return redirect(register_user)
-    elif validate_email(request.POST["email"]) or User.objects.filter(email=request.POST["email"]).exists():
+    elif (
+        validate_email(request.POST["email"])
+        or User.objects.filter(email=request.POST["email"]).exists()
+    ):
         messages.error(request, "Invalid e-mail or already exists.")
         return redirect(register_user)
     else:
         user = User.objects.create_user(
-            username=request.POST["username"], 
-            password=request.POST["password"], 
+            username=request.POST["username"],
+            password=request.POST["password"],
             email=request.POST["email"],
         )
         user.is_active = False
         user.save()
         token = PasswordResetTokenGenerator().make_token(user)
         send_mail(
-        "Forgotten Password",
-        f"This is your activation link: http://127.0.0.1:8000/activate_account?token={token}&email={user.email}",
-        "me@me.com",
-        [user.email],
-        fail_silently=False,)
-        messages.success(request, "Registration Successful.\n Please check your inbox\nfor your verification e-mail.")
+            "Forgotten Password",
+            f"This is your activation link: http://127.0.0.1:8000/activate_account?token={token}&email={user.email}",
+            "me@me.com",
+            [user.email],
+            fail_silently=False,
+        )
+        messages.success(
+            request,
+            "Registration Successful.\n Please check your inbox\nfor your verification e-mail.",
+        )
         return redirect("index")
 
 
 def activate_user(request):
-    user = User.objects.get(email=request.GET.get('email'))
-    if PasswordResetTokenGenerator().check_token(user, request.GET.get('token')):
+    user = User.objects.get(email=request.GET.get("email"))
+    if PasswordResetTokenGenerator().check_token(user, request.GET.get("token")):
         user.is_active = True
         user.save()
         login(request, user)
         messages.success(request, "Your account is now activated.")
-        return redirect('index')
+        return redirect("index")
     else:
         return response.HttpResponse("Token expired.")
 
+
 def forgot_password(request):
-    return render(request, 'users/forgot_password.html')
+    return render(request, "users/forgot_password.html")
 
 
-def get_recovery_email(request):    
-    email = request.POST['email']
+def get_recovery_email(request):
+    email = request.POST["email"]
     exists = User.objects.filter(email=email).exists()
     if not exists:
         messages.error(request, "E-mail does not exist.")
-        return render(request, 'users/forgot_password.html')            
-    
+        return render(request, "users/forgot_password.html")
+
     user = User.objects.get(email=email)
     if user.is_active:
         token = PasswordResetTokenGenerator().make_token(user)
         send_mail(
-        "Forgotten Password",
-        f"This is your password reset link: http://127.0.0.1:8000/recover_account?token={token}&email={email}",
-        "me@me.com",
-        [email],
-        fail_silently=False,
-    )
-        return render(request, 'snippets/email_sent.html')
+            "Forgotten Password",
+            f"This is your password reset link: http://127.0.0.1:8000/recover_account?token={token}&email={email}",
+            "me@me.com",
+            [email],
+            fail_silently=False,
+        )
+        return render(request, "snippets/email_sent.html")
     else:
         token = PasswordResetTokenGenerator().make_token(user)
         send_mail(
-        "Forgotten Password",
-        f"This is your password reset link: http://127.0.0.1:8000/activate_account?token={token}&email={email}",
-        "me@me.com",
-        [email],
-        fail_silently=False,
-    )
-        return render(request, 'snippets/email_sent.html')
-
+            "Forgotten Password",
+            f"This is your password reset link: http://127.0.0.1:8000/activate_account?token={token}&email={email}",
+            "me@me.com",
+            [email],
+            fail_silently=False,
+        )
+        return render(request, "snippets/email_sent.html")
 
 
 def recover_account(request):
-    email = request.GET.get('email')
+    email = request.GET.get("email")
     user = User.objects.get(email=email)
-    if PasswordResetTokenGenerator().check_token(user, request.GET.get('token')):
+    if PasswordResetTokenGenerator().check_token(user, request.GET.get("token")):
         return redirect(password_change)
     else:
         return response.HttpResponse("Token Invalid")
 
 
 def password_change(request):
-    return render(request, 'users/change_password.html')
+    return render(request, "users/change_password.html")
 
 
 def auth_user(request):
@@ -124,20 +136,28 @@ def auth_user(request):
     if user is None:
         messages.error(request, "Incorrect Credentials")
         return render(request, "users/login.html")
-    
+
     if user.is_active:
-        user = authenticate(request, username=request.POST["username"], password=request.POST["password"])
+        user = authenticate(
+            request,
+            username=request.POST["username"],
+            password=request.POST["password"],
+        )
         login(request, user)
         messages.success(request, "Login Successful.")
         return redirect("index")
     else:
-        return render(request, "users/resend_verification.html", {'user':user})
+        return render(request, "users/resend_verification.html", {"user": user})
 
 
 def user_profile(request, pk):
     user = User.objects.get(pk=pk)
-    liked_posts = Post.objects.filter(username=user.pk).aggregate(Sum('likes_count'))['likes_count__sum']
-    liked_comments = Comment.objects.filter(username=user.pk).aggregate(Sum('likes_count'))['likes_count__sum']
+    liked_posts = Post.objects.filter(username=user.pk).aggregate(Sum("likes_count"))[
+        "likes_count__sum"
+    ]
+    liked_comments = Comment.objects.filter(username=user.pk).aggregate(
+        Sum("likes_count")
+    )["likes_count__sum"]
     latest_posts = Post.objects.filter(username=user.pk).order_by("-pub_date")[:5]
     top_posts = Post.objects.filter(username=user.pk).order_by("-likes_count")[:5]
     latest_comments = Comment.objects.filter(username=user.pk).order_by("-pub_date")[:5]
@@ -151,8 +171,8 @@ def user_profile(request, pk):
             "top_posts": top_posts,
             "latest_comments": latest_comments,
             "top_comments": top_comments,
-            "liked_posts" : liked_posts,
-            "liked_comments" : liked_comments
+            "liked_posts": liked_posts,
+            "liked_comments": liked_comments,
         },
     )
 
