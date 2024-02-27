@@ -37,7 +37,7 @@ def dash_user(request):
 def check_username(request):
     search_term = request.GET['username']
     exists = User.objects.filter(username__iexact=search_term).exists()
-    return render(request, 'snippets/username_checker.html', {'exists':exists})
+    return render(request, 'snippets/username_checker.html', {'exists':exists, 'username':search_term})
 
 def create_user(request):
     if User.objects.filter(username=request.POST["username"]).exists():

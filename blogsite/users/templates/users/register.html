@@ -5,11 +5,13 @@
     <h1>Registration</h1>
     <form action="{% url 'create_user' %}" method="post">
       {% csrf_token %}
-      <input type="text" name="username" placeholder=" Username..." style="border: 1px darkgray solid; margin: 10px;"
-      hx-get="{% url 'check_username' %}"
-      hx-trigger="keyup changed delay:1s"
-      hx-target="#user_availability"/><br />
-      <p name="user_availability" id="user_availability"></p>
+      <div name="user_availability" id="user_availability">
+        <input type="text" name="username" id="username" placeholder=" Username..." style="border: 1px darkgray solid; margin: 10px;"
+        autofocus
+        hx-get="{% url 'check_username' %}"
+        hx-trigger="keyup changed delay:1s"
+        hx-target="#user_availability"/><br />
+      </div>
       <input type="email" name="email" placeholder=" Email..." style="border: 1px darkgray solid; margin: 10px;" /><br />
       <input type="password" name="password" placeholder=" Password..." style="border: 1px darkgray solid; margin: 10px;" /><br />
       <input type="password" name="password" placeholder=" Repeat password..." style="border: 1px darkgray solid; margin: 10px;" /><br />

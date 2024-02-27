@@ -10,6 +10,10 @@ button{
     transition: all 500ms;;
 }
 
+input:focus{
+    outline: none;
+}
+
 .post-button{
     padding: 3px;
     min-width: 80px;

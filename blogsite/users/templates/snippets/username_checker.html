@@ -1,5 +1,19 @@
 {% if exists %}
-<p name="user_availability" id="user_availability">Username exists.</p>
+<div name="user_availability" id="user_availability">
+    <input type="text" name="username" id="username" placeholder=" Username..." style="border: 1px red solid; margin: 10px;"
+    value="{{username}}" autofocus
+    hx-get="{% url 'check_username' %}"
+    hx-trigger="keyup changed delay:1s"
+    hx-target="#user_availability"/><br />
+    <p>Username taken.</p>
+  </div>
 {% else %}
-<p name="user_availability" id="user_availability">Username available.</p>
+<div name="user_availability" id="user_availability">
+    <input type="text" name="username" id="username" placeholder=" Username..." style="border: 1px lightgreen solid; margin: 10px;"
+    value="{{username}}" autofocus
+    hx-get="{% url 'check_username' %}"
+    hx-trigger="keyup changed delay:1s"
+    hx-target="#user_availability"/><br />
+    <p>Username available.</p>
+  </div>
 {% endif %}
