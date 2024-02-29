@@ -4,8 +4,9 @@
     value="{{username}}" autofocus
     hx-get="{% url 'check_username' %}"
     hx-trigger="keyup changed delay:1s"
-    hx-target="#user_availability"/><br />
-    <p>Username taken.</p>
+    hx-target="#user_availability"
+    hx-swap="outerHTML"/>
+    <p style="font-size: smaller; color: red; font-weight: bold;">Username taken.</p>
   </div>
 {% else %}
 <div name="user_availability" id="user_availability">
@@ -13,7 +14,8 @@
     value="{{username}}" autofocus
     hx-get="{% url 'check_username' %}"
     hx-trigger="keyup changed delay:1s"
-    hx-target="#user_availability"/><br />
-    <p>Username available.</p>
+    hx-target="#user_availability"
+    hx-swap="outerHTML"/>
+    <p style="font-size: smaller; color: green; font-weight: bold;">Username available.</p>
   </div>
 {% endif %}

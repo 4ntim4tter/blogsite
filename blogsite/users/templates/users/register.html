@@ -3,18 +3,26 @@
 {% block content %}
   <center style="margin-top: 15%;">
     <h1>Registration</h1>
-    <form action="{% url 'create_user' %}" method="post">
+    <form action="{% url 'create_user' %}" method="post" style="display: grid; width: fit-content; justify-items: center;">
       {% csrf_token %}
-      <div name="user_availability" id="user_availability">
-        <input type="text" name="username" id="username" placeholder=" Username..." style="border: 1px darkgray solid; margin: 10px;"
-        autofocus
-        hx-get="{% url 'check_username' %}"
-        hx-trigger="keyup changed delay:1s"
-        hx-target="#user_availability"/><br />
-      </div>
-      <input type="email" name="email" placeholder=" Email..." style="border: 1px darkgray solid; margin: 10px;" /><br />
-      <input type="password" name="password" placeholder=" Password..." style="border: 1px darkgray solid; margin: 10px;" /><br />
-      <input type="password" name="password" placeholder=" Repeat password..." style="border: 1px darkgray solid; margin: 10px;" /><br />
+        <div name="user_availability" id="user_availability">
+          <input type="text" name="username" id="username" placeholder=" Username..." style="border: 1px darkgray solid; margin: 10px;"
+          autofocus
+          hx-get="{% url 'check_username' %}"
+          hx-trigger="keyup changed delay:1s"
+          hx-target="#user_availability"
+          hx-swap="outerHTML"/>
+        </div>
+        <div name="email_availability" id="email_availability">
+          <input type="email" name="email" id="email" placeholder=" Email..." style="border: 1px darkgray solid; margin: 10px;"
+          autofocus
+          hx-get="{% url 'check_email' %}"
+          hx-trigger="keyup changed delay:1s"
+          hx-target="#email_availability"
+          hx-swap="outerHTML"/>
+        </div>
+      <input type="password" name="password" placeholder=" Password..." style="border: 1px darkgray solid; margin: 10px;" />
+      <input type="password" name="password" placeholder=" Repeat password..." style="border: 1px darkgray solid; margin: 10px;" />
       {% if messages %}
       <ul class="font-bold border-red-600 bg-red-400 mb-2 w-fit px-1" _="on load transition opacity to 0 over 3s then remove me">
         {% for message in messages %}

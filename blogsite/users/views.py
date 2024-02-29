@@ -39,6 +39,11 @@ def check_username(request):
     exists = User.objects.filter(username__iexact=search_term).exists()
     return render(request, 'snippets/username_checker.html', {'exists':exists, 'username':search_term})
 
+def check_email(request):
+    search_term = request.GET['email']
+    exists = User.objects.filter(email__exact=search_term).exists()
+    return render(request, 'snippets/email_checker.html', {'exists':exists, 'email':search_term})
+
 def create_user(request):
     if User.objects.filter(username=request.POST["username"]).exists():
         messages.error(request, "User already exists.")

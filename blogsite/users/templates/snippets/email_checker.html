@@ -1,0 +1,21 @@
+{% if exists %}
+<div name="email_availability" id="email_availability">
+    <input type="email" name="email" id="email" placeholder=" Email..." style="border: 1px red solid; margin: 10px;"
+    value="{{email}}" autofocus
+    hx-get="{% url 'check_email' %}"
+    hx-trigger="keyup changed delay:1s"
+    hx-target="#email_availability"
+    hx-swap="outerHTML"/>
+    <p style="font-size: smaller; color: red; font-weight: bold;">Email taken.</p>
+  </div>
+{% else %}
+<div name="email_availability" id="email_availability">
+    <input type="email" name="email" id="email" placeholder=" Email..." style="border: 1px lightgreen solid; margin: 10px;"
+    value="{{email}}" autofocus
+    hx-get="{% url 'check_email' %}"
+    hx-trigger="keyup changed delay:1s"
+    hx-target="#email_availability"
+    hx-swap="outerHTML"/>
+    <p style="font-size: smaller; color: green; font-weight: bold;">Email available.</p>
+  </div>
+{% endif %}
