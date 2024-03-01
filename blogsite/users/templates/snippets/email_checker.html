@@ -1,21 +1,31 @@
-{% if exists %}
+{% if bad_email %}
 <div name="email_availability" id="email_availability">
-    <input type="email" name="email" id="email" placeholder=" Email..." style="border: 1px red solid; margin: 10px;"
-    value="{{email}}" autofocus
+    <input type="text" name="email" id="email" placeholder=" Email..." style="border: 1px red solid; margin: 10px;"
+    value="{{email}}" 
+    hx-get="{% url 'check_email' %}"
+    hx-trigger="keyup changed delay:1s"
+    hx-target="#email_availability"
+    hx-swap="outerHTML"/>
+    <p style="font-size: smaller; color: red; font-weight: bold;">Invalid Email.</p>
+</div>
+{% elif exists %}
+<div name="email_availability" id="email_availability">
+    <input type="text" name="email" id="email" placeholder=" Email..." style="border: 1px red solid; margin: 10px;"
+    value="{{email}}" 
     hx-get="{% url 'check_email' %}"
     hx-trigger="keyup changed delay:1s"
     hx-target="#email_availability"
     hx-swap="outerHTML"/>
     <p style="font-size: smaller; color: red; font-weight: bold;">Email taken.</p>
-  </div>
+</div>
 {% else %}
 <div name="email_availability" id="email_availability">
-    <input type="email" name="email" id="email" placeholder=" Email..." style="border: 1px lightgreen solid; margin: 10px;"
-    value="{{email}}" autofocus
+    <input type="text" name="email" id="email" placeholder=" Email..." style="border: 1px lightgreen solid; margin: 10px;"
+    value="{{email}}" 
     hx-get="{% url 'check_email' %}"
     hx-trigger="keyup changed delay:1s"
     hx-target="#email_availability"
     hx-swap="outerHTML"/>
     <p style="font-size: smaller; color: green; font-weight: bold;">Email available.</p>
-  </div>
+</div>
 {% endif %}

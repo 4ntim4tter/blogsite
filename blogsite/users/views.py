@@ -2,6 +2,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.mail import send_mail
 from django.core.validators import validate_email
 from django.db.models import Sum
+from django.forms import ValidationError
 from django.http import response
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
@@ -42,7 +43,12 @@ def check_username(request):
 def check_email(request):
     search_term = request.GET['email']
     exists = User.objects.filter(email__exact=search_term).exists()
-    return render(request, 'snippets/email_checker.html', {'exists':exists, 'email':search_term})
+    try:
+        validate_email(request.GET['email'])
+    except ValidationError:
+        return render(request, 'snippets/email_checker.html', {'exists':exists, 'email':search_term, 'bad_email':True})
+    else:
+        return render(request, 'snippets/email_checker.html', {'exists':exists, 'email':search_term, 'bad_email':False})
 
 def create_user(request):
     if User.objects.filter(username=request.POST["username"]).exists():

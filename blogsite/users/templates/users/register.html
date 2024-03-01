@@ -7,15 +7,13 @@
       {% csrf_token %}
         <div name="user_availability" id="user_availability">
           <input type="text" name="username" id="username" placeholder=" Username..." style="border: 1px darkgray solid; margin: 10px;"
-          autofocus
           hx-get="{% url 'check_username' %}"
           hx-trigger="keyup changed delay:1s"
           hx-target="#user_availability"
           hx-swap="outerHTML"/>
         </div>
         <div name="email_availability" id="email_availability">
-          <input type="email" name="email" id="email" placeholder=" Email..." style="border: 1px darkgray solid; margin: 10px;"
-          autofocus
+          <input type="text" name="email" id="email" placeholder=" Email..." style="border: 1px darkgray solid; margin: 10px;"
           hx-get="{% url 'check_email' %}"
           hx-trigger="keyup changed delay:1s"
           hx-target="#email_availability"
