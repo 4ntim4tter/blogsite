@@ -51,14 +51,17 @@ def check_email(request):
         return render(request, 'snippets/email_checker.html', {'exists':exists, 'email':search_term, 'bad_email':False})
 
 def create_user(request):
+    try:
+        validate_email(request.POST['email'])
+    except ValidationError:
+        messages.error(request, "Invalid E-mail.")
+        return redirect(register_user)
+        
     if User.objects.filter(username=request.POST["username"]).exists():
         messages.error(request, "User already exists.")
         return redirect(register_user)
-    elif (
-        validate_email(request.POST["email"])
-        or User.objects.filter(email=request.POST["email"]).exists()
-    ):
-        messages.error(request, "Invalid e-mail or already exists.")
+    elif User.objects.filter(email=request.POST["email"]).exists():
+        messages.error(request, "E-mail already exists.")
         return redirect(register_user)
     else:
         user = User.objects.create_user(
