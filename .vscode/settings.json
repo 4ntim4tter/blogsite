@@ -2,5 +2,7 @@
     "python.analysis.typeCheckingMode": "basic",
     "python.analysis.packageIndexDepths": [
         { "name": "", "depth": 8, "includeAllSymbols": true }
-    ]
+    ],
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.showTabs": "single"
 }

@@ -25,6 +25,14 @@
         "documentation": {}
     },
     {
+        "label": "SESSION_COOKIE_AGE",
+        "importPath": "django.conf.global_settings",
+        "description": "django.conf.global_settings",
+        "isExtraImport": true,
+        "detail": "django.conf.global_settings",
+        "documentation": {}
+    },
+    {
         "label": "admin",
         "importPath": "django.contrib",
         "description": "django.contrib",
@@ -548,14 +556,6 @@
         "documentation": {}
     },
     {
-        "label": "save_new",
-        "importPath": "users.views",
-        "description": "users.views",
-        "isExtraImport": true,
-        "detail": "users.views",
-        "documentation": {}
-    },
-    {
         "label": "Post",
         "importPath": "posts.models",
         "description": "posts.models",
@@ -588,11 +588,51 @@
         "documentation": {}
     },
     {
+        "label": "PasswordResetTokenGenerator",
+        "importPath": "django.contrib.auth.tokens",
+        "description": "django.contrib.auth.tokens",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.tokens",
+        "documentation": {}
+    },
+    {
+        "label": "send_mail",
+        "importPath": "django.core.mail",
+        "description": "django.core.mail",
+        "isExtraImport": true,
+        "detail": "django.core.mail",
+        "documentation": {}
+    },
+    {
+        "label": "validate_email",
+        "importPath": "django.core.validators",
+        "description": "django.core.validators",
+        "isExtraImport": true,
+        "detail": "django.core.validators",
+        "documentation": {}
+    },
+    {
         "label": "Sum",
         "importPath": "django.db.models",
         "description": "django.db.models",
         "isExtraImport": true,
         "detail": "django.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "ValidationError",
+        "importPath": "django.forms",
+        "description": "django.forms",
+        "isExtraImport": true,
+        "detail": "django.forms",
+        "documentation": {}
+    },
+    {
+        "label": "response",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
         "documentation": {}
     },
     {
@@ -803,7 +843,7 @@
         "kind": 5,
         "importPath": "blogsite.blogsite.settings",
         "description": "blogsite.blogsite.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nDEBUG_TOOLBAR_CONFIG = {\n    \"ROOT_TAG_EXTRA_ATTRS\": \"hx-preserve\"\n}",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'\nINTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nDEBUG_TOOLBAR_CONFIG = {\n    \"ROOT_TAG_EXTRA_ATTRS\": \"hx-preserve\"\n}\nSESSION_COOKIE_AGE = 60*60*24*30\nEMAIL_BACKEND = \"django.core.mail.backends.filebased.EmailBackend\"\nEMAIL_FILE_PATH = BASE_DIR / \"sent_emails\"",
         "detail": "blogsite.blogsite.settings",
         "documentation": {}
     },
@@ -812,7 +852,7 @@
         "kind": 5,
         "importPath": "blogsite.blogsite.settings",
         "description": "blogsite.blogsite.settings",
-        "peekOfCode": "INTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nDEBUG_TOOLBAR_CONFIG = {\n    \"ROOT_TAG_EXTRA_ATTRS\": \"hx-preserve\"\n}",
+        "peekOfCode": "INTERNAL_IPS = [\n    \"127.0.0.1\",\n]\nDEBUG_TOOLBAR_CONFIG = {\n    \"ROOT_TAG_EXTRA_ATTRS\": \"hx-preserve\"\n}\nSESSION_COOKIE_AGE = 60*60*24*30\nEMAIL_BACKEND = \"django.core.mail.backends.filebased.EmailBackend\"\nEMAIL_FILE_PATH = BASE_DIR / \"sent_emails\"\nPASSWORD_RESET_TIMEOUT = 60 * 2",
         "detail": "blogsite.blogsite.settings",
         "documentation": {}
     },
@@ -821,7 +861,43 @@
         "kind": 5,
         "importPath": "blogsite.blogsite.settings",
         "description": "blogsite.blogsite.settings",
-        "peekOfCode": "DEBUG_TOOLBAR_CONFIG = {\n    \"ROOT_TAG_EXTRA_ATTRS\": \"hx-preserve\"\n}",
+        "peekOfCode": "DEBUG_TOOLBAR_CONFIG = {\n    \"ROOT_TAG_EXTRA_ATTRS\": \"hx-preserve\"\n}\nSESSION_COOKIE_AGE = 60*60*24*30\nEMAIL_BACKEND = \"django.core.mail.backends.filebased.EmailBackend\"\nEMAIL_FILE_PATH = BASE_DIR / \"sent_emails\"\nPASSWORD_RESET_TIMEOUT = 60 * 2",
+        "detail": "blogsite.blogsite.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SESSION_COOKIE_AGE",
+        "kind": 5,
+        "importPath": "blogsite.blogsite.settings",
+        "description": "blogsite.blogsite.settings",
+        "peekOfCode": "SESSION_COOKIE_AGE = 60*60*24*30\nEMAIL_BACKEND = \"django.core.mail.backends.filebased.EmailBackend\"\nEMAIL_FILE_PATH = BASE_DIR / \"sent_emails\"\nPASSWORD_RESET_TIMEOUT = 60 * 2",
+        "detail": "blogsite.blogsite.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_BACKEND",
+        "kind": 5,
+        "importPath": "blogsite.blogsite.settings",
+        "description": "blogsite.blogsite.settings",
+        "peekOfCode": "EMAIL_BACKEND = \"django.core.mail.backends.filebased.EmailBackend\"\nEMAIL_FILE_PATH = BASE_DIR / \"sent_emails\"\nPASSWORD_RESET_TIMEOUT = 60 * 2",
+        "detail": "blogsite.blogsite.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_FILE_PATH",
+        "kind": 5,
+        "importPath": "blogsite.blogsite.settings",
+        "description": "blogsite.blogsite.settings",
+        "peekOfCode": "EMAIL_FILE_PATH = BASE_DIR / \"sent_emails\"\nPASSWORD_RESET_TIMEOUT = 60 * 2",
+        "detail": "blogsite.blogsite.settings",
+        "documentation": {}
+    },
+    {
+        "label": "PASSWORD_RESET_TIMEOUT",
+        "kind": 5,
+        "importPath": "blogsite.blogsite.settings",
+        "description": "blogsite.blogsite.settings",
+        "peekOfCode": "PASSWORD_RESET_TIMEOUT = 60 * 2",
         "detail": "blogsite.blogsite.settings",
         "documentation": {}
     },
@@ -1109,7 +1185,7 @@
         "kind": 5,
         "importPath": "blogsite.users.urls",
         "description": "blogsite.users.urls",
-        "peekOfCode": "urlpatterns = [\n    path('login/', views.login_user, name='login_user'),\n    path('register/', views.register_user, name='register_user'),\n    path('create/', views.create_user, name='create_user'),\n    path('authenticate/', views.auth_user, name='auth_user'),\n    path('user_profile/<int:pk>/', views.user_profile, name='user_profile'),\n    path('dash/', views.dash_user, name='dash_user'),\n    path('new_post/', views.new_post, name='new_post'),\n    path('save_new/', views.save_new, name='save_new'),\n    path('cancel_new/', views.cancel_new, name='cancel_new'),",
+        "peekOfCode": "urlpatterns = [\n    path('login/', views.login_user, name='login_user'),\n    path('register/', views.register_user, name='register_user'),\n    path('create/', views.create_user, name='create_user'),\n    path('check_username/', views.check_username, name='check_username'),\n    path('check_email/', views.check_email, name='check_email'),\n    path('activate_account', views.activate_user, name='activate_user'),\n    path('forgot_password/', views.forgot_password, name='forgot_password'),\n    path('get_recovery_email/', views.get_recovery_email, name='get_recovery_email'),\n    path('recover_account/', views.recover_account, name='recover_account'),",
         "detail": "blogsite.users.urls",
         "documentation": {}
     },
@@ -1136,7 +1212,25 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 3)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))\n    if request.htmx:\n        return render(request, \"snippets/user_posts.html\", {\"posts\": selected_page})\n    return render(request, \"users/dash.html\", {\"posts\": selected_page})\ndef create_user(request):\n    if User.objects.filter(username=request.POST[\"username\"]):",
+        "peekOfCode": "def dash_user(request):\n    user_id = request.user.id\n    posts = Post.objects.filter(username_id=f\"{user_id}\").order_by(\"-pub_date\", \"-id\")\n    paginated_posts = Paginator(posts, 3)\n    selected_page = paginated_posts.get_page(request.GET.get(\"page\"))\n    if request.htmx:\n        return render(request, \"snippets/user_posts.html\", {\"posts\": selected_page})\n    return render(request, \"users/dash.html\", {\"posts\": selected_page})\ndef check_username(request):\n    search_term = request.GET['username']",
+        "detail": "blogsite.users.views",
+        "documentation": {}
+    },
+    {
+        "label": "check_username",
+        "kind": 2,
+        "importPath": "blogsite.users.views",
+        "description": "blogsite.users.views",
+        "peekOfCode": "def check_username(request):\n    search_term = request.GET['username']\n    exists = User.objects.filter(username__iexact=search_term).exists()\n    return render(request, 'snippets/username_checker.html', {'exists':exists, 'username':search_term})\ndef check_email(request):\n    search_term = request.GET['email']\n    exists = User.objects.filter(email__exact=search_term).exists()\n    try:\n        validate_email(request.GET['email'])\n    except ValidationError:",
+        "detail": "blogsite.users.views",
+        "documentation": {}
+    },
+    {
+        "label": "check_email",
+        "kind": 2,
+        "importPath": "blogsite.users.views",
+        "description": "blogsite.users.views",
+        "peekOfCode": "def check_email(request):\n    search_term = request.GET['email']\n    exists = User.objects.filter(email__exact=search_term).exists()\n    try:\n        validate_email(request.GET['email'])\n    except ValidationError:\n        return render(request, 'snippets/email_checker.html', {'exists':exists, 'email':search_term, 'bad_email':True})\n    else:\n        return render(request, 'snippets/email_checker.html', {'exists':exists, 'email':search_term, 'bad_email':False})\ndef create_user(request):",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
@@ -1145,7 +1239,52 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def create_user(request):\n    if User.objects.filter(username=request.POST[\"username\"]):\n        messages.error(request, \"User already exists.\")\n        return redirect(register_user)\n    else:\n        user = User.objects.create_user(\n            username=request.POST[\"username\"], password=request.POST[\"password\"]\n        )\n        user.save()\n        login(request, user)",
+        "peekOfCode": "def create_user(request):\n    try:\n        validate_email(request.POST['email'])\n    except ValidationError:\n        messages.error(request, \"Invalid E-mail.\")\n        return redirect(register_user)\n    if User.objects.filter(username=request.POST[\"username\"]).exists():\n        messages.error(request, \"User already exists.\")\n        return redirect(register_user)\n    elif User.objects.filter(email=request.POST[\"email\"]).exists():",
+        "detail": "blogsite.users.views",
+        "documentation": {}
+    },
+    {
+        "label": "activate_user",
+        "kind": 2,
+        "importPath": "blogsite.users.views",
+        "description": "blogsite.users.views",
+        "peekOfCode": "def activate_user(request):\n    user = User.objects.get(email=request.GET.get(\"email\"))\n    if PasswordResetTokenGenerator().check_token(user, request.GET.get(\"token\")):\n        user.is_active = True\n        user.save()\n        login(request, user)\n        messages.success(request, \"Your account is now activated.\")\n        return redirect(\"index\")\n    else:\n        return response.HttpResponse(\"Token expired.\")",
+        "detail": "blogsite.users.views",
+        "documentation": {}
+    },
+    {
+        "label": "forgot_password",
+        "kind": 2,
+        "importPath": "blogsite.users.views",
+        "description": "blogsite.users.views",
+        "peekOfCode": "def forgot_password(request):\n    return render(request, \"users/forgot_password.html\")\ndef get_recovery_email(request):\n    email = request.POST[\"email\"]\n    exists = User.objects.filter(email=email).exists()\n    if not exists:\n        messages.error(request, \"E-mail does not exist.\")\n        return render(request, \"users/forgot_password.html\")\n    user = User.objects.get(email=email)\n    if user.is_active:",
+        "detail": "blogsite.users.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_recovery_email",
+        "kind": 2,
+        "importPath": "blogsite.users.views",
+        "description": "blogsite.users.views",
+        "peekOfCode": "def get_recovery_email(request):\n    email = request.POST[\"email\"]\n    exists = User.objects.filter(email=email).exists()\n    if not exists:\n        messages.error(request, \"E-mail does not exist.\")\n        return render(request, \"users/forgot_password.html\")\n    user = User.objects.get(email=email)\n    if user.is_active:\n        token = PasswordResetTokenGenerator().make_token(user)\n        send_mail(",
+        "detail": "blogsite.users.views",
+        "documentation": {}
+    },
+    {
+        "label": "recover_account",
+        "kind": 2,
+        "importPath": "blogsite.users.views",
+        "description": "blogsite.users.views",
+        "peekOfCode": "def recover_account(request):\n    email = request.GET.get(\"email\")\n    user = User.objects.get(email=email)\n    if PasswordResetTokenGenerator().check_token(user, request.GET.get(\"token\")):\n        return redirect(password_change)\n    else:\n        return response.HttpResponse(\"Token Invalid\")\ndef password_change(request):\n    return render(request, \"users/change_password.html\")\ndef auth_user(request):",
+        "detail": "blogsite.users.views",
+        "documentation": {}
+    },
+    {
+        "label": "password_change",
+        "kind": 2,
+        "importPath": "blogsite.users.views",
+        "description": "blogsite.users.views",
+        "peekOfCode": "def password_change(request):\n    return render(request, \"users/change_password.html\")\ndef auth_user(request):\n    user = User.objects.get(username=request.POST[\"username\"])\n    if user is None:\n        messages.error(request, \"Incorrect Credentials\")\n        return render(request, \"users/login.html\")\n    if user.is_active:\n        user = authenticate(\n            request,",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
@@ -1154,7 +1293,7 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def auth_user(request):\n    user = authenticate(\n        request, username=request.POST[\"username\"], password=request.POST[\"password\"]\n    )\n    if user is not None:\n        login(request, user)\n        messages.success(request, \"Login Successful.\")\n        return redirect(\"index\")\n    else:\n        messages.error(request, \"Incorrect Credentials\")",
+        "peekOfCode": "def auth_user(request):\n    user = User.objects.get(username=request.POST[\"username\"])\n    if user is None:\n        messages.error(request, \"Incorrect Credentials\")\n        return render(request, \"users/login.html\")\n    if user.is_active:\n        user = authenticate(\n            request,\n            username=request.POST[\"username\"],\n            password=request.POST[\"password\"],",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
@@ -1163,7 +1302,7 @@
         "kind": 2,
         "importPath": "blogsite.users.views",
         "description": "blogsite.users.views",
-        "peekOfCode": "def user_profile(request, pk):\n    user = User.objects.get(pk=pk)\n    liked_posts = Post.objects.filter(username=user.pk).aggregate(Sum('likes_count'))['likes_count__sum']\n    liked_comments = Comment.objects.filter(username=user.pk).aggregate(Sum('likes_count'))['likes_count__sum']\n    latest_posts = Post.objects.filter(username=user.pk).order_by(\"-pub_date\")[:5]\n    top_posts = Post.objects.filter(username=user.pk).order_by(\"-likes_count\")[:5]\n    latest_comments = Comment.objects.filter(username=user.pk).order_by(\"-pub_date\")[:5]\n    top_comments = Comment.objects.filter(username=user.pk).order_by(\"-likes_count\")[:5]\n    return render(\n        request,",
+        "peekOfCode": "def user_profile(request, pk):\n    user = User.objects.get(pk=pk)\n    liked_posts = Post.objects.filter(username=user.pk).aggregate(Sum(\"likes_count\"))[\n        \"likes_count__sum\"\n    ]\n    liked_comments = Comment.objects.filter(username=user.pk).aggregate(\n        Sum(\"likes_count\")\n    )[\"likes_count__sum\"]\n    latest_posts = Post.objects.filter(username=user.pk).order_by(\"-pub_date\")[:5]\n    top_posts = Post.objects.filter(username=user.pk).order_by(\"-likes_count\")[:5]",
         "detail": "blogsite.users.views",
         "documentation": {}
     },
