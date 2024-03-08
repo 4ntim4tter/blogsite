@@ -14,4 +14,12 @@
 git clone https://github.com/4ntim4tter/blogsite.git
 cd blogsite
 ~~~
-####
+#### Install Requirements
+~~~
+pip install requirements.txt
+~~~
+#### To start the server
+~~~
+py manage.py runserver - for powershell
+python manage.py runserver - for bash
+~~~
